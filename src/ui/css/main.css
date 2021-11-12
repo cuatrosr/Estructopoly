@@ -1,0 +1,57 @@
+@import url("typography.css");
+@import url("variables.css");
+
+.jfx-button {
+    -fx-font-size: 20px;
+    -fx-pref-width: 250px;
+    -fx-pref-height: 50px;
+    -fx-background-radius: 16px;
+    -fx-border-radius: 8px;
+    -fx-font-family: "Kabel Bd";
+    -fx-text-fill: black;
+    -fx-border-color: black;
+    -fx-background-color: linear-gradient(lightgoldenrodyellow 0%, -SWEET-ORANGE 100%);;
+    -fx-border-width: 3px;
+    -fx-effect: dropshadow(gaussian, -TEXT-2, 10, 0.5, 0, 0);
+}
+
+.jfx-button .jfx-rippler {
+    -jfx-rippler-fill: lightcoral;
+}
+
+.jfx-button:hover {
+    -fx-background-color: lightgoldenrodyellow;
+    -fx-cursor: hand;
+}
+
+.jfx-toggle-button {
+    -jfx-toggle-color: -DEEP-RED;
+    -jfx-toggle-line-color: lightcoral;
+    -fx-text-fill: white;
+    -fx-font-family: "Kabel Bd";
+    -fx-font-size: 14px;
+}
+
+.main-pane {
+    -fx-background-image: url("../images/backgrounds/main.jpg");
+    -fx-background-size: 100%;
+    -fx-background-repeat: no-repeat;
+}
+
+.title {
+    -fx-padding: 2px 10px 2px 10px;
+    -fx-font-family: "Kabel Bd";
+    -fx-font-size: 32px;
+    -fx-effect: dropshadow(gaussian, -TEXT-2, 10, 0.2, 0, 0);
+    -fx-background-color: linear-gradient(lightcoral 0%, -DEEP-RED 100%);
+    -fx-background-radius: 10px;
+    -fx-border-color: linear-gradient(-DEEP-RED 0%, lightcoral 100%);
+    -fx-border-width: 5px;
+    -fx-border-radius: 5px;
+}
+
+.title .text {
+    -fx-fill: black;
+    -fx-stroke: white;
+    -fx-stroke-width: 2px;
+}
