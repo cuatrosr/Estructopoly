@@ -16,7 +16,7 @@
    <children>
       <ImageView fitHeight="545.0" fitWidth="840.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../images/backGrounds/backGraundDice.jpg" />
+            <Image url="@../../../../images/backgrounds/backGraundDice.jpg" />
          </image>
       </ImageView>
       <Label layoutX="317.0" layoutY="14.0" text="Negocio" textAlignment="CENTER">

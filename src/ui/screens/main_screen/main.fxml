@@ -17,7 +17,7 @@
    <children>
       <ImageView fitHeight="546.0" fitWidth="858.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/backGrounds/backGroundsMain.jpg" />
+            <Image url="@../../../images/backgrounds/backGroundsMain.jpg" />
          </image>
       </ImageView>
       <Label layoutX="53.0" layoutY="28.0" prefHeight="137.0" prefWidth="223.0" text="ApoTwoPoly" textAlignment="CENTER" underline="true">

@@ -12,7 +12,7 @@
    <children>
       <ImageView fitHeight="185.0" fitWidth="524.0" layoutX="-43.0" layoutY="-31.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../images/backGrounds/backGraundDice.jpg" />
+            <Image url="@../../../../images/backgrounds/backGraundDice.jpg" />
          </image>
       </ImageView>
       <Button layoutX="101.0" layoutY="91.0" mnemonicParsing="false" onAction="#payJail" text="Pagar fianza" />

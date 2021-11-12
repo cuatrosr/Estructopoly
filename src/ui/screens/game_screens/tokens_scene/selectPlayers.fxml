@@ -11,7 +11,7 @@
    <children>
       <ImageView fitHeight="409.0" fitWidth="728.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../images/backGrounds/backGroundsSelectPlayer.jpg" />
+            <Image url="@../../../../images/backgrounds/backGroundsSelectPlayer.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="83.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" opacity="0.65" pickOnBounds="true" preserveRatio="true">

@@ -9,7 +9,7 @@
    <children>
       <ImageView fitHeight="196.0" fitWidth="393.0" layoutX="-105.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <image>
-            <Image url="@../../../../images/backGrounds/backGraundDice.jpg" />
+            <Image url="@../../../../images/backgrounds/backGraundDice.jpg" />
          </image>
       </ImageView>
       <ImageView fx:id="imageProperti" fitHeight="225.0" fitWidth="174.0" layoutX="4.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" />
