@@ -10,3 +10,33 @@
     -fx-spacing: 20;
 }
 
+.jfx-button {
+    -fx-font-size: 19px;
+    -fx-pref-width: 220px;
+    -fx-pref-height: 50px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-font-family: "Kabel Bd";
+    -fx-background-color: -DEEP-RED;
+}
+
+.jfx-button:hover {
+    -fx-background-color: lightcoral;
+}
+
+.jfx-button .text {
+    -fx-fill: -SNOW-WHITE;
+    -fx-stroke: black;
+    -fx-stroke-width: 1px;
+}
+
+.settings {
+    -fx-image: url("../images/info-settings.png");
+}
+
+.settings:hover {
+    -fx-image: url("../images/info-settings-hover.png");
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, -TEXT-2, 10, 0.2, 0, 0);
+}
+

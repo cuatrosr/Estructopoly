@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -28,6 +29,12 @@ public class FXMain extends Application {
         primaryStage.setScene(scene);
         primaryStage.setTitle("Estructopoly!");
         primaryStage.show();
+//        primaryStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH); //<-Disable ESC = exit fullscreen
+
+        fxmlLoader = new FXMLLoader(getClass().getResource("fxml/menu.fxml"));
+        fxmlLoader.setController(mainController);
+        root = fxmlLoader.load();
+        mainController.getMainPane().setCenter(root);
     }
 
     @Override

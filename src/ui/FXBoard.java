@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
@@ -16,7 +17,7 @@ public class FXBoard implements Initializable {
     /*JAVAFX FIELDS*/
 
     @FXML
-    private BorderPane mainPane = new BorderPane();
+    private BorderPane boardPane = new BorderPane();
 
     @FXML
     private VBox rightVBOX = new VBox();
@@ -42,16 +43,20 @@ public class FXBoard implements Initializable {
     @FXML
     private JFXListView<String> historyLV = new JFXListView<>();
 
+    FXMainController mainController;
+
+    public FXBoard(FXMainController mainController) {
+        this.mainController = mainController;
+    }
+
     /*METHODS*/
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        boardIMV.fitHeightProperty().bind(mainPane.heightProperty());
-        boardIMV.fitWidthProperty().bind(mainPane.widthProperty());
-        leftVBOX.prefHeightProperty().bind(mainPane.heightProperty());
-        leftVBOX.prefWidthProperty().bind(mainPane.widthProperty());
-        rightVBOX.prefHeightProperty().bind(mainPane.heightProperty());
-        rightVBOX.prefWidthProperty().bind(mainPane.widthProperty());
+        boardIMV.fitHeightProperty().bind(boardPane.heightProperty());
+        boardIMV.fitWidthProperty().bind(boardPane.widthProperty());
+        boardIMV.maxHeight(1000);
+        boardIMV.maxWidth(1000);
     }
 
     @FXML
@@ -71,6 +76,16 @@ public class FXBoard implements Initializable {
 
     @FXML
     void rollDice(ActionEvent event) {
+
+    }
+
+    @FXML
+    void next(ActionEvent event) {
+
+    }
+
+    @FXML
+    void settings(MouseEvent event) {
 
     }
 }
