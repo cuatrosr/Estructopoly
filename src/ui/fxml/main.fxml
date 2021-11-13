@@ -1,45 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXToggleButton?>
 <?import java.net.URL?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
 
 <BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="533.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <stylesheets>
       <URL value="@../css/global.css" />
       <URL value="@../css/main.css" />
    </stylesheets>
-   <center>
-      <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="main-pane" BorderPane.alignment="CENTER">
-         <left>
-            <VBox alignment="CENTER" prefHeight="483.0" prefWidth="335.0" spacing="25.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Label styleClass="title" text="ESTRUCTOPOLY" />
-                  <Separator orientation="VERTICAL" prefHeight="60.0" prefWidth="7.0" />
-                  <JFXButton onAction="#play" text="JUGAR" />
-                  <JFXButton onAction="#leaderboards" text="MARCADORES" />
-                  <JFXButton onAction="#exit" text="SALIR" />
-               </children>
-               <BorderPane.margin>
-                  <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
-               </BorderPane.margin>
-            </VBox>
-         </left>
-         <right>
-            <VBox alignment="TOP_CENTER" prefHeight="483.0" prefWidth="169.0" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
-               </BorderPane.margin>
-               <children>
-                  <JFXToggleButton fx:id="fullscreenTGB" contentDisplay="RIGHT" onAction="#toggleFullscreen" prefHeight="60.0" prefWidth="152.0" text="Pantalla Completa" wrapText="true" />
-               </children>
-            </VBox>
-         </right>
-      </BorderPane>
-   </center>
 </BorderPane>
