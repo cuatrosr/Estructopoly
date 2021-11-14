@@ -22,13 +22,13 @@
             <JFXButton onAction="#rollDice" prefWidth="184.0" text="Lanzar Dado" />
             <AnchorPane maxWidth="1.7976931348623157E308" prefHeight="171.0" prefWidth="300.0">
                <children>
-                  <Rectangle fx:id="frameRCT" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="173.0" layoutX="28.0" layoutY="-1.0" stroke="TRANSPARENT" strokeType="INSIDE" width="299.0" />
-                  <ImageView fx:id="dice1IMV" fitHeight="127.0" fitWidth="127.0" layoutX="42.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                  <Rectangle fx:id="frameRCT" arcHeight="5.0" arcWidth="5.0" fill="#2197ff" height="173.0" layoutX="51.0" opacity="0.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="dice-outline" width="299.0" />
+                  <ImageView fx:id="dice1IMV" fitHeight="127.0" fitWidth="127.0" layoutX="65.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/dice/de1.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="dice2IMV" fitHeight="127.0" fitWidth="127.0" layoutX="187.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="dice2IMV" fitHeight="127.0" fitWidth="127.0" layoutX="210.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/dice/de1.png" />
                      </image>
@@ -38,9 +38,10 @@
             <JFXButton onAction="#properties" prefWidth="184.0" text="Propiedades" />
             <JFXButton onAction="#gamble" prefWidth="184.0" text="Negociar" />
             <JFXButton onAction="#patrimony" prefWidth="184.0" text="Patrimonio" />
+            <Label id="timer-lbl" fx:id="timerLBL" styleClass="subtitles" text="00:00:00" />
             <JFXListView fx:id="historyLV" prefHeight="178.0" prefWidth="250.0">
                <VBox.margin>
-                  <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                  <Insets bottom="25.0" left="25.0" right="25.0" top="5.0" />
                </VBox.margin>
             </JFXListView>
             <JFXButton onAction="#next" prefWidth="184.0" text="Siguiente Turno" />
@@ -60,9 +61,9 @@
             </ImageView>
             <Separator orientation="VERTICAL" prefHeight="113.0" prefWidth="4.0" />
             <Label styleClass="subtitles" text="Jugador Actual" textAlignment="CENTER" />
-            <Label text="PLAYER" textAlignment="CENTER" />
+            <Label fx:id="turnLBL" text="PLAYER" textAlignment="CENTER" />
             <Separator orientation="VERTICAL" prefHeight="57.0" prefWidth="4.0" />
-            <JFXListView fx:id="historyLV1" prefHeight="303.0" prefWidth="158.0">
+            <JFXListView fx:id="playersLV" prefHeight="303.0" prefWidth="158.0">
                <VBox.margin>
                   <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
                </VBox.margin></JFXListView>

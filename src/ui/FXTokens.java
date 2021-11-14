@@ -76,4 +76,7 @@ public class FXTokens {
         }
     }
 
+    public FXBoard getFXBoard() {
+        return fxBoard;
+    }
 }

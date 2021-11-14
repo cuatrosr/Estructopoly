@@ -1,12 +1,12 @@
 package ui;
 
 import com.jfoenix.controls.JFXToggleButton;
-import com.jfoenix.controls.JFXToggleNode;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,10 +16,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import ui.libs.WindowStyle;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
@@ -37,6 +36,8 @@ public class FXMainController implements Initializable {
 
     FXTokens fxTokens;
 
+    private Rectangle2D screenBounds;
+
     public FXMainController() {
         fxTokens = new FXTokens(this);
         glowApplied = false;
@@ -48,6 +49,7 @@ public class FXMainController implements Initializable {
             fullscreenTGB.setSelected(true);
             auxToggleGlow(true);
         }
+        screenBounds = Screen.getPrimary().getBounds();
     }
 
     @FXML
@@ -109,7 +111,13 @@ public class FXMainController implements Initializable {
         stage.initModality(modality);
         stage.getIcons().add(new Image(Objects.requireNonNull(FXMain.class.getResourceAsStream("images/logo.png"))));
         stage.show();
-        WindowStyle.allowDrag(root, stage);
-        WindowStyle.stageDimension(stage.getWidth(), stage.getHeight());
+    }
+
+    public FXBoard getFXBoard() {
+        return fxTokens.getFXBoard();
+    }
+
+    public Rectangle2D getScreenBounds() {
+        return screenBounds;
     }
 }

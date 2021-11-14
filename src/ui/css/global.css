@@ -99,12 +99,19 @@
 }
 
 .settings-window {
-    -fx-background-color: linear-gradient(#8FBC72 0%, #BFDBAE 100%);
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-background-color: rgba(0, 0, 0, 0.65);
+    -fx-background-radius: 25px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,1), 25, 0.1, 0, 0);
 }
 
 .titles {
     -fx-font-family: "Kabel Bd";
-    -fx-font-size: 28px;
+    -fx-font-size: 52px;
     -fx-text-fill: white;
+}
+
+.timer-stop {
+    -fx-font-family: "Kabel Bd";
+    -fx-font-size: 18px;
+    -fx-text-fill: linear-gradient( lightcoral 50%, white 100%);
 }

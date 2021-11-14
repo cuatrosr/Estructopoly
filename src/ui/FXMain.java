@@ -1,6 +1,7 @@
 package ui;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -43,6 +44,9 @@ public class FXMain extends Application {
 
     @Override
     public void stop() {
+        Platform.exit();
+        System.exit(0);
+        mainController.getFXBoard().getTimer().cancel();
         System.out.println("Game stopped.");
     }
 }

@@ -2,21 +2,36 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane minHeight="0.0" prefHeight="396.0" prefWidth="396.0" styleClass="settings-window" stylesheets="@../css/global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="605.0" prefWidth="798.0" styleClass="settings-window" stylesheets="@../css/global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <VBox fx:id="settingsPane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="266.0" prefWidth="396.0" styleClass="settings-cont" BorderPane.alignment="CENTER">
+      <VBox fx:id="settingsPane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="344.0" prefWidth="396.0" styleClass="settings-cont" BorderPane.alignment="CENTER">
          <children>
-            <Label styleClass="titles" text="Ajustes" />
+            <Label styleClass="titles" text="PAUSA" />
+            <Label styleClass="timer-stop" text="00:00:00" />
             <Separator orientation="VERTICAL" prefHeight="76.0" prefWidth="0.0" />
-            <JFXToggleButton fx:id="fullscreenTGB" contentDisplay="RIGHT" onAction="#toggleFullscreen" prefHeight="60.0" prefWidth="152.0" text="Pantalla Completa" wrapText="true" />
             <JFXButton onAction="#restart" text="REINICIAR" />
             <JFXButton onAction="#mainMenu" text="MENU PRINCIPAL" />
          </children>
       </VBox>
    </center>
+   <top>
+      <HBox alignment="CENTER_RIGHT" prefHeight="57.0" prefWidth="396.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXToggleButton fx:id="fullscreenTGB" contentDisplay="RIGHT" onAction="#toggleFullscreen" prefHeight="60.0" prefWidth="152.0" text="Pantalla Completa" wrapText="true" />
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </BorderPane.margin>
+      </HBox>
+   </top>
+   <bottom>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>

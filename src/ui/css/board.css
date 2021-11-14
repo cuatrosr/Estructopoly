@@ -7,6 +7,12 @@
     -fx-background-size: 100%;
 }
 
+.dice-outline {
+    -fx-fill: -DEEP-RED;
+    -fx-arc-height: 25;
+    -fx-arc-widtht: 25;
+}
+
 .side-bar {
     -fx-background-radius: 25;
     -fx-background-color: linear-gradient(#8FBC72 0%, #BFDBAE 100%);
