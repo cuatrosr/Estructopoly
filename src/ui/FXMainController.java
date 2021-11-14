@@ -9,12 +9,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.effect.Glow;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import ui.libs.WindowStyle;
+
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class FXMainController implements Initializable {
@@ -84,5 +92,24 @@ public class FXMainController implements Initializable {
 
     public BorderPane getMainPane() {
         return mainPane;
+    }
+
+    public void launchFXMLWindowed(String fxml, Object controller, String title, Modality modality, StageStyle style, boolean resizable) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/" + fxml));
+        fxmlLoader.setController(controller);
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        scene.setFill(Color.TRANSPARENT);
+        stage.setScene(scene);
+        stage.initStyle(style);
+        stage.setTitle(title);
+        stage.setResizable(resizable);
+        stage.initOwner(mainPane.getScene().getWindow());
+        stage.initModality(modality);
+        stage.getIcons().add(new Image(Objects.requireNonNull(FXMain.class.getResourceAsStream("images/logo.png"))));
+        stage.show();
+        WindowStyle.allowDrag(root, stage);
+        WindowStyle.stageDimension(stage.getWidth(), stage.getHeight());
     }
 }

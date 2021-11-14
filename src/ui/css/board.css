@@ -1,7 +1,10 @@
 @import url("variables.css");
 
 .game-bg-pane {
-    -fx-background-image: url("../images/backgrounds/game.jpg");
+    -fx-background-image: url("../images/backgrounds/green-mat.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 100%;
 }
 
 .side-bar {
@@ -17,17 +20,12 @@
     -fx-background-radius: 8px;
     -fx-border-radius: 8px;
     -fx-font-family: "Kabel Bd";
+    -fx-text-fill: -SNOW-WHITE;
     -fx-background-color: -DEEP-RED;
 }
 
 .jfx-button:hover {
     -fx-background-color: lightcoral;
-}
-
-.jfx-button .text {
-    -fx-fill: -SNOW-WHITE;
-    -fx-stroke: black;
-    -fx-stroke-width: 1px;
 }
 
 .settings {

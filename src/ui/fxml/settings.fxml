@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane minHeight="0.0" prefHeight="396.0" prefWidth="396.0" styleClass="settings-window" stylesheets="@../css/global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox fx:id="settingsPane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="266.0" prefWidth="396.0" styleClass="settings-cont" BorderPane.alignment="CENTER">
+         <children>
+            <Label styleClass="titles" text="Ajustes" />
+            <Separator orientation="VERTICAL" prefHeight="76.0" prefWidth="0.0" />
+            <JFXToggleButton fx:id="fullscreenTGB" contentDisplay="RIGHT" onAction="#toggleFullscreen" prefHeight="60.0" prefWidth="152.0" text="Pantalla Completa" wrapText="true" />
+            <JFXButton onAction="#restart" text="REINICIAR" />
+            <JFXButton onAction="#mainMenu" text="MENU PRINCIPAL" />
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

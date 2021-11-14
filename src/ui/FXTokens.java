@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -65,7 +66,11 @@ public class FXTokens {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/board.fxml"));
             fxmlLoader.setController(fxBoard);
             Parent root = fxmlLoader.load();
-            mainController.getMainPane().setCenter(root);
+            BorderPane mainPane = mainController.getMainPane();
+            mainPane.setCenter(root);
+            Stage stage = ((Stage) mainPane.getScene().getWindow());
+            stage.setMinHeight(750);
+            stage.setMinWidth(1400);
         } catch (IOException e) {
             e.printStackTrace();
         }

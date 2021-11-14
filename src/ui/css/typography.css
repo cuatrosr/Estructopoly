@@ -1,9 +1,9 @@
 @font-face {
-    font-family: "Kabel Bd";
+    -fx-font-family: "Kabel Bd";
     src: url("../fonts/KabelBdNormal.ttf");
 }
 
 @font-face {
-    font-family: "Kabel Medium";
+    -fx-font-family: "Kabel Medium";
     url(../fonts/KabelMedium.ttf);
 }
