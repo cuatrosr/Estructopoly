@@ -1,30 +1,24 @@
 package ui;
 
 import com.jfoenix.controls.JFXListView;
-import com.jfoenix.controls.JFXToggleButton;
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Cell;
 import javafx.scene.control.Label;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.effect.Glow;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -42,6 +36,9 @@ public class FXBoard implements Initializable {
     /*JAVAFX FIELDS*/
 
     //Main
+
+    @FXML
+    private BorderPane gamePane = new BorderPane();
 
     @FXML
     private BorderPane boardPane = new BorderPane();
@@ -79,9 +76,13 @@ public class FXBoard implements Initializable {
     @FXML
     private Label timerLBL = new Label();
 
+    //Class Fields
+
     FXMainController mainController;
 
     FXSettings fxSettings;
+
+    FXAllProperties fxAll;
 
     int turn = 0;
 
@@ -93,6 +94,7 @@ public class FXBoard implements Initializable {
     public FXBoard(FXMainController mainController) {
         this.mainController = mainController;
         fxSettings = new FXSettings(mainController, this);
+        fxAll = new FXAllProperties(mainController, this);
     }
 
     /*METHODS*/
@@ -143,7 +145,16 @@ public class FXBoard implements Initializable {
         pop.play();
     }
 
-    private void newTimer() {
+    @FXML
+    void allProperties(ActionEvent event) {
+        try {
+            mainController.launchFXMLWindowed("all-properties.fxml", fxAll, "Todas las Propiedades", Modality.WINDOW_MODAL, StageStyle.DECORATED, false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void newTimer() {
         timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override
@@ -190,19 +201,20 @@ public class FXBoard implements Initializable {
             Parent root = fxmlLoader.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setOnCloseRequest(e -> {
-                newTimer();
-            });
-            double width = mainController.getScreenBounds().getWidth() * 0.9;
-            double height = mainController.getScreenBounds().getHeight() * 0.9;
-            stage.setMinHeight(height);
-            stage.setMinWidth(width);
+            scene.setOnKeyPressed(fxSettings::keyListener);
+            stage.setOnCloseRequest(e -> newTimer());
             scene.setFill(Color.TRANSPARENT);
             stage.setScene(scene);
-            stage.initStyle(StageStyle.UNDECORATED);
+            stage.initStyle(StageStyle.TRANSPARENT);
             stage.setResizable(false);
-            stage.initOwner(mainController.getMainPane().getScene().getWindow());
+            stage.initOwner(gamePane.getScene().getWindow());
             stage.initModality(Modality.APPLICATION_MODAL);
+            double width = mainController.getScreenBounds().getWidth();
+            double height = mainController.getScreenBounds().getHeight();
+            stage.setMinHeight(height);
+            stage.setMinWidth(width);
+            stage.setMaximized(true);
+            gamePane.setEffect(new GaussianBlur());
             stage.getIcons().add(new Image(Objects.requireNonNull(FXMain.class.getResourceAsStream("images/logo.png"))));
             stage.show();
             timer.cancel();
@@ -211,8 +223,19 @@ public class FXBoard implements Initializable {
         }
     }
 
+    public FXSettings getFxSettings() {
+        return fxSettings;
+    }
 
     public Timer getTimer() {
         return timer;
+    }
+
+    public String currentTime() {
+        return String.format("%02d:%02d:%02d", hour, min, secs);
+    }
+
+    public BorderPane getBoardPane() {
+        return gamePane;
     }
 }

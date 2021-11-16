@@ -12,8 +12,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
@@ -24,7 +25,7 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class FXMainController implements Initializable {
+public class FXMainController implements Initializable, Listeners {
 
     @FXML
     private BorderPane mainPane = new BorderPane();
@@ -38,9 +39,13 @@ public class FXMainController implements Initializable {
 
     private Rectangle2D screenBounds;
 
+    String currentScene;
+
     public FXMainController() {
         fxTokens = new FXTokens(this);
         glowApplied = false;
+        screenBounds = Screen.getPrimary().getVisualBounds();
+        currentScene = "Menu";
     }
 
     @Override
@@ -49,7 +54,6 @@ public class FXMainController implements Initializable {
             fullscreenTGB.setSelected(true);
             auxToggleGlow(true);
         }
-        screenBounds = Screen.getPrimary().getBounds();
     }
 
     @FXML
@@ -77,6 +81,7 @@ public class FXMainController implements Initializable {
             fxmlLoader.setController(fxTokens);
             Parent root = fxmlLoader.load();
             mainPane.setCenter(root);
+            currentScene = "Tokens";
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -96,13 +101,13 @@ public class FXMainController implements Initializable {
         return mainPane;
     }
 
-    public void launchFXMLWindowed(String fxml, Object controller, String title, Modality modality, StageStyle style, boolean resizable) throws IOException {
+    public <T extends Listeners> void launchFXMLWindowed(String fxml, T controller, String title, Modality modality, StageStyle style, boolean resizable) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/" + fxml));
         fxmlLoader.setController(controller);
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
+        scene.setOnKeyPressed(controller::keyListener);
         Stage stage = new Stage();
-        scene.setFill(Color.TRANSPARENT);
         stage.setScene(scene);
         stage.initStyle(style);
         stage.setTitle(title);
@@ -119,5 +124,45 @@ public class FXMainController implements Initializable {
 
     public Rectangle2D getScreenBounds() {
         return screenBounds;
+    }
+
+    @Override
+    public void keyListener(KeyEvent event) {
+        KeyCode typed = event.getCode();
+        if (typed.equals(KeyCode.J)) {
+            if (currentScene.equals("Menu")) play(null);
+            else if (currentScene.equals("Tokens")) fxTokens.loadBoard(null);
+        }
+        else if (typed.equals(KeyCode.M)) leaderboards(null);
+        else if (typed.equals(KeyCode.ESCAPE)) {
+            switch (currentScene) {
+                case "Menu":
+                    exit(null);
+                    break;
+                case "Tokens":
+                    fxTokens.back(null);
+                    break;
+                case "Game":
+                    getFXBoard().settings(null);
+                    break;
+            }
+        }
+        else if (typed.equals(KeyCode.F)) {
+            boolean select = fullscreenTGB.isSelected();
+            fullscreenTGB.setSelected(!select);
+            toggleFullscreen(null);
+        }
+    }
+
+    public void setCurrentScene(String currentScene) {
+        this.currentScene = currentScene;
+    }
+
+    public void endGame(ActionEvent event) {
+        //<- HERE ->
+
+        //TODO: Extract all data from game before here
+        fxTokens.back(event);
+        fxTokens = new FXTokens(this);
     }
 }

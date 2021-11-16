@@ -92,16 +92,18 @@
     -fx-border-radius: 54px;
     -fx-border-width: 2px;
     -fx-background-color: lightcoral;
+    -fx-text-fill: black;
 }
 
 .settings-cont {
-    -fx-spacing: 20;
+    -fx-background-color: rgba(0, 0, 0, 0.37);
+    -fx-background-radius: 25;
+    -fx-effect: dropshadow(gaussian, -TEXT-2, 12, 0.2, 0, 0);
 }
 
 .settings-window {
-    -fx-background-color: rgba(0, 0, 0, 0.65);
+    -fx-background-color: transparent;
     -fx-background-radius: 25px;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,1), 25, 0.1, 0, 0);
 }
 
 .titles {

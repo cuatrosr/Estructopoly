@@ -1,0 +1,75 @@
+@import url("variables.css");
+@import url("typography.css");
+
+.left {
+    -fx-image: url("../images/arrow-left.png");
+}
+
+.left:hover {
+    -fx-image: url("../images/arrow-left-hover.png");
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, -TEXT-2, 10, 0.2, 0, 0);
+}
+
+.right {
+    -fx-image: url("../images/arrow-right.png");
+}
+
+.right:hover {
+    -fx-image: url("../images/arrow-right-hover.png");
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, -TEXT-2, 10, 0.2, 0, 0);
+}
+
+.properties-pane {
+    -fx-background-image: url("../images/backgrounds/green-mat.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 100%;
+}
+
+.card-cont {
+    -fx-background-radius: 25;
+    -fx-background-color: rgba(0, 0, 0, 0.37);
+    -fx-effect: dropshadow(gaussian, -TEXT-2, 10, 0.2, 0, 0);
+    -fx-spacing: 20;
+}
+
+.label {
+    -fx-font-family: "Kabel Bd";
+    -fx-font-size: 28px;
+}
+
+.label .text {
+    -fx-fill: white;
+    -fx-stroke: black;
+    -fx-stroke-width: 2;
+}
+
+.available, .unavailable {
+    -fx-font-family: "Kabel Bd";
+    -fx-font-size: 32px;
+    -fx-alignment: center;
+    -fx-wrap-text: true;
+}
+
+.available .text {
+    -fx-fill: green;
+    -fx-stroke: whitesmoke;
+    -fx-stroke-width: 3;
+    -fx-alignment: center;
+}
+
+.unavailable .text {
+    -fx-fill: linear-gradient( -DEEP-RED 60%, white 100%);
+    -fx-stroke: whitesmoke;
+    -fx-stroke-width: 3;
+    -fx-alignment: center;
+}
+
+.mortgage .text {
+    -fx-fill: linear-gradient( lightcoral 45%, white 100%);
+    -fx-stroke: black;
+    -fx-stroke-width: 2;
+    -fx-alignment: center;
+}

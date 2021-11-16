@@ -55,6 +55,7 @@ public class FXTokens {
             fxmlLoader.setController(mainController);
             Parent root = fxmlLoader.load();
             mainController.getMainPane().setCenter(root);
+            mainController.setCurrentScene("Menu");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -71,6 +72,7 @@ public class FXTokens {
             Stage stage = ((Stage) mainPane.getScene().getWindow());
             stage.setMinHeight(750);
             stage.setMinWidth(1400);
+            mainController.setCurrentScene("Game");
         } catch (IOException e) {
             e.printStackTrace();
         }

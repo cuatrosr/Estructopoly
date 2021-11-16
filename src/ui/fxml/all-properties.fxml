@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="allPropertiesPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="964.0" styleClass="properties-pane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="83.0" fitWidth="74.0" onMouseClicked="#leftArrow" pickOnBounds="true" preserveRatio="true" styleClass="left">
+               <image>
+                  <Image url="@../images/arrow-left.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+   </left>
+   <right>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="83.0" fitWidth="74.0" onMouseClicked="#rightArrow" pickOnBounds="true" preserveRatio="true" styleClass="right">
+               <image>
+                  <Image url="@../images/arrow-right.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+   </right>
+   <stylesheets>
+      <URL value="@../css/global.css" />
+      <URL value="@../css/properties.css" />
+   </stylesheets>
+   <center>
+      <BorderPane prefHeight="738.0" prefWidth="1096.0" BorderPane.alignment="CENTER">
+         <center>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="card-cont" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fx:id="cardIMV" fitHeight="481.0" fitWidth="337.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin></ImageView>
+                  <VBox alignment="CENTER" prefHeight="736.0" prefWidth="374.0" spacing="20.0" HBox.hgrow="NEVER">
+                     <children>
+                        <Label fx:id="availableLBL" alignment="CENTER" prefHeight="137.0" prefWidth="374.0" styleClass="available" text="DISPONIBLE" textAlignment="CENTER" wrapText="true" />
+                        <Label fx:id="ownerLBL" text="En el Banco" />
+                        <Label fx:id="priceLBL" text="Precio: $" />
+                        <Label fx:id="onMortgageLBL" styleClass="mortgage" />
+                     </children>
+                  </VBox>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+               </BorderPane.margin>
+            </HBox>
+         </center></BorderPane>
+   </center>
+</BorderPane>

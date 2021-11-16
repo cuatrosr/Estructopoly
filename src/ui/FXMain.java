@@ -29,13 +29,17 @@ public class FXMain extends Application {
         fxmlLoader.setController(mainController);
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
+        scene.setOnKeyPressed(mainController::keyListener);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Estructopoly!");
         primaryStage.setResizable(false);
-        primaryStage.setMaximized(true);
         primaryStage.getIcons().add(new Image(Objects.requireNonNull(FXMain.class.getResourceAsStream("images/logo.png"))));
-        primaryStage.show();
+        primaryStage.setX(mainController.getScreenBounds().getMinX());
+        primaryStage.setY(mainController.getScreenBounds().getMinY());
+        primaryStage.setWidth(mainController.getScreenBounds().getWidth());
+        primaryStage.setHeight(mainController.getScreenBounds().getHeight());
         primaryStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH); //<-Disable ESC = exit fullscreen
+        primaryStage.show();
         fxmlLoader = new FXMLLoader(getClass().getResource("fxml/menu.fxml"));
         fxmlLoader.setController(mainController);
         root = fxmlLoader.load();

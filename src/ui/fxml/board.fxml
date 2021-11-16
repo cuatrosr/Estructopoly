@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="897.0" prefWidth="1574.0" styleClass="game-bg-pane" stylesheets="@../css/board.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="gamePane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="897.0" prefWidth="1574.0" styleClass="game-bg-pane" stylesheets="@../css/board.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <right>
       <VBox fx:id="rightVBOX" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="450.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="847.0" prefWidth="400.0" styleClass="side-bar" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -20,20 +20,23 @@
          </BorderPane.margin>
          <children>
             <JFXButton onAction="#rollDice" prefWidth="184.0" text="Lanzar Dado" />
-            <AnchorPane maxWidth="1.7976931348623157E308" prefHeight="171.0" prefWidth="300.0">
+            <AnchorPane maxWidth="1.7976931348623157E308" prefHeight="153.0" prefWidth="343.0">
                <children>
-                  <Rectangle fx:id="frameRCT" arcHeight="5.0" arcWidth="5.0" fill="#2197ff" height="173.0" layoutX="51.0" opacity="0.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="dice-outline" width="299.0" />
-                  <ImageView fx:id="dice1IMV" fitHeight="127.0" fitWidth="127.0" layoutX="65.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                  <Rectangle fx:id="frameRCT" arcHeight="5.0" arcWidth="5.0" fill="#2197ff" height="155.0" opacity="0.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="dice-outline" width="268.0" />
+                  <ImageView fx:id="dice1IMV" fitHeight="107.0" fitWidth="102.0" layoutX="21.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/dice/de1.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="dice2IMV" fitHeight="127.0" fitWidth="127.0" layoutX="210.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="dice2IMV" fitHeight="107.0" fitWidth="102.0" layoutX="143.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/dice/de1.png" />
                      </image>
                   </ImageView>
                </children>
+               <VBox.margin>
+                  <Insets left="70.0" right="70.0" />
+               </VBox.margin>
             </AnchorPane>
             <JFXButton onAction="#properties" prefWidth="184.0" text="Propiedades" />
             <JFXButton onAction="#gamble" prefWidth="184.0" text="Negociar" />
@@ -49,7 +52,7 @@
       </VBox>
    </right>
    <left>
-      <VBox fx:id="leftVBOX" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="847.0" prefWidth="217.0" styleClass="side-bar" BorderPane.alignment="CENTER">
+      <VBox fx:id="leftVBOX" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="847.0" prefWidth="254.0" styleClass="side-bar" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="25.0" left="15.0" right="15.0" top="25.0" />
          </BorderPane.margin>
@@ -63,11 +66,11 @@
             <Label styleClass="subtitles" text="Jugador Actual" textAlignment="CENTER" />
             <Label fx:id="turnLBL" text="PLAYER" textAlignment="CENTER" />
             <Separator orientation="VERTICAL" prefHeight="57.0" prefWidth="4.0" />
-            <JFXListView fx:id="playersLV" prefHeight="303.0" prefWidth="158.0">
+            <JFXListView fx:id="playersLV" prefHeight="208.0" prefWidth="167.0">
                <VBox.margin>
                   <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
                </VBox.margin></JFXListView>
-            <Separator orientation="VERTICAL" prefHeight="62.0" prefWidth="6.0" />
+            <JFXButton onAction="#allProperties" prefWidth="184.0" text="Todas las Propiedades" />
          </children>
       </VBox>
    </left>

@@ -1,4 +1,5 @@
 @import url("variables.css");
+@import url("typography.css");
 
 .game-bg-pane {
     -fx-background-image: url("../images/backgrounds/green-mat.png");
