@@ -21,8 +21,8 @@
 }
 
 .jfx-button {
-    -fx-font-size: 19px;
-    -fx-pref-width: 220px;
+    -fx-font-size: 17px;
+    -fx-pref-width: 280px;
     -fx-pref-height: 50px;
     -fx-background-radius: 8px;
     -fx-border-radius: 8px;
@@ -43,5 +43,15 @@
     -fx-image: url("../images/info-settings-hover.png");
     -fx-cursor: hand;
     -fx-effect: dropshadow(gaussian, -TEXT-2, 10, 0.2, 0, 0);
+}
+
+.current-player {
+    -fx-font-family: "Kabel Bd";
+    -fx-font-size: 17px;
+}
+
+.current-player .text {
+    -fx-fill: -ACCENT-COLOR;
+    -fx-stroke: -DARK-MINT-GREEN;
 }
 

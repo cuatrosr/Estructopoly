@@ -25,7 +25,7 @@ public class FXSettings implements Initializable, Listeners {
     private Label pauseLBL = new Label();
 
     @FXML
-    private BorderPane settingsPane = new BorderPane();
+    private VBox settingsPane = new VBox();
 
     FXMainController mainController;
 

@@ -59,6 +59,10 @@
     -jfx-rippler-fill: -DARK-MINT-GREEN;
 }
 
+.jfx-toggle-node {
+    -fx-text-fill: transparent;
+}
+
 #token1 {
     -fx-background-image: url("../images/tokens/dog.png");
     -fx-background-size: auto 80%;

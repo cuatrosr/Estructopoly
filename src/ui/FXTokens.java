@@ -1,11 +1,16 @@
 package ui;
 
 import com.jfoenix.controls.JFXToggleNode;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -14,6 +19,9 @@ public class FXTokens {
 
     @FXML
     private BorderPane tokensPane = new BorderPane();
+
+    @FXML
+    private VBox playersVBOX = new VBox();
 
     @FXML
     private JFXToggleNode token1 = new JFXToggleNode();
@@ -63,6 +71,17 @@ public class FXTokens {
 
     @FXML
     void loadBoard(ActionEvent event) {
+        ObservableList<String> players = FXCollections.observableArrayList();
+        for (Node child: playersVBOX.getChildren()) {
+            if (child instanceof HBox) {
+                for (Node toggle: ((HBox) child).getChildren()) {
+                    boolean add_ = ((JFXToggleNode) toggle).isSelected();
+                    String playerName = ((JFXToggleNode) toggle).getText();
+                    if (add_) players.add(playerName.replaceAll("../images/tokens/", ""));
+                }
+            }
+        }
+        fxBoard.setPlayers(players);
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/board.fxml"));
             fxmlLoader.setController(fxBoard);

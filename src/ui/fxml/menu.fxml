@@ -8,16 +8,15 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-
 <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="main-pane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <VBox alignment="CENTER" prefHeight="483.0" prefWidth="335.0" spacing="25.0" BorderPane.alignment="CENTER">
          <children>
             <Label styleClass="title" text="ESTRUCTOPOLY" />
             <Separator orientation="VERTICAL" prefHeight="60.0" prefWidth="7.0" />
-            <JFXButton onAction="#play" text="JUGAR" />
-            <JFXButton onAction="#leaderboards" text="MARCADORES" />
-            <JFXButton onAction="#exit" text="SALIR" />
+            <JFXButton onAction="#play" text="JUGAR (J)" />
+            <JFXButton onAction="#leaderboards" text="MARCADORES (M)" />
+            <JFXButton onAction="#exit" text="SALIR (ESC)" />
          </children>
          <BorderPane.margin>
             <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
@@ -25,12 +24,12 @@
       </VBox>
    </left>
    <right>
-      <VBox alignment="TOP_CENTER" prefHeight="483.0" prefWidth="169.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="224.0" prefWidth="207.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
          </BorderPane.margin>
          <children>
-            <JFXToggleButton fx:id="fullscreenTGB" contentDisplay="RIGHT" onAction="#toggleFullscreen" prefHeight="60.0" prefWidth="152.0" text="Pantalla Completa" wrapText="true" />
+            <JFXToggleButton fx:id="fullscreenTGB" contentDisplay="RIGHT" onAction="#toggleFullscreen" prefHeight="60.0" prefWidth="177.0" text="Pantalla Completa (F)" wrapText="true" />
          </children>
       </VBox>
    </right>

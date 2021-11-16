@@ -14,12 +14,12 @@
 
 <BorderPane fx:id="gamePane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="897.0" prefWidth="1574.0" styleClass="game-bg-pane" stylesheets="@../css/board.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <right>
-      <VBox fx:id="rightVBOX" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="450.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="847.0" prefWidth="400.0" styleClass="side-bar" BorderPane.alignment="CENTER">
+      <VBox fx:id="rightVBOX" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="450.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="847.0" prefWidth="356.0" styleClass="side-bar" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="25.0" left="15.0" right="15.0" top="25.0" />
          </BorderPane.margin>
          <children>
-            <JFXButton onAction="#rollDice" prefWidth="184.0" text="Lanzar Dado" />
+            <JFXButton onAction="#rollDice" prefWidth="184.0" text="Lanzar Dado (D)" />
             <AnchorPane maxWidth="1.7976931348623157E308" prefHeight="153.0" prefWidth="343.0">
                <children>
                   <Rectangle fx:id="frameRCT" arcHeight="5.0" arcWidth="5.0" fill="#2197ff" height="155.0" opacity="0.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="dice-outline" width="268.0" />
@@ -38,21 +38,21 @@
                   <Insets left="70.0" right="70.0" />
                </VBox.margin>
             </AnchorPane>
-            <JFXButton onAction="#properties" prefWidth="184.0" text="Propiedades" />
-            <JFXButton onAction="#gamble" prefWidth="184.0" text="Negociar" />
-            <JFXButton onAction="#patrimony" prefWidth="184.0" text="Patrimonio" />
+            <JFXButton onAction="#properties" prefWidth="184.0" text="Propiedades (P)" />
+            <JFXButton onAction="#gamble" prefWidth="184.0" text="Negociar (N)" />
+            <JFXButton onAction="#patrimony" prefWidth="184.0" text="Patrimonio (O)" />
             <Label id="timer-lbl" fx:id="timerLBL" styleClass="subtitles" text="00:00:00" />
             <JFXListView fx:id="historyLV" prefHeight="178.0" prefWidth="250.0">
                <VBox.margin>
                   <Insets bottom="25.0" left="25.0" right="25.0" top="5.0" />
                </VBox.margin>
             </JFXListView>
-            <JFXButton onAction="#next" prefWidth="184.0" text="Siguiente Turno" />
+            <JFXButton onAction="#next" prefWidth="184.0" text="Siguiente Turno (S)" />
          </children>
       </VBox>
    </right>
    <left>
-      <VBox fx:id="leftVBOX" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="847.0" prefWidth="254.0" styleClass="side-bar" BorderPane.alignment="CENTER">
+      <VBox fx:id="leftVBOX" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="847.0" prefWidth="310.0" styleClass="side-bar" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="25.0" left="15.0" right="15.0" top="25.0" />
          </BorderPane.margin>
@@ -64,13 +64,13 @@
             </ImageView>
             <Separator orientation="VERTICAL" prefHeight="113.0" prefWidth="4.0" />
             <Label styleClass="subtitles" text="Jugador Actual" textAlignment="CENTER" />
-            <Label fx:id="turnLBL" text="PLAYER" textAlignment="CENTER" />
+            <Label fx:id="turnLBL" styleClass="current-player" text="PLAYER" textAlignment="CENTER" />
             <Separator orientation="VERTICAL" prefHeight="57.0" prefWidth="4.0" />
             <JFXListView fx:id="playersLV" prefHeight="208.0" prefWidth="167.0">
                <VBox.margin>
                   <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
                </VBox.margin></JFXListView>
-            <JFXButton onAction="#allProperties" prefWidth="184.0" text="Todas las Propiedades" />
+            <JFXButton onAction="#allProperties" prefWidth="184.0" text="Todas las Propiedades (T)" />
          </children>
       </VBox>
    </left>

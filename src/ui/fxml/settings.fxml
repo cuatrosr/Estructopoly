@@ -5,35 +5,25 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="settingsPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="906.0" prefWidth="1611.0" styleClass="settings-window" stylesheets="@../css/global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
-   <center>
-      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="497.0" prefWidth="488.0" spacing="20.0" styleClass="settings-cont" BorderPane.alignment="CENTER">
+
+<VBox fx:id="settingsPane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="497.0" prefWidth="488.0" spacing="20.0" styleClass="settings-cont" stylesheets="@../css/global.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER" prefHeight="57.0" prefWidth="396.0" spacing="230.0">
          <children>
-            <Label styleClass="titles" text="PAUSA" />
-            <Label fx:id="pauseLBL" styleClass="timer-stop" text="00:00:00" />
-            <Separator orientation="VERTICAL" prefHeight="155.0" prefWidth="12.0" />
-            <JFXButton onAction="#restart" text="REINICIAR" />
-            <JFXButton onAction="#mainMenu" text="MENU PRINCIPAL" />
-         </children>
-      </VBox>
-   </center>
-   <top>
-      <HBox alignment="CENTER_RIGHT" prefHeight="57.0" prefWidth="396.0" styleClass="settings-cont" BorderPane.alignment="CENTER">
-         <children>
-            <JFXToggleButton fx:id="fullscreenTGB" onAction="#toggleFullscreen" prefHeight="60.0" prefWidth="152.0" text="Pantalla Completa" wrapText="true" />
-            <Separator prefHeight="12.0" prefWidth="1403.0" HBox.hgrow="ALWAYS" />
+            <JFXToggleButton fx:id="fullscreenTGB" onAction="#toggleFullscreen" prefHeight="60.0" prefWidth="183.0" text="Pantalla Completa (F)" wrapText="true" />
             <JFXButton onAction="#exit" styleClass="custom-close" text="X" />
          </children>
-         <BorderPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="65.0" />
-         </BorderPane.margin>
       </HBox>
-   </top>
-   <bottom>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-   </bottom>
-</BorderPane>
+      <Label styleClass="titles" text="PAUSA" />
+      <Label fx:id="pauseLBL" styleClass="timer-stop" text="00:00:00" />
+      <Separator orientation="VERTICAL" prefHeight="88.0" prefWidth="5.0" />
+      <JFXButton onAction="#restart" styleClass="jfx-button-settings" text="REINICIAR (R)" />
+      <JFXButton onAction="#mainMenu" prefHeight="51.0" prefWidth="233.0" styleClass="jfx-button-settings" text="MENU PRINCIPAL (M)" />
+   </children>
+   <padding>
+      <Insets bottom="10.0" top="10.0" />
+   </padding>
+</VBox>

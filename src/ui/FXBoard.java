@@ -3,6 +3,7 @@ package ui;
 import com.jfoenix.controls.JFXListView;
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,10 +27,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
-import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 public class FXBoard implements Initializable {
 
@@ -68,7 +66,7 @@ public class FXBoard implements Initializable {
     private JFXListView<String> historyLV = new JFXListView<>();
 
     @FXML
-    private JFXListView<String> playersLV;
+    private JFXListView<String> playersLV = new JFXListView<>();
 
     @FXML
     private Label turnLBL = new Label();
@@ -90,6 +88,8 @@ public class FXBoard implements Initializable {
 
     private int secs = 0, min = 0, hour = 0;
 
+    private ObservableList<String> players;
+
 
     public FXBoard(FXMainController mainController) {
         this.mainController = mainController;
@@ -105,6 +105,8 @@ public class FXBoard implements Initializable {
         boardIMV.fitWidthProperty().bind(boardPane.widthProperty());
         boardIMV.maxHeight(1000);
         boardIMV.maxWidth(1000);
+        Collections.shuffle(players);
+        playersLV.setItems(players);
         startGame();
     }
 
@@ -209,11 +211,10 @@ public class FXBoard implements Initializable {
             stage.setResizable(false);
             stage.initOwner(gamePane.getScene().getWindow());
             stage.initModality(Modality.APPLICATION_MODAL);
-            double width = mainController.getScreenBounds().getWidth();
-            double height = mainController.getScreenBounds().getHeight();
-            stage.setMinHeight(height);
-            stage.setMinWidth(width);
-            stage.setMaximized(true);
+            double width = mainController.getScreenBounds().getWidth() * 0.8;
+            double height = mainController.getScreenBounds().getHeight() * 0.8;
+            stage.setMaxHeight(height);
+            stage.setMaxWidth(width);
             gamePane.setEffect(new GaussianBlur());
             stage.getIcons().add(new Image(Objects.requireNonNull(FXMain.class.getResourceAsStream("images/logo.png"))));
             stage.show();
@@ -237,5 +238,9 @@ public class FXBoard implements Initializable {
 
     public BorderPane getBoardPane() {
         return gamePane;
+    }
+
+    public void setPlayers(ObservableList<String> players) {
+        this.players = players;
     }
 }

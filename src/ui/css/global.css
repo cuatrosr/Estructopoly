@@ -112,6 +112,10 @@
     -fx-text-fill: white;
 }
 
+.jfx-button-settings {
+    -fx-pref-width: 260px;
+}
+
 .timer-stop {
     -fx-font-family: "Kabel Bd";
     -fx-font-size: 18px;
