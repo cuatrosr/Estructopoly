@@ -27,7 +27,41 @@ public class Graph {
         adj[s].add(e);
     }
 
-    public static void kruskalMST(int n, Graph g) {
+    public void BFS(int s) {
+        boolean visited[] = new boolean[v];
+        LinkedList<Integer> queue = new LinkedList<Integer>();
+        visited[s] = true;
+        queue.add(s);
+        while (!queue.isEmpty()) {
+            s = queue.poll();
+            Iterator<Edge> i = adj[s].listIterator();
+            while (i.hasNext()) {
+                int n = i.next().getD();
+                if (!visited[n]) {
+                    visited[n] = true;
+                    queue.add(n);
+                }
+            }
+        }
+    }
+
+    public void DFS(int s) {
+        boolean visited[] = new boolean[v];
+        DFS(s, visited);
+    }
+
+    private void DFS(int s, boolean visited[]) {
+        visited[s] = true;
+        Iterator<Edge> i = adj[s].listIterator();
+        while (i.hasNext()) {
+            int n = i.next().getD();
+            if (!visited[n]) {
+                DFS(n, visited);
+            }
+        }
+    }
+
+    public static void kruskal(int n, Graph g) {
         LinkedList<Edge>[] adj = g.getAdj();
         PriorityQueue<Edge> pq = new PriorityQueue<>(adj.length, new Edge());
         for (int i = 0; i < adj.length; i++) {
@@ -52,20 +86,20 @@ public class Graph {
         }
     }
 
-    public static void makeSet(int n, int[] parent) {
+    private static void makeSet(int n, int[] parent) {
         for (int i = 0; i < n; i++) {
             parent[i] = i;
         }
     }
 
-    public static int find(int[] parent, int vertex) {
+    private static int find(int[] parent, int vertex) {
         if (parent[vertex] != vertex) {
             return find(parent, parent[vertex]);
         }
         return vertex;
     }
 
-    public static void union(int[] parent, int x, int y) {
+    private static void union(int[] parent, int x, int y) {
         int x_set_parent = find(parent, x);
         int y_set_parent = find(parent, y);
         parent[y_set_parent] = x_set_parent;
