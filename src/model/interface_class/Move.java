@@ -1,4 +1,4 @@
-package interface_class;
+package model.interface_class;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;

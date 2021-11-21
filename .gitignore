@@ -2,3 +2,7 @@ bin
 .idea
 .project
 .classpath
+/nbproject/
+/build.xml
+/build/
+/dist/

@@ -1,13 +1,13 @@
-package threads;
+package model.threads;
 
 import java.util.ArrayList;
 
 import javafx.scene.control.Alert;
 import javafx.scene.image.ImageView;
-import objects.Board;
-import objects.Properties;
+import model.objects.Board;
+import model.objects.Properties;
 
-public class HousesAndHotelThreads extends Thread{
+public class HousesAndHotelThreads extends Thread {
 
     private ImageView house44;
     private ImageView house43;
@@ -122,7 +122,6 @@ public class HousesAndHotelThreads extends Thread{
     private Board board;
     private Properties propertie;
     private boolean type;
-
 
     public HousesAndHotelThreads(ImageView house44, ImageView house43, ImageView house42, ImageView house41, ImageView hotel12, ImageView house48, ImageView house47, ImageView house46, ImageView house45, ImageView hotel13, ImageView house52, ImageView house51, ImageView house50, ImageView house49, ImageView hotel14, ImageView house56, ImageView house55, ImageView house54, ImageView house53, ImageView hotel15, ImageView house60, ImageView house59, ImageView house58, ImageView house57, ImageView hotel16, ImageView house64, ImageView house63, ImageView house62, ImageView house61, ImageView hotel17, ImageView house40, ImageView house39, ImageView house38, ImageView house37, ImageView hotel11, ImageView house36, ImageView house35, ImageView house34, ImageView house33, ImageView hotel10, ImageView house32, ImageView house31, ImageView house30, ImageView house29, ImageView hotel9, ImageView hotel8, ImageView house28, ImageView house27, ImageView house26, ImageView house25, ImageView hotel7, ImageView house24, ImageView house23, ImageView house22, ImageView house21, ImageView hotel6, ImageView house17, ImageView house18, ImageView house19, ImageView house20, ImageView hotel5, ImageView house13, ImageView house14, ImageView house15, ImageView house16, ImageView hotel4, ImageView house9, ImageView house10, ImageView house11, ImageView house12, ImageView hotel3, ImageView house5, ImageView house6, ImageView house7, ImageView house8, ImageView hotel2, ImageView house1, ImageView house2, ImageView house3, ImageView house4, ImageView hotel1, ImageView house81, ImageView house82, ImageView house83, ImageView house84, ImageView hotel22, ImageView house77, ImageView house78, ImageView house79, ImageView house80, ImageView hotel21, ImageView house73, ImageView house74, ImageView house75, ImageView house76, ImageView hotel20, ImageView house69, ImageView house70, ImageView house71, ImageView house72, ImageView hotel19, ImageView house65, ImageView house66, ImageView house67, ImageView house68, ImageView hotel18, ImageView house85, ImageView house86, ImageView house87, ImageView house88, Board board, Properties propertie, boolean type) {
         this.house44 = house44;
@@ -240,23 +239,21 @@ public class HousesAndHotelThreads extends Thread{
         this.type = type;
     }
 
-
     @Override
-    public void run(){
+    public void run() {
 
-        
         ArrayList<ArrayList<ImageView>> arrayFamily = getArray();
 
-        if(type){
+        if (type) {
 
             int sum = 0;
 
-            for(Properties pr : board.getPlayers().get(board.getTurn()).getProperties().toArray()){
+            for (Properties pr : board.getPlayers().get(board.getTurn()).getProperties().toArray()) {
 
-                if(pr.getFamily() == propertie.getFamily()){
+                if (pr.getFamily() == propertie.getFamily()) {
                     sum++;
 
-                    if(sum == propertie.getAmountFamily()){
+                    if (sum == propertie.getAmountFamily()) {
                         break;
 
                     }
@@ -265,10 +262,10 @@ public class HousesAndHotelThreads extends Thread{
 
             }
 
-            if(sum == propertie.getAmountFamily()){
+            if (sum == propertie.getAmountFamily()) {
 
-                for(int i = propertie.getHierarchy(); i < propertie.getHierarchy() + 4; i++){
-                    if(!(arrayFamily.get(propertie.getFamily() - 1).get(i).isVisible())){
+                for (int i = propertie.getHierarchy(); i < propertie.getHierarchy() + 4; i++) {
+                    if (!(arrayFamily.get(propertie.getFamily() - 1).get(i).isVisible())) {
                         arrayFamily.get(propertie.getFamily() - 1).get(i).setVisible(true);
                         propertie.setHouses(propertie.getHouses() + 1);
                         break;
@@ -277,30 +274,28 @@ public class HousesAndHotelThreads extends Thread{
 
                 }
 
-
-            }else{
+            } else {
 
                 alert("Upss", "Parece que no tienes comprada la familia completa");
 
             }
 
-        }else{
+        } else {
 
             arrayFamily.get(propertie.getFamily() - 1).get(propertie.getIdHotel()).setVisible(true);
 
             propertie.setHotel(true);
 
-            for(int i = propertie.getHierarchy(); i < propertie.getHierarchy() + 4; i++){
+            for (int i = propertie.getHierarchy(); i < propertie.getHierarchy() + 4; i++) {
                 arrayFamily.get(propertie.getFamily() - 1).get(i).setVisible(false);
 
             }
 
-
         }
-        
+
     }
 
-    private ArrayList<ArrayList<ImageView>> getArray(){
+    private ArrayList<ArrayList<ImageView>> getArray() {
 
         ArrayList<ImageView> family1 = new ArrayList<>();
         ArrayList<ImageView> family2 = new ArrayList<>();
@@ -444,14 +439,13 @@ public class HousesAndHotelThreads extends Thread{
 
     }
 
-    private void alert(String title, String mss){
+    private void alert(String title, String mss) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(mss);
         alert.showAndWait();
-        
+
     }
 
-    
 }

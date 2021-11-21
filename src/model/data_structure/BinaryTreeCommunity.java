@@ -1,87 +1,84 @@
-package data_structure;
+package model.data_structure;
 
 import java.io.Serializable;
-import objects.CommunityServiceCards;
+import model.objects.CommunityServiceCards;
 
 public class BinaryTreeCommunity implements Serializable {
 
-	private static final long serialVersionUID = 7L;
-	private Node<CommunityServiceCards> head;
-	private int size;
+    private static final long serialVersionUID = 7L;
+    private Node<CommunityServiceCards> head;
+    private int size;
 
-	public BinaryTreeCommunity() {
+    public BinaryTreeCommunity() {
         head = null;
-       	size = 0;
+        size = 0;
     }
-    
-	public int getSize() {
-		return this.size;
-	}
 
-	public void setSize(int size) {
-		this.size = size;
-	}
+    public int getSize() {
+        return this.size;
+    }
 
-	public Node<CommunityServiceCards> getHead() {
-		return this.head;
-	}
+    public void setSize(int size) {
+        this.size = size;
+    }
 
-	public void add(CommunityServiceCards e){
-		if(head == null){
-			head = new Node<CommunityServiceCards>(e);
+    public Node<CommunityServiceCards> getHead() {
+        return this.head;
+    }
 
-		}else{
-			add(e, head);
-		}
-		
-	}
-	
-   	private void add(CommunityServiceCards e, Node<CommunityServiceCards> temp){
+    public void add(CommunityServiceCards e) {
+        if (head == null) {
+            head = new Node<CommunityServiceCards>(e);
 
-		if(temp.getItem().getIdAction() >= e.getIdAction()){
-			if(temp.getPrevious() == null){
-				temp.setPrevious(new Node<CommunityServiceCards>(e));
+        } else {
+            add(e, head);
+        }
 
-			}else{
-				add(e, temp.getPrevious());
-			}
+    }
 
-		}else {
-			if(temp.getNext() == null){
-				temp.setNext(new Node<CommunityServiceCards>(e));
+    private void add(CommunityServiceCards e, Node<CommunityServiceCards> temp) {
 
-			}else{
-				add(e, temp.getNext());
-			}
-		}
-		
-	}
+        if (temp.getItem().getIdAction() >= e.getIdAction()) {
+            if (temp.getPrevious() == null) {
+                temp.setPrevious(new Node<CommunityServiceCards>(e));
 
-	public CommunityServiceCards get(int index){
-		return get(index, head);
+            } else {
+                add(e, temp.getPrevious());
+            }
 
-	}
+        } else {
+            if (temp.getNext() == null) {
+                temp.setNext(new Node<CommunityServiceCards>(e));
 
-	private CommunityServiceCards get(int index, Node<CommunityServiceCards> temp){
+            } else {
+                add(e, temp.getNext());
+            }
+        }
 
-		if(temp.getItem().getIdAction() == index){
-			return temp.getItem();
+    }
 
-		}else{
+    public CommunityServiceCards get(int index) {
+        return get(index, head);
 
-			if(temp.getItem().getIdAction() < index){
-				return get(index, temp.getNext());
+    }
 
-			}else{
+    private CommunityServiceCards get(int index, Node<CommunityServiceCards> temp) {
 
-				return get(index, temp.getPrevious());
-			}
+        if (temp.getItem().getIdAction() == index) {
+            return temp.getItem();
 
-		}
+        } else {
 
-	}
+            if (temp.getItem().getIdAction() < index) {
+                return get(index, temp.getNext());
 
-  
+            } else {
+
+                return get(index, temp.getPrevious());
+            }
+
+        }
+
+    }
+
 }
-
-

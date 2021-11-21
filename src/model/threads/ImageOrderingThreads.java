@@ -1,17 +1,13 @@
-package threads;
+package model.threads;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javafx.application.Platform;
 import javafx.scene.image.ImageView;
-import objects.Board;
-import objects.Properties;
-import objects.PublicServices;
-import objects.Train;
+import model.objects.*;
 import ui.ApoTwoPolyGUI;
 
-public class ImageOrderingThreads extends Thread{
+public class ImageOrderingThreads extends Thread {
 
     private ImageView imageViewSanLuisN;
     private ImageView imageViewSanLuisS;
@@ -78,28 +74,27 @@ public class ImageOrderingThreads extends Thread{
     }
 
     @Override
-    public void run(){
+    public void run() {
 
         ArrayList<Properties> pr = board.getPropertiesSquare().toArray();
 
-        for(Train train : board.getTrainSquare().toArray()){
+        for (Train train : board.getTrainSquare().toArray()) {
             pr.add(train);
 
         }
 
-        for(PublicServices ser : board.getPublicServicesSquare().toArray()){
+        for (PublicServices ser : board.getPublicServicesSquare().toArray()) {
             pr.add(ser);
 
         }
 
-        for(Properties propertie : pr){
-            if(propertie.getOwner() == null){
+        for (Properties propertie : pr) {
+            if (propertie.getOwner() == null) {
                 onImage(propertie.getImageView());
 
             }
-            
-        }
 
+        }
 
         ArrayList<ImageView> imagesViews = new ArrayList<>();
 
@@ -135,10 +130,10 @@ public class ImageOrderingThreads extends Thread{
         ImageView aux = new ImageView();
 
         //ordenamiento inverso por BubbleSort
-        for(int i = 0; i < imagesViews.size() - 1; i++){
-            for(int l = 0; l < imagesViews.size() - 1 - i; l++){
+        for (int i = 0; i < imagesViews.size() - 1; i++) {
+            for (int l = 0; l < imagesViews.size() - 1 - i; l++) {
 
-                if(imagesViews.get(l).getOpacity() < imagesViews.get(l + 1).getOpacity()){
+                if (imagesViews.get(l).getOpacity() < imagesViews.get(l + 1).getOpacity()) {
                     aux = imagesViews.get(l);
                     imagesViews.set(l, imagesViews.get(l + 1));
                     imagesViews.set(l + 1, aux);
@@ -158,13 +153,13 @@ public class ImageOrderingThreads extends Thread{
 
             }
 
-            }
+        }
         );
-        
+
     }
 
-    public void onImage(String index){
-        switch(index){
+    public void onImage(String index) {
+        switch (index) {
             case "imageViewSanLuisN":
                 imageViewSanLuisN.setOpacity(1);
                 break;
@@ -276,8 +271,8 @@ public class ImageOrderingThreads extends Thread{
             case "imageViewEnergi":
                 imageViewEnergi.setOpacity(1);
                 break;
-                
+
         }
     }
-    
+
 }

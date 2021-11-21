@@ -1,12 +1,12 @@
-package objects;
+package model.objects;
 
 import java.io.Serializable;
-import data_structure.MeLinkedLists;
+import model.data_structure.MeLinkedLists;
 
-public abstract class Player implements Serializable{
-  
-	private static final long serialVersionUID = 5780182730822343543L;
-	private MeLinkedLists<Properties> properties;
+public abstract class Player implements Serializable {
+
+    private static final long serialVersionUID = 5780182730822343543L;
+    private MeLinkedLists<Properties> properties;
     private MeLinkedLists<Train> trains;
     private MeLinkedLists<PublicServices> publicServices;
     private boolean especialCards;
@@ -19,7 +19,7 @@ public abstract class Player implements Serializable{
     private int numProperties;
     private String namePlayer;
 
-    protected Player(int money,  String nameToken) {
+    protected Player(int money, String nameToken) {
         this.properties = new MeLinkedLists<>();
         this.trains = new MeLinkedLists<>();
         this.publicServices = new MeLinkedLists<>();
@@ -32,17 +32,17 @@ public abstract class Player implements Serializable{
         this.jail = false;
     }
 
-    protected Player(int money,  String nameToken, int numProperties, String namePlayer) {
+    protected Player(int money, String nameToken, int numProperties, String namePlayer) {
 
         this.money = money;
         this.nameToken = nameToken;
         this.namePlayer = namePlayer;
         this.numProperties = numProperties;
-        
-    }
-    
-    protected Player() {}
 
+    }
+
+    protected Player() {
+    }
 
     public MeLinkedLists<Properties> getProperties() {
         return this.properties;
@@ -151,8 +151,5 @@ public abstract class Player implements Serializable{
     public void setNamePlayer(String namePlayer) {
         this.namePlayer = namePlayer;
     }
-
-
-    
 
 }

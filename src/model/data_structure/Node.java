@@ -1,11 +1,11 @@
-package data_structure;
+package model.data_structure;
 
 import java.io.Serializable;
 
-public class Node<E> implements Serializable{
+public class Node<E> implements Serializable {
 
-	private static final long serialVersionUID = 5L;
-	private E item;
+    private static final long serialVersionUID = 5L;
+    private E item;
     private Node<E> next;
     private Node<E> previous;
     private Node<E> root;
@@ -17,19 +17,19 @@ public class Node<E> implements Serializable{
 
     }
 
-	public Node<E> getRoot() {
-		return root;
-	}
+    public Node<E> getRoot() {
+        return root;
+    }
 
-	public void setRoot(Node<E> root) {
-		this.root = root;
-	}
+    public void setRoot(Node<E> root) {
+        this.root = root;
+    }
 
-	public void setItem(E item) {
-		this.item = item;
-	}
+    public void setItem(E item) {
+        this.item = item;
+    }
 
-	public E getItem() {
+    public E getItem() {
         return item;
     }
 

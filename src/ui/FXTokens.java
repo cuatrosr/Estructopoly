@@ -12,7 +12,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class FXTokens {
@@ -72,12 +71,14 @@ public class FXTokens {
     @FXML
     void loadBoard(ActionEvent event) {
         ObservableList<String> players = FXCollections.observableArrayList();
-        for (Node child: playersVBOX.getChildren()) {
+        for (Node child : playersVBOX.getChildren()) {
             if (child instanceof HBox) {
-                for (Node toggle: ((HBox) child).getChildren()) {
+                for (Node toggle : ((HBox) child).getChildren()) {
                     boolean add_ = ((JFXToggleNode) toggle).isSelected();
                     String playerName = ((JFXToggleNode) toggle).getText();
-                    if (add_) players.add(playerName.replaceAll("../images/tokens/", ""));
+                    if (add_) {
+                        players.add(playerName.replaceAll("../images/tokens/", ""));
+                    }
                 }
             }
         }

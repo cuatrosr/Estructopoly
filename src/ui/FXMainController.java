@@ -130,11 +130,14 @@ public class FXMainController implements Initializable, Listeners {
     public void keyListener(KeyEvent event) {
         KeyCode typed = event.getCode();
         if (typed.equals(KeyCode.J)) {
-            if (currentScene.equals("Menu")) play(null);
-            else if (currentScene.equals("Tokens")) fxTokens.loadBoard(null);
-        }
-        else if (typed.equals(KeyCode.M)) leaderboards(null);
-        else if (typed.equals(KeyCode.ESCAPE)) {
+            if (currentScene.equals("Menu")) {
+                play(null);
+            } else if (currentScene.equals("Tokens")) {
+                fxTokens.loadBoard(null);
+            }
+        } else if (typed.equals(KeyCode.M)) {
+            leaderboards(null);
+        } else if (typed.equals(KeyCode.ESCAPE)) {
             switch (currentScene) {
                 case "Menu":
                     exit(null);
@@ -146,8 +149,7 @@ public class FXMainController implements Initializable, Listeners {
                     getFXBoard().settings(null);
                     break;
             }
-        }
-        else if (typed.equals(KeyCode.F)) {
+        } else if (typed.equals(KeyCode.F)) {
             boolean select = fullscreenTGB.isSelected();
             fullscreenTGB.setSelected(!select);
             toggleFullscreen(null);

@@ -1,87 +1,84 @@
-package data_structure;
+package model.data_structure;
 
 import java.io.Serializable;
-import objects.FortuneCards;
+import model.objects.FortuneCards;
 
 public class BinaryTreeFortune implements Serializable {
 
-	private static final long serialVersionUID = 7L;
-	private Node<FortuneCards> head;
-	private int size;
+    private static final long serialVersionUID = 7L;
+    private Node<FortuneCards> head;
+    private int size;
 
-	public BinaryTreeFortune() {
+    public BinaryTreeFortune() {
         head = null;
-       	size = 0;
+        size = 0;
     }
-    
-	public int getSize() {
-		return this.size;
-	}
 
-	public void setSize(int size) {
-		this.size = size;
-	}
+    public int getSize() {
+        return this.size;
+    }
 
-	public Node<FortuneCards> getHead() {
-		return this.head;
-	}
+    public void setSize(int size) {
+        this.size = size;
+    }
 
-	public void add(FortuneCards e){
-		if(head == null){
-			head = new Node<FortuneCards>(e);
+    public Node<FortuneCards> getHead() {
+        return this.head;
+    }
 
-		}else{
-			add(e, head);
-		}
-		
-	}
-	
-   	private void add(FortuneCards e, Node<FortuneCards> temp){
+    public void add(FortuneCards e) {
+        if (head == null) {
+            head = new Node<FortuneCards>(e);
 
-		if(temp.getItem().getIdAction() >= e.getIdAction()){
-			if(temp.getPrevious() == null){
-				temp.setPrevious(new Node<FortuneCards>(e));
+        } else {
+            add(e, head);
+        }
 
-			}else{
-				add(e, temp.getPrevious());
-			}
+    }
 
-		}else {
-			if(temp.getNext() == null){
-				temp.setNext(new Node<FortuneCards>(e));
+    private void add(FortuneCards e, Node<FortuneCards> temp) {
 
-			}else{
-				add(e, temp.getNext());
-			}
-		}
-		
-	}
+        if (temp.getItem().getIdAction() >= e.getIdAction()) {
+            if (temp.getPrevious() == null) {
+                temp.setPrevious(new Node<FortuneCards>(e));
 
-	public FortuneCards get(int index){
-		return get(index, head);
+            } else {
+                add(e, temp.getPrevious());
+            }
 
-	}
+        } else {
+            if (temp.getNext() == null) {
+                temp.setNext(new Node<FortuneCards>(e));
 
-	private FortuneCards get(int index, Node<FortuneCards> temp){
+            } else {
+                add(e, temp.getNext());
+            }
+        }
 
-		if(temp.getItem().getIdAction() == index){
-			return temp.getItem();
+    }
 
-		}else{
+    public FortuneCards get(int index) {
+        return get(index, head);
 
-			if(temp.getItem().getIdAction() < index){
-				return get(index, temp.getNext());
+    }
 
-			}else{
+    private FortuneCards get(int index, Node<FortuneCards> temp) {
 
-				return get(index, temp.getPrevious());
-			}
+        if (temp.getItem().getIdAction() == index) {
+            return temp.getItem();
 
-		}
+        } else {
 
-	}
+            if (temp.getItem().getIdAction() < index) {
+                return get(index, temp.getNext());
 
-  
+            } else {
+
+                return get(index, temp.getPrevious());
+            }
+
+        }
+
+    }
+
 }
-
-

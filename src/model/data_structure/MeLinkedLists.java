@@ -1,18 +1,18 @@
-package data_structure;
+package model.data_structure;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import interface_class.bSearch;
-import objects.CommunSquare;
-import objects.Token;
+import model.interface_class.bSearch;
+import model.objects.CommunSquare;
+import model.objects.Token;
 
 public class MeLinkedLists<E> implements Serializable, bSearch {
 
-	private static final long serialVersionUID = 4L;
-	private Node<E> head;
+    private static final long serialVersionUID = 4L;
+    private Node<E> head;
     private Node<E> tail;
-    private int size; 
+    private int size;
 
     public MeLinkedLists() {
         head = null;
@@ -20,7 +20,7 @@ public class MeLinkedLists<E> implements Serializable, bSearch {
         tail = null;
     }
 
-	public Node<E> getHead() {
+    public Node<E> getHead() {
         return head;
     }
 
@@ -29,7 +29,7 @@ public class MeLinkedLists<E> implements Serializable, bSearch {
     }
 
     public boolean isEmpty() {
-        return (head == null)? true: false;
+        return (head == null) ? true : false;
     }
 
     public int size() {
@@ -41,84 +41,82 @@ public class MeLinkedLists<E> implements Serializable, bSearch {
     }
 
     public void add(E e) {
-        
+
         if (head == null) {
             head = new Node<E>(e);
             tail = head;
 
-        }else{
-          add(e, tail, 0);
+        } else {
+            add(e, tail, 0);
 
         }
 
         size += 1;
     }
-    
+
     private void add(E e, Node<E> temp, int vali) {
-    
-        if(vali == 0){
+
+        if (vali == 0) {
             temp.setNext(new Node<E>(e));
             temp.getNext().setPrevious(temp);
             tail = temp.getNext();
             vali += 1;
         }
-    	
-        if(temp.getPrevious() != null && vali == 1){
+
+        if (temp.getPrevious() != null && vali == 1) {
             add(e, temp.getPrevious(), vali);
-           
-        }else{
+
+        } else {
             head = temp;
         }
 
     }
 
-    public int indexOf(E e){
+    public int indexOf(E e) {
         return indexOf(e, head, 0);
     }
 
-    private int indexOf(E e, Node<E> temp, int contador){
-        if(e.equals(temp.getItem())){
+    private int indexOf(E e, Node<E> temp, int contador) {
+        if (e.equals(temp.getItem())) {
             return contador;
 
-        }else{
+        } else {
             return indexOf(e, temp.getNext(), contador + 1);
 
         }
     }
 
     @Override
-    public Token bSearchToken(int index){
+    public Token bSearchToken(int index) {
 
         int init = 0;
         int fin = size - 1;
         int mid = 0;
         ArrayList<Token> array = toArrayToken();
 
-        while(init <= fin){
+        while (init <= fin) {
 
             mid = (init + fin) / 2;
 
-            if(array.get(mid).getId() == index + 1){
+            if (array.get(mid).getId() == index + 1) {
                 break;
 
-            }else if(array.get(mid).getId() > index + 1){
+            } else if (array.get(mid).getId() > index + 1) {
                 fin = mid - 1;
 
-            }else{
+            } else {
 
                 init = mid + 1;
             }
 
-
         }
 
         return array.get(mid);
-        
 
     }
 
     @Override
-    public CommunSquare bSearchCommunSquare(int index){
+    public CommunSquare bSearchCommunSquare(int index) {
 
         int mid = 0;
         CommunSquare temp = null;
@@ -126,129 +124,124 @@ public class MeLinkedLists<E> implements Serializable, bSearch {
         int init = 0;
         int fin = size - 1;
 
-        while(init <= fin){
+        while (init <= fin) {
 
             mid = (init + fin) / 2;
 
-            if(array.get(mid).getNumSquare() == index){
+            if (array.get(mid).getNumSquare() == index) {
                 temp = array.get(mid);
                 break;
 
-            }else if(array.get(mid).getNumSquare() > index){
+            } else if (array.get(mid).getNumSquare() > index) {
                 fin = mid - 1;
 
-            }else if(array.get(mid).getNumSquare() < index){
+            } else if (array.get(mid).getNumSquare() < index) {
                 init = mid + 1;
 
             }
 
-
         }
 
         return temp;
-        
 
     }
 
-    public E get(int index){
-       
+    public E get(int index) {
+
         return get(index, head);
 
     }
-    
-    private E get(int index, Node<E> temp){
 
-        if(index == 0){
+    private E get(int index, Node<E> temp) {
+
+        if (index == 0) {
             return temp.getItem();
 
-        }else{
+        } else {
             return get(index - 1, temp.getNext());
 
         }
-       
+
     }
 
-    public Node<E> getNode(int index){
-       
+    public Node<E> getNode(int index) {
+
         return getNode(index, head);
 
     }
-    
-    private Node<E> getNode(int index, Node<E> temp){
 
-        if(index == 0){
+    private Node<E> getNode(int index, Node<E> temp) {
+
+        if (index == 0) {
             return temp;
 
-        }else{
+        } else {
             return getNode(index - 1, temp.getNext());
 
         }
 
     }
 
-    public void remove(int index){
-        if(index == 0){
+    public void remove(int index) {
+        if (index == 0) {
             head = head.getNext();
-            
-        }else{
+
+        } else {
             getNode(index).getPrevious().setNext(getNode(index).getNext());
 
             getNode(index).getNext().setPrevious(getNode(index).getPrevious());
- 
+
         }
 
         size -= 1;
     }
 
-    public void arrayToMeList(ArrayList<E> array){
-        
+    public void arrayToMeList(ArrayList<E> array) {
+
         head = null;
         tail = null;
 
-        for (int i = 0; i < array.size(); i++){
+        for (int i = 0; i < array.size(); i++) {
             add(array.get(i));
-            
-        }
 
+        }
 
     }
 
-    public ArrayList<E> toArray(){
+    public ArrayList<E> toArray() {
         ArrayList<E> array = new ArrayList<E>();
 
-        for (int i = 0; i < size; i++){
+        for (int i = 0; i < size; i++) {
             array.add(get(i));
-            
+
         }
 
         return array;
 
     }
 
-    private ArrayList<Token> toArrayToken(){
+    private ArrayList<Token> toArrayToken() {
         ArrayList<Token> array = new ArrayList<>();
 
-        for (int i = 0; i < size; i++){
+        for (int i = 0; i < size; i++) {
             array.add((Token) get(i));
-            
+
         }
 
         return array;
 
     }
 
-    private ArrayList<CommunSquare> toArrayCommunSquare(){
+    private ArrayList<CommunSquare> toArrayCommunSquare() {
         ArrayList<CommunSquare> array = new ArrayList<>();
 
-        for (int i = 0; i < size; i++){
+        for (int i = 0; i < size; i++) {
             array.add((CommunSquare) get(i));
-            
+
         }
 
         return array;
 
     }
-    
+
 }
-
-

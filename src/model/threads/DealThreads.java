@@ -1,17 +1,13 @@
-package threads;
+package model.threads;
 
 import java.io.IOException;
 
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
-import objects.Board;
-import objects.Properties;
-import objects.PublicServices;
-import objects.Token;
-import objects.Train;
+import model.objects.*;
 import ui.ApoTwoPolyGUI;
 
-public class DealThreads extends Thread{
+public class DealThreads extends Thread {
 
     private Board board;
     private int moneyBidder;
@@ -20,8 +16,6 @@ public class DealThreads extends Thread{
     private ObservableList<Properties> propertiesPurchaser;
     private String auxPurchaser;
     private ApoTwoPolyGUI gui;
-
- 
 
     public DealThreads(Board board, int moneyBidder, int moneyPurchaser, ObservableList<Properties> propertiesBidder, ObservableList<Properties> propertiesPurchaser, String auxPurchaser, ApoTwoPolyGUI gui) {
         this.board = board;
@@ -33,15 +27,14 @@ public class DealThreads extends Thread{
         this.gui = gui;
     }
 
-
     @Override
-    public void run(){
+    public void run() {
 
         int index = -1;
         Token player = board.getPlayers().get(board.getTurn());
 
-        for(int i = 0; i < board.getPlayers().size(); i++){
-            if(board.getPlayers().get(i).getNameToken().equals(auxPurchaser)){
+        for (int i = 0; i < board.getPlayers().size(); i++) {
+            if (board.getPlayers().get(i).getNameToken().equals(auxPurchaser)) {
                 index = i;
                 break;
 
@@ -49,12 +42,12 @@ public class DealThreads extends Thread{
 
         }
 
-        for(Properties pr :  propertiesPurchaser){
+        for (Properties pr : propertiesPurchaser) {
 
-            if(pr.getId() == 1){
-                for(int i = board.getPlayers().get(index).getProperties().size() - 1; i >= 0; i--){
+            if (pr.getId() == 1) {
+                for (int i = board.getPlayers().get(index).getProperties().size() - 1; i >= 0; i--) {
 
-                    if(board.getPlayers().get(index).getProperties().get(i).getName().equals(pr.getName())){
+                    if (board.getPlayers().get(index).getProperties().get(i).getName().equals(pr.getName())) {
                         board.getPlayers().get(index).getProperties().remove(i);
                         pr.setOwner(player);
                         player.getProperties().add(pr);
@@ -64,10 +57,10 @@ public class DealThreads extends Thread{
 
                 }
 
-            }else if(pr.getId() == 2){
-                for(int i = board.getPlayers().get(index).getTrains().size() - 1; i >= 0; i--){
+            } else if (pr.getId() == 2) {
+                for (int i = board.getPlayers().get(index).getTrains().size() - 1; i >= 0; i--) {
 
-                    if(board.getPlayers().get(index).getTrains().get(i).getName().equals(pr.getName())){
+                    if (board.getPlayers().get(index).getTrains().get(i).getName().equals(pr.getName())) {
                         board.getPlayers().get(index).getTrains().remove(i);
                         pr.setOwner(player);
                         player.getTrains().add(new Train(pr));
@@ -77,10 +70,10 @@ public class DealThreads extends Thread{
 
                 }
 
-            }else{
-                for(int i = board.getPlayers().get(index).getPublicServices().size() - 1; i >= 0; i--){
+            } else {
+                for (int i = board.getPlayers().get(index).getPublicServices().size() - 1; i >= 0; i--) {
 
-                    if(board.getPlayers().get(index).getPublicServices().get(i).getName().equals(pr.getName())){
+                    if (board.getPlayers().get(index).getPublicServices().get(i).getName().equals(pr.getName())) {
                         board.getPlayers().get(index).getPublicServices().remove(i);
                         pr.setOwner(player);
                         player.getPublicServices().add(new PublicServices(pr));
@@ -94,12 +87,12 @@ public class DealThreads extends Thread{
 
         }
 
-        for(Properties pr :  propertiesBidder){
+        for (Properties pr : propertiesBidder) {
 
-            if(pr.getId() == 1){
-                for(int i = player.getProperties().size() - 1; i >= 0; i--){
+            if (pr.getId() == 1) {
+                for (int i = player.getProperties().size() - 1; i >= 0; i--) {
 
-                    if(player.getProperties().get(i).getName().equals(pr.getName())){
+                    if (player.getProperties().get(i).getName().equals(pr.getName())) {
                         player.getProperties().remove(i);
                         pr.setOwner(board.getPlayers().get(index));
                         board.getPlayers().get(index).getProperties().add(pr);
@@ -109,10 +102,10 @@ public class DealThreads extends Thread{
 
                 }
 
-            }else if(pr.getId() == 2){
-                for(int i = player.getTrains().size() - 1; i >= 0; i--){
+            } else if (pr.getId() == 2) {
+                for (int i = player.getTrains().size() - 1; i >= 0; i--) {
 
-                    if(player.getTrains().get(i).getName().equals(pr.getName())){
+                    if (player.getTrains().get(i).getName().equals(pr.getName())) {
                         player.getTrains().remove(i);
                         pr.setOwner(board.getPlayers().get(index));
                         board.getPlayers().get(index).getTrains().add(new Train(pr));
@@ -122,10 +115,10 @@ public class DealThreads extends Thread{
 
                 }
 
-            }else{
-                for(int i = player.getPublicServices().size() - 1; i >= 0; i--){
+            } else {
+                for (int i = player.getPublicServices().size() - 1; i >= 0; i--) {
 
-                    if(player.getPublicServices().get(i).getName().equals(pr.getName())){
+                    if (player.getPublicServices().get(i).getName().equals(pr.getName())) {
                         player.getPublicServices().remove(i);
                         pr.setOwner(board.getPlayers().get(index));
                         board.getPlayers().get(index).getPublicServices().add(new PublicServices(pr));
@@ -153,11 +146,9 @@ public class DealThreads extends Thread{
                 e.printStackTrace();
 
             }
-           
+
         });
-  
 
     }
 
-   
 }

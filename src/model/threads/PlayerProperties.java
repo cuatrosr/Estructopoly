@@ -1,14 +1,11 @@
-package threads;
+package model.threads;
 
 import java.util.ArrayList;
 import javafx.scene.image.ImageView;
-import objects.Board;
-import objects.Properties;
-import objects.PublicServices;
-import objects.Train;
+import model.objects.*;
 
-public class PlayerProperties extends Thread{
-    
+public class PlayerProperties extends Thread {
+
     private ImageView imageViewSanLuisN;
     private ImageView imageViewSanLuisS;
     private ImageView imageViewFormosaE;
@@ -40,7 +37,7 @@ public class PlayerProperties extends Thread{
     private Board board;
     private String player;
 
-    public PlayerProperties(ImageView imageViewSanLuisN, ImageView imageViewSanLuisS, ImageView imageViewFormosaE, ImageView imageViewFormosaN, ImageView imageViewFormosaS, ImageView imageViewSanJuanE, ImageView imageViewSanJuanS, ImageView imageViewSanJuanN, ImageView imageViewNeuquenE, ImageView imageViewNeuquenS, ImageView imageViewNeuquenN, ImageView imageViewMendozaE, ImageView imageViewMendozaS, ImageView imageViewMendozaN, ImageView imageViewSantaFeE, ImageView imageViewSantaFeS, ImageView imageViewSantaFeN, ImageView imageViewCordobaE, ImageView imageViewCordobaS, ImageView imageViewCordobaN, ImageView imageViewBuenosAiresN, ImageView imageViewBuenosAiresS, ImageView imageViewTrenN, ImageView imageViewTrenE, ImageView imageViewTrenO, ImageView imageViewTrenS, ImageView imageViewWater, ImageView imageViewEnergi,Board board, String player) {
+    public PlayerProperties(ImageView imageViewSanLuisN, ImageView imageViewSanLuisS, ImageView imageViewFormosaE, ImageView imageViewFormosaN, ImageView imageViewFormosaS, ImageView imageViewSanJuanE, ImageView imageViewSanJuanS, ImageView imageViewSanJuanN, ImageView imageViewNeuquenE, ImageView imageViewNeuquenS, ImageView imageViewNeuquenN, ImageView imageViewMendozaE, ImageView imageViewMendozaS, ImageView imageViewMendozaN, ImageView imageViewSantaFeE, ImageView imageViewSantaFeS, ImageView imageViewSantaFeN, ImageView imageViewCordobaE, ImageView imageViewCordobaS, ImageView imageViewCordobaN, ImageView imageViewBuenosAiresN, ImageView imageViewBuenosAiresS, ImageView imageViewTrenN, ImageView imageViewTrenE, ImageView imageViewTrenO, ImageView imageViewTrenS, ImageView imageViewWater, ImageView imageViewEnergi, Board board, String player) {
         this.imageViewSanLuisN = imageViewSanLuisN;
         this.imageViewSanLuisS = imageViewSanLuisS;
         this.imageViewFormosaE = imageViewFormosaE;
@@ -74,32 +71,32 @@ public class PlayerProperties extends Thread{
     }
 
     @Override
-    public void run(){
+    public void run() {
 
         ArrayList<Properties> pr = board.getPropertiesSquare().toArray();
 
-        for(Train train : board.getTrainSquare().toArray()){
+        for (Train train : board.getTrainSquare().toArray()) {
             pr.add(train);
 
         }
 
-        for(PublicServices ser : board.getPublicServicesSquare().toArray()){
+        for (PublicServices ser : board.getPublicServicesSquare().toArray()) {
             pr.add(ser);
 
         }
 
-        for(Properties propertie : pr){
-            if(propertie.getOwner() != null && propertie.getOwner().getNameToken() == player){
+        for (Properties propertie : pr) {
+            if (propertie.getOwner() != null && propertie.getOwner().getNameToken() == player) {
                 onImage(propertie.getImageView());
 
             }
-            
+
         }
 
     }
 
-    public void onImage(String index){
-        switch(index){
+    public void onImage(String index) {
+        switch (index) {
             case "imageViewSanLuisN":
                 imageViewSanLuisN.setOpacity(1);
                 break;
@@ -211,10 +208,8 @@ public class PlayerProperties extends Thread{
             case "imageViewEnergi":
                 imageViewEnergi.setOpacity(1);
                 break;
-                
+
         }
     }
-
-
 
 }

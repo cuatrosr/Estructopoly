@@ -1,15 +1,13 @@
-package objects;
+package model.objects;
 
 import java.io.Serializable;
 
-import data_structure.BinaryTreeCommunity;
-import data_structure.BinaryTreeFortune;
-import data_structure.MeLinkedLists;
+import model.data_structure.*;
 
 public class Board implements Serializable {
 
-	private static final long serialVersionUID = 262921139849267465L;
-	private MeLinkedLists<Properties> propertiesSquare;
+    private static final long serialVersionUID = 262921139849267465L;
+    private MeLinkedLists<Properties> propertiesSquare;
     private MeLinkedLists<Train> trainSquare;
     private MeLinkedLists<PublicServices> publicServicesSquare;
     private MeLinkedLists<WildCards> wildCardsSquare;
@@ -102,7 +100,5 @@ public class Board implements Serializable {
     public void setTurn(int turn) {
         this.turn = turn;
     }
-
-
 
 }

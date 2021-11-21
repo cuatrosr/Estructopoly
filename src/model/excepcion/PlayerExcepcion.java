@@ -1,71 +1,69 @@
-package excepcion;
+package model.excepcion;
 
 import javafx.scene.control.CheckBox;
 
-public class PlayerExcepcion extends Exception{
+public class PlayerExcepcion extends Exception {
 
     public static final long serialVersionUID = 11L;
     private final String TITLE = "Excepcion: ";
 
-    public PlayerExcepcion(String mss){
+    public PlayerExcepcion(String mss) {
         super(mss);
     }
 
-    public PlayerExcepcion(){
-       
+    public PlayerExcepcion() {
+
     }
 
-    public void validateAmountPlayer(CheckBox checkBoat, CheckBox checkBox, CheckBox checkCar, CheckBox checkCat, CheckBox checkDog, CheckBox checkHat, CheckBox checkHole, CheckBox checkShoes) throws PlayerExcepcion{
+    public void validateAmountPlayer(CheckBox checkBoat, CheckBox checkBox, CheckBox checkCar, CheckBox checkCat, CheckBox checkDog, CheckBox checkHat, CheckBox checkHole, CheckBox checkShoes) throws PlayerExcepcion {
 
         int numPlayers = 0;
 
-        if(checkBoat.isSelected()){
+        if (checkBoat.isSelected()) {
             numPlayers++;
 
         }
 
-        if(checkBox.isSelected()){
+        if (checkBox.isSelected()) {
             numPlayers++;
 
         }
 
-        if(checkCar.isSelected()){
+        if (checkCar.isSelected()) {
             numPlayers++;
 
         }
 
-        if(checkCat.isSelected()){
+        if (checkCat.isSelected()) {
             numPlayers++;
 
         }
 
-        if(checkDog.isSelected()){
+        if (checkDog.isSelected()) {
             numPlayers++;
 
         }
 
-        if(checkHat.isSelected()){
+        if (checkHat.isSelected()) {
             numPlayers++;
 
         }
 
-        if(checkHole.isSelected()){
+        if (checkHole.isSelected()) {
             numPlayers++;
 
         }
 
-        if(checkShoes.isSelected()){
+        if (checkShoes.isSelected()) {
             numPlayers++;
 
         }
 
-        if(numPlayers < 2){
+        if (numPlayers < 2) {
             throw new PlayerExcepcion(TITLE + "number of players less than 2");
 
         }
-        
 
     }
-    
-    
+
 }

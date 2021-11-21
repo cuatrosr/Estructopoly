@@ -1,11 +1,11 @@
-package threads;
+package model.threads;
 
 import java.util.ArrayList;
 import javafx.application.Platform;
 import javafx.scene.layout.Pane;
 import ui.ApoTwoPolyGUI;
 
-public class PanesOrderingThreads extends Thread{
+public class PanesOrderingThreads extends Thread {
 
     private Pane paneBoat;
     private Pane paneBox;
@@ -16,7 +16,6 @@ public class PanesOrderingThreads extends Thread{
     private Pane paneHole;
     private Pane paneShoes;
     private ApoTwoPolyGUI gui;
-    
 
     public PanesOrderingThreads(Pane paneBoat, Pane paneBox, Pane paneCar, Pane paneCat, Pane paneDog, Pane paneHat, Pane paneHole, Pane paneShoes, ApoTwoPolyGUI gui) {
         this.paneBoat = paneBoat;
@@ -30,9 +29,8 @@ public class PanesOrderingThreads extends Thread{
         this.gui = gui;
     }
 
-
     @Override
-    public void run(){
+    public void run() {
 
         ArrayList<Pane> panes = new ArrayList<>();
         panes.add(paneBoat);
@@ -43,16 +41,16 @@ public class PanesOrderingThreads extends Thread{
         panes.add(paneHat);
         panes.add(paneHole);
         panes.add(paneShoes);
-        
+
         Pane auxPane = new Pane();
         int pos;
 
         //ordenamiento inverso por insercion
-        for(int i = 0; i < panes.size(); i++){
+        for (int i = 0; i < panes.size(); i++) {
             pos = i;
             auxPane = panes.get(i);
 
-            while((pos > 0) && (panes.get(pos - 1).getOpacity() < auxPane.getOpacity()) && (panes.get(pos - 1).getOpacity() != auxPane.getOpacity())){
+            while ((pos > 0) && (panes.get(pos - 1).getOpacity() < auxPane.getOpacity()) && (panes.get(pos - 1).getOpacity() != auxPane.getOpacity())) {
                 panes.set(pos, panes.get(pos - 1));
                 pos--;
 
@@ -62,18 +60,16 @@ public class PanesOrderingThreads extends Thread{
 
         }
 
-
-        Platform.runLater(new Thread(){
+        Platform.runLater(new Thread() {
             @Override
             public void run() {
 
                 gui.playerOrdering(panes);
-                
+
             }
 
         });
-        
+
     }
 
-    
 }

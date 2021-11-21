@@ -1,15 +1,15 @@
-package objects;
+package model.objects;
 
-import data_structure.MeLinkedLists;
+import model.data_structure.MeLinkedLists;
 
-public class CommunSquare extends Square{
-    
-	private static final long serialVersionUID = -5814743446433770091L;
-	private int action;
+public class CommunSquare extends Square {
+
+    private static final long serialVersionUID = -5814743446433770091L;
+    private int action;
     private int tax;
     private int goJail;
     private MeLinkedLists<Token> jail;
-    
+
     //1 = go, 2 = go carcel, 3 = carcel, 4 = free, 5 = impuestos
     public CommunSquare(int numSquare, int typeSquare, int action, int tax) {
         super(numSquare, typeSquare);
@@ -19,11 +19,9 @@ public class CommunSquare extends Square{
         this.jail = new MeLinkedLists<>();
     }
 
-
     public CommunSquare() {
         super();
     }
-
 
     public int getAction() {
         return this.action;
@@ -56,11 +54,9 @@ public class CommunSquare extends Square{
     public void setJail(MeLinkedLists<Token> jail) {
         this.jail = jail;
     }
-   
 
-    public void selectAction(){
+    public void selectAction() {
 
     }
-
 
 }

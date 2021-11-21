@@ -1,14 +1,13 @@
-package objects;
+package model.objects;
 
 import java.io.IOException;
-
-import interface_class.Cards;
+import model.interface_class.Cards;
 import ui.ApoTwoPolyGUI;
 
 public class WildCards extends Square implements Cards {
 
-	private static final long serialVersionUID = 192875853834156303L;
-	private boolean typeWildCards; // true es community y false fortune
+    private static final long serialVersionUID = 192875853834156303L;
+    private boolean typeWildCards; // true es community y false fortune
 
     public WildCards(int numSquare, int typeSquare, boolean typeWildCards) {
         super(numSquare, typeSquare);
@@ -27,13 +26,13 @@ public class WildCards extends Square implements Cards {
         this.typeWildCards = typeWildCards;
     }
 
-    public CommunityServiceCards communityService(Board board, int index){
+    public CommunityServiceCards communityService(Board board, int index) {
         return board.getCommunityServiceCards().get(index);
     }
 
-    public FortuneCards fortuneCard(Board board, int index){
+    public FortuneCards fortuneCard(Board board, int index) {
         return board.getFortuneCards().get(index);
-        
+
     }
 
     @Override
@@ -45,5 +44,5 @@ public class WildCards extends Square implements Cards {
     public Board setMoney(Board board, int aux, ApoTwoPolyGUI gui) throws IOException {
         return null;
     }
-    
+
 }

@@ -10,7 +10,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -36,19 +35,17 @@ public class FXAllProperties implements Initializable, Listeners {
     private Label onMortgageLBL = new Label();
 
     //Class Fields
-
     FXMainController mainController;
 
     FXBoard fxBoard;
 
     int current;
 
-
     final String[] cards = {
-            "1-AvMed", "2-AvBalt", "3-FerRead", "4-AvOrt", "5-AvVerm", "6-AvCtc",
-            "7-PlStCrl", "8-Elec", "9-AvEst", "10-AvVirg", "11-FerPenn", "12-PlStJms", "13-AvTnss", "14-AvNY",
-            "15-AvKtck", "16-AvIndi", "17-AvIlli", "18-FerB&O", "19-AvAtl", "20-AvVtnr", "21-Agua", "22-Mrvn",
-            "23-AvPcfc", "24-AvNC", "25-AvPenn", "26-FerVRap", "27-PlazaPark", "28-TheDock"
+        "1-AvMed", "2-AvBalt", "3-FerRead", "4-AvOrt", "5-AvVerm", "6-AvCtc",
+        "7-PlStCrl", "8-Elec", "9-AvEst", "10-AvVirg", "11-FerPenn", "12-PlStJms", "13-AvTnss", "14-AvNY",
+        "15-AvKtck", "16-AvIndi", "17-AvIlli", "18-FerB&O", "19-AvAtl", "20-AvVtnr", "21-Agua", "22-Mrvn",
+        "23-AvPcfc", "24-AvNC", "25-AvPenn", "26-FerVRap", "27-PlazaPark", "28-TheDock"
     };
 
     final int MAX = cards.length - 1;
@@ -67,9 +64,13 @@ public class FXAllProperties implements Initializable, Listeners {
     @Override
     public void keyListener(KeyEvent event) {
         KeyCode typed = event.getCode();
-        if (typed.equals(KeyCode.LEFT)) leftArrow(null);
-        else if (typed.equals(KeyCode.RIGHT)) rightArrow(null);
-        else if (typed.equals(KeyCode.ESCAPE)) ((Stage) allPropertiesPane.getScene().getWindow()).close();
+        if (typed.equals(KeyCode.LEFT)) {
+            leftArrow(null);
+        } else if (typed.equals(KeyCode.RIGHT)) {
+            rightArrow(null);
+        } else if (typed.equals(KeyCode.ESCAPE)) {
+            ((Stage) allPropertiesPane.getScene().getWindow()).close();
+        }
     }
 
     @FXML

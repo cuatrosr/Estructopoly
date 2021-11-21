@@ -1,13 +1,12 @@
-package threads;
+package model.threads;
 
 import java.io.IOException;
-
 import javafx.application.Platform;
-import objects.Board;
-import objects.WildCards;
+import model.objects.Board;
+import model.objects.WildCards;
 import ui.ApoTwoPolyGUI;
 
-public class WildCardsThreads extends Thread{
+public class WildCardsThreads extends Thread {
 
     private Board board;
     private ApoTwoPolyGUI gui;
@@ -18,22 +17,21 @@ public class WildCardsThreads extends Thread{
         this.board = board;
         this.gui = gui;
 
-
     }
 
     @Override
-    public void run(){
+    public void run() {
 
         wildCards = new WildCards();
 
-        int card = (int) (Math.random()*14) + 1;
-      
-        for(WildCards square : board.getWildCardsSquare().toArray()){
-            if(square.getNumSquare() == board.getPlayers().get(board.getTurn()).getPosition()){
+        int card = (int) (Math.random() * 14) + 1;
 
-                if(board.getWildCardsSquare().get(index).isTypeWildCards()){
+        for (WildCards square : board.getWildCardsSquare().toArray()) {
+            if (square.getNumSquare() == board.getPlayers().get(board.getTurn()).getPosition()) {
 
-                    Platform.runLater(new Thread(){
+                if (board.getWildCardsSquare().get(index).isTypeWildCards()) {
+
+                    Platform.runLater(new Thread() {
                         @Override
                         public void run() {
 
@@ -41,18 +39,17 @@ public class WildCardsThreads extends Thread{
                                 gui.actionCommunityCard(wildCards.communityService(board, card));
                                 gui.setBoard(wildCards.communityService(board, card).action(board, gui));
 
-
                             } catch (IOException e) {
                                 e.printStackTrace();
 
                             }
                         }
-            
+
                     });
 
-                }else{
+                } else {
 
-                    Platform.runLater(new Thread(){
+                    Platform.runLater(new Thread() {
                         @Override
                         public void run() {
 
@@ -62,22 +59,20 @@ public class WildCardsThreads extends Thread{
 
                             } catch (IOException e) {
                                 e.printStackTrace();
-                                
+
                             }
                         }
-            
+
                     });
 
                 }
-                
+
                 break;
             }
 
             index++;
         }
 
-        
     }
-
 
 }

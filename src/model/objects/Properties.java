@@ -1,9 +1,9 @@
-package objects;
+package model.objects;
 
-public class Properties extends Square{
-    
-	private static final long serialVersionUID = -1150550527535536653L;
-	private String property;
+public class Properties extends Square {
+
+    private static final long serialVersionUID = -1150550527535536653L;
+    private String property;
     private String imageView;
     private Player owner;
     private int costProperty;
@@ -19,7 +19,6 @@ public class Properties extends Square{
     private String name;
     private int id;
     private int idHotel;
-
 
     public Properties(String property, int costProperty, int rentalProperty, int[] rentalHousesAndHotel, int costHousesAndHotel, int mortgage, int numSquare, int typeSquare, String imageView, int family, int amountFamily, int hierarchy, String name, int idHotel) {
         super(numSquare, typeSquare);
@@ -41,7 +40,7 @@ public class Properties extends Square{
         this.idHotel = idHotel;
     }
 
-    public Properties(String property, int costProperty, int rentalProperty, int numSquare, int typeSquare, int mortgage, String imageView, String name){ 
+    public Properties(String property, int costProperty, int rentalProperty, int numSquare, int typeSquare, int mortgage, String imageView, String name) {
         super(numSquare, typeSquare);
         this.property = property;
         this.costProperty = costProperty;
@@ -53,7 +52,7 @@ public class Properties extends Square{
 
     }
 
-    public Properties(String property, int costProperty, int numSquare, int typeSquare, int mortgage, String imageView, String name){ 
+    public Properties(String property, int costProperty, int numSquare, int typeSquare, int mortgage, String imageView, String name) {
         super(numSquare, typeSquare);
         this.property = property;
         this.costProperty = costProperty;
@@ -64,9 +63,9 @@ public class Properties extends Square{
 
     }
 
-    public Properties(){}
+    public Properties() {
+    }
 
-    
     public String getProperty() {
         return this.property;
     }
@@ -199,10 +198,8 @@ public class Properties extends Square{
         this.idHotel = idHotel;
     }
 
-   
-   
-    public Properties propeties(Board board, int index){
+    public Properties propeties(Board board, int index) {
         return board.getPropertiesSquare().get(index);
     }
-    
+
 }

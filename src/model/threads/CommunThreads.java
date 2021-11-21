@@ -1,17 +1,16 @@
-package threads;
+package model.threads;
 
 import java.io.IOException;
 
 import javafx.application.Platform;
-import objects.Board;
-import objects.CommunSquare;
+import model.objects.Board;
+import model.objects.CommunSquare;
 import ui.ApoTwoPolyGUI;
 
-public class CommunThreads extends Thread{
+public class CommunThreads extends Thread {
 
     private Board board;
     private ApoTwoPolyGUI gui;
-    
 
     public CommunThreads(Board board, ApoTwoPolyGUI gui) {
         this.board = board;
@@ -20,13 +19,13 @@ public class CommunThreads extends Thread{
     }
 
     @Override
-    public void run(){
+    public void run() {
 
         CommunSquare temp = board.getCommunSquare().bSearchCommunSquare(board.getPlayers().get(board.getTurn()).getPosition());
 
-        if(temp != null){
+        if (temp != null) {
 
-            Platform.runLater(new Thread(){
+            Platform.runLater(new Thread() {
                 @Override
                 public void run() {
 
@@ -38,13 +37,11 @@ public class CommunThreads extends Thread{
 
                     }
                 }
-    
+
             });
 
         }
 
-        
     }
-
 
 }

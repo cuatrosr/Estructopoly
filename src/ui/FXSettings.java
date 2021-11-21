@@ -33,7 +33,6 @@ public class FXSettings implements Initializable, Listeners {
 
     private boolean glowApplied;
 
-
     public FXSettings(FXMainController mainController, FXBoard fxBoard) {
         this.mainController = mainController;
         this.fxBoard = fxBoard;
@@ -48,8 +47,6 @@ public class FXSettings implements Initializable, Listeners {
         }
         pauseLBL.setText(fxBoard.currentTime());
     }
-
-
 
     @FXML
     void restart(ActionEvent event) {
@@ -99,9 +96,12 @@ public class FXSettings implements Initializable, Listeners {
             boolean select = fullscreenTGB.isSelected();
             fullscreenTGB.setSelected(!select);
             toggleFullscreen(null);
+        } else if (typed.equals(KeyCode.ESCAPE) || typed.equals(KeyCode.SPACE)) {
+            exit(null);
+        } else if (typed.equals(KeyCode.M)) {
+            mainMenu(null);
+        } else if (typed.equals(KeyCode.R)) {
+            restart(null);
         }
-        else if (typed.equals(KeyCode.ESCAPE) || typed.equals(KeyCode.SPACE)) exit(null);
-        else if (typed.equals(KeyCode.M)) mainMenu(null);
-        else if (typed.equals(KeyCode.R)) restart(null);
     }
 }

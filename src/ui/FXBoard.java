@@ -24,7 +24,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -32,9 +31,7 @@ import java.util.*;
 public class FXBoard implements Initializable {
 
     /*JAVAFX FIELDS*/
-
     //Main
-
     @FXML
     private BorderPane gamePane = new BorderPane();
 
@@ -75,7 +72,6 @@ public class FXBoard implements Initializable {
     private Label timerLBL = new Label();
 
     //Class Fields
-
     FXMainController mainController;
 
     FXSettings fxSettings;
@@ -90,7 +86,6 @@ public class FXBoard implements Initializable {
 
     private ObservableList<String> players;
 
-
     public FXBoard(FXMainController mainController) {
         this.mainController = mainController;
         fxSettings = new FXSettings(mainController, this);
@@ -98,7 +93,6 @@ public class FXBoard implements Initializable {
     }
 
     /*METHODS*/
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         boardIMV.fitHeightProperty().bind(boardPane.heightProperty());
@@ -129,7 +123,6 @@ public class FXBoard implements Initializable {
     void rollDice(ActionEvent event) {
 
         //RANDOMIZER START
-
         int max = 6, min = 1;
         int range = max - min + 1;
         int dice1, dice2;
@@ -197,7 +190,9 @@ public class FXBoard implements Initializable {
     @FXML
     void settings(MouseEvent event) {
         try {
-            if (((Stage) mainController.getMainPane().getScene().getWindow()).isFullScreen()) fxSettings.setGlowApplied(true);
+            if (((Stage) mainController.getMainPane().getScene().getWindow()).isFullScreen()) {
+                fxSettings.setGlowApplied(true);
+            }
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/settings.fxml"));
             fxmlLoader.setController(fxSettings);
             Parent root = fxmlLoader.load();

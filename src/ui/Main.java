@@ -9,19 +9,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import objects.Board;
+import model.objects.Board;
 
-public class Main extends Application{
+public class Main extends Application {
 
-	private ApoTwoPolyGUI gui;
-    private ObjectInputStream ois= new ObjectInputStream(new FileInputStream("data\\Data.txt"));
+    private ApoTwoPolyGUI gui;
+    private ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data\\Data.txt"));
 
     public Main() throws ClassNotFoundException, FileNotFoundException, IOException {
-    	this.gui = new ApoTwoPolyGUI((Board) ois.readObject());
+        this.gui = new ApoTwoPolyGUI((Board) ois.readObject());
         //this.gui = new ApoTwoPolyGUI();
         ois.close();
 
-	}
+    }
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         launch(args);
@@ -29,7 +29,7 @@ public class Main extends Application{
     }
 
     @Override
-    public void start(Stage stage) throws Exception{
+    public void start(Stage stage) throws Exception {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("screens/main_screen/main.fxml"));//screens/game_screens/board_scene/board.fxml
         fxmlLoader.setController(gui);
@@ -38,16 +38,15 @@ public class Main extends Application{
         stage.setScene(scene);
         stage.setTitle("ApoTwoPoly");
         stage.show();
-		gui.setLocalStage(stage);
-      
+        gui.setLocalStage(stage);
+
     }
 
     @Override
-    public void init() throws ClassNotFoundException, IOException{
+    public void init() throws ClassNotFoundException, IOException {
         //Load load = new Load();
         //load.escribir();
 
     }
-
 
 }
