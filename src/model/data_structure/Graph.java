@@ -61,6 +61,35 @@ public class Graph {
         }
     }
 
+    public static void prim(Graph g, int n, int s) {
+        Key k[] = new Key[n];
+        boolean color[] = new boolean[n];
+        int pred[] = new int[n];
+        for (int i = 0; i < n; i++) {
+            k[i] = new Key(i, Integer.MAX_VALUE);
+            color[i] = false;
+        }
+        k[s].setKey(0);
+        pred[s] = -1;
+        PriorityQueue<Key> q = new PriorityQueue(n, new Key());
+        for (Key key : k) {
+            q.add(key);
+        }
+        while (!q.isEmpty()) {
+            Key u = (Key) q.poll();
+            LinkedList<Edge> adj = g.getAdj()[u.getI()];
+            for (Edge edge : adj) {
+                if (!color[edge.getD()] && (edge.getW() < k[edge.getD()].getKey())) {
+                    q.remove(k[edge.getD()]);
+                    k[edge.getD()].setKey(edge.getW());
+                    q.add(k[edge.getD()]);
+                    pred[edge.getD()] = u.getI();
+                }
+            }
+            color[u.getI()] = true;
+        }
+    }
+
     public static void kruskal(int n, Graph g) {
         LinkedList<Edge>[] adj = g.getAdj();
         PriorityQueue<Edge> pq = new PriorityQueue<>(adj.length, new Edge());
