@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 
-public class Graph {
+public class Graph implements GraphI {
 
     private int v;
     private LinkedList<Edge> adj[];
@@ -22,11 +22,13 @@ public class Graph {
         return adj;
     }
 
+    @Override
     public void addEdge(int s, int d, int w) {
         Edge e = new Edge(s, d, w);
         adj[s].add(e);
     }
 
+    @Override
     public void BFS(int s) {
         boolean visited[] = new boolean[v];
         LinkedList<Integer> queue = new LinkedList<Integer>();
@@ -34,7 +36,7 @@ public class Graph {
         queue.add(s);
         while (!queue.isEmpty()) {
             s = queue.poll();
-            Iterator<Edge> i = adj[s].listIterator();
+            Iterator<Edge> i = getAdj()[s].listIterator();
             while (i.hasNext()) {
                 int n = i.next().getD();
                 if (!visited[n]) {
@@ -45,6 +47,7 @@ public class Graph {
         }
     }
 
+    @Override
     public void DFS(int s) {
         boolean visited[] = new boolean[v];
         DFS(s, visited);
@@ -52,7 +55,7 @@ public class Graph {
 
     private void DFS(int s, boolean visited[]) {
         visited[s] = true;
-        Iterator<Edge> i = adj[s].listIterator();
+        Iterator<Edge> i = getAdj()[s].listIterator();
         while (i.hasNext()) {
             int n = i.next().getD();
             if (!visited[n]) {
@@ -61,23 +64,24 @@ public class Graph {
         }
     }
 
-    public static void prim(Graph g, int n, int s) {
-        Key k[] = new Key[n];
-        boolean color[] = new boolean[n];
-        int pred[] = new int[n];
-        for (int i = 0; i < n; i++) {
+    @Override
+    public void prim(int s) {
+        Key k[] = new Key[v];
+        boolean color[] = new boolean[v];
+        int pred[] = new int[v];
+        for (int i = 0; i < v; i++) {
             k[i] = new Key(i, Integer.MAX_VALUE);
             color[i] = false;
         }
         k[s].setKey(0);
         pred[s] = -1;
-        PriorityQueue<Key> q = new PriorityQueue(n, new Key());
+        PriorityQueue<Key> q = new PriorityQueue(v, new Key());
         for (Key key : k) {
             q.add(key);
         }
         while (!q.isEmpty()) {
             Key u = (Key) q.poll();
-            LinkedList<Edge> adj = g.getAdj()[u.getI()];
+            LinkedList<Edge> adj = getAdj()[u.getI()];
             for (Edge edge : adj) {
                 if (!color[edge.getD()] && (edge.getW() < k[edge.getD()].getKey())) {
                     q.remove(k[edge.getD()]);
@@ -90,16 +94,17 @@ public class Graph {
         }
     }
 
-    public static void kruskal(int n, Graph g) {
-        LinkedList<Edge>[] adj = g.getAdj();
+    @Override
+    public void kruskal() {
+        LinkedList<Edge>[] adj = getAdj();
         PriorityQueue<Edge> pq = new PriorityQueue<>(adj.length, new Edge());
         for (int i = 0; i < adj.length; i++) {
             for (int j = 0; j < adj[i].size(); j++) {
                 pq.add(adj[i].get(j));
             }
         }
-        int[] parent = new int[n];
-        makeSet(n, parent);
+        int[] parent = new int[v];
+        makeSet(v, parent);
         ArrayList<Edge> mst = new ArrayList<>();
         int index = 0;
         Iterator value = pq.iterator();
@@ -134,12 +139,13 @@ public class Graph {
         parent[y_set_parent] = x_set_parent;
     }
 
-    public static void dijkstra(Graph g, int n, int s) {
-        int[] dist = new int[n];
-        int[] prev = new int[n];
-        PriorityQueue<Distance> q = new PriorityQueue(n, new Distance());
+    @Override
+    public void dijkstra(int s) {
+        int[] dist = new int[v];
+        int[] prev = new int[v];
+        PriorityQueue<Distance> q = new PriorityQueue(v, new Distance());
         dist[s] = 0;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < v; i++) {
             if (i != s) {
                 dist[i] = Integer.MAX_VALUE;
             }
@@ -148,9 +154,9 @@ public class Graph {
         }
         while (!q.isEmpty()) {
             int u = q.remove().getI();
-            for (int i = 0; i < g.getAdj()[u].size(); i++) {
-                int alt = dist[u] + g.getAdj()[u].get(i).getW();
-                if (alt < dist[g.getAdj()[u].get(i).getD()]) {
+            for (int i = 0; i < getAdj()[u].size(); i++) {
+                int alt = dist[u] + getAdj()[u].get(i).getW();
+                if (alt < dist[getAdj()[u].get(i).getD()]) {
                     Object[] distAr = q.toArray();
                     Distance[] distArr = new Distance[q.size()];
                     for (int j = 0; j < distArr.length; j++) {
@@ -158,21 +164,22 @@ public class Graph {
                     }
                     Distance temp = new Distance(-1, -1);
                     for (int j = 0; j < distArr.length; j++) {
-                        if (distArr[j].getI() == g.getAdj()[u].get(i).getD()) {
+                        if (distArr[j].getI() == getAdj()[u].get(i).getD()) {
                             temp = distArr[j];
                         }
                     }
                     q.remove(temp);
-                    dist[g.getAdj()[u].get(i).getD()] = alt;
-                    prev[g.getAdj()[u].get(i).getD()] = u;
-                    q.add(new Distance(g.getAdj()[u].get(i).getD(), alt));
+                    dist[getAdj()[u].get(i).getD()] = alt;
+                    prev[getAdj()[u].get(i).getD()] = u;
+                    q.add(new Distance(getAdj()[u].get(i).getD(), alt));
                 }
             }
         }
     }
 
-    public static void floydWarshall(Graph g, int n) {
-        int[][] arr = new int[n][n];
+    @Override
+    public void floydWarshall() {
+        int[][] arr = new int[v][v];
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr.length; j++) {
                 arr[i][j] = Integer.MAX_VALUE;
@@ -185,7 +192,7 @@ public class Graph {
                 }
             }
         }
-        LinkedList<Edge> adj[] = g.getAdj();
+        LinkedList<Edge> adj[] = getAdj();
         for (int i = 0; i < adj.length; i++) {
             for (int j = 0; j < adj[i].size(); j++) {
                 arr[adj[i].get(j).getS()][adj[i].get(j).getD()] = adj[i].get(j).getW();
