@@ -1,78 +1,80 @@
 package model.objects;
 
 import java.io.Serializable;
-import java.util.LinkedList;
+import model.data_structure.BinaryTreeCommunity;
+import model.data_structure.BinaryTreeFortune;
+import model.data_structure.MeLinkedLists;
 
 public class Board implements Serializable {
 
     private static final long serialVersionUID = 262921139849267465L;
-    private LinkedList<Properties> propertiesSquare;
-    private LinkedList<Train> trainSquare;
-    private LinkedList<PublicServices> publicServicesSquare;
-    private LinkedList<WildCards> wildCardsSquare;
-    private LinkedList<CommunSquare> communSquare;
-    private LinkedList<Token> players;
+    private MeLinkedLists<Properties> propertiesSquare;
+    private MeLinkedLists<Train> trainSquare;
+    private MeLinkedLists<PublicServices> publicServicesSquare;
+    private MeLinkedLists<WildCards> wildCardsSquare;
+    private MeLinkedLists<CommunSquare> communSquare;
+    private MeLinkedLists<Token> players;
     private BinaryTreeCommunity communityServiceCards;
     private BinaryTreeFortune fortuneCards;
     private int turn;
 
     public Board() {
-        this.propertiesSquare = new LinkedList<>();
-        this.wildCardsSquare = new LinkedList<>();
-        this.communSquare = new LinkedList<>();
-        this.players = new LinkedList<>();
+        this.propertiesSquare = new MeLinkedLists<>();
+        this.wildCardsSquare = new MeLinkedLists<>();
+        this.communSquare = new MeLinkedLists<>();
+        this.players = new MeLinkedLists<>();
         this.communityServiceCards = new BinaryTreeCommunity();
         this.fortuneCards = new BinaryTreeFortune();
-        this.trainSquare = new LinkedList<>();
-        this.publicServicesSquare = new LinkedList<>();
+        this.trainSquare = new MeLinkedLists<>();
+        this.publicServicesSquare = new MeLinkedLists<>();
         turn = 0;
     }
 
-    public LinkedList<Properties> getPropertiesSquare() {
+    public MeLinkedLists<Properties> getPropertiesSquare() {
         return this.propertiesSquare;
     }
 
-    public void setPropertiesSquare(LinkedList<Properties> propertiesSquare) {
+    public void setPropertiesSquare(MeLinkedLists<Properties> propertiesSquare) {
         this.propertiesSquare = propertiesSquare;
     }
 
-    public LinkedList<Train> getTrainSquare() {
+    public MeLinkedLists<Train> getTrainSquare() {
         return this.trainSquare;
     }
 
-    public void setTrainSquare(LinkedList<Train> trainSquare) {
+    public void setTrainSquare(MeLinkedLists<Train> trainSquare) {
         this.trainSquare = trainSquare;
     }
 
-    public LinkedList<PublicServices> getPublicServicesSquare() {
+    public MeLinkedLists<PublicServices> getPublicServicesSquare() {
         return this.publicServicesSquare;
     }
 
-    public void setPublicServicesSquare(LinkedList<PublicServices> publicServicesSquare) {
+    public void setPublicServicesSquare(MeLinkedLists<PublicServices> publicServicesSquare) {
         this.publicServicesSquare = publicServicesSquare;
     }
 
-    public LinkedList<WildCards> getWildCardsSquare() {
+    public MeLinkedLists<WildCards> getWildCardsSquare() {
         return this.wildCardsSquare;
     }
 
-    public void setWildCardsSquare(LinkedList<WildCards> wildCardsSquare) {
+    public void setWildCardsSquare(MeLinkedLists<WildCards> wildCardsSquare) {
         this.wildCardsSquare = wildCardsSquare;
     }
 
-    public LinkedList<CommunSquare> getCommunSquare() {
+    public MeLinkedLists<CommunSquare> getCommunSquare() {
         return this.communSquare;
     }
 
-    public void setCommunSquare(LinkedList<CommunSquare> communSquare) {
+    public void setCommunSquare(MeLinkedLists<CommunSquare> communSquare) {
         this.communSquare = communSquare;
     }
 
-    public LinkedList<Token> getPlayers() {
+    public MeLinkedLists<Token> getPlayers() {
         return this.players;
     }
 
-    public void setPlayers(LinkedList<Token> players) {
+    public void setPlayers(MeLinkedLists<Token> players) {
         this.players = players;
     }
 
