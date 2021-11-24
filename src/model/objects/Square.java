@@ -3,7 +3,7 @@ package model.objects;
 import java.io.Serializable;
 import model.data_structure.MeLinkedLists;
 
-public class Square implements Serializable {
+public abstract class Square implements Serializable {
 
     private static final long serialVersionUID = -1720566563896120783L;
     private int numSquare;

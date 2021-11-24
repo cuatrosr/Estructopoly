@@ -8,10 +8,10 @@ public class Edge<T> implements Comparator<Edge> {
     private T d;
     private int w;
 
-    Edge() {
+    public Edge() {
     }
 
-    Edge(T s, T d, int w) {
+    public Edge(T s, T d, int w) {
         this.s = s;
         this.d = d;
         this.w = w;
