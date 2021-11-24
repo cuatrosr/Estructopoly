@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
+import model.objects.Square;
 
-public class Graph implements GraphI {
-
+public class Graph implements GraphI<Square> {
     private int v;
-    private LinkedList<Edge> adj[];
+    private LinkedList<Edge<Square>> adj[];
 
     public Graph(int v) {
         this.v = v;
@@ -18,29 +18,29 @@ public class Graph implements GraphI {
         }
     }
 
-    public LinkedList<Edge>[] getAdj() {
+    public LinkedList<Edge<Square>>[] getAdj() {
         return adj;
     }
 
     @Override
-    public void addEdge(int s, int d, int w) {
+    public void addEdge(Square s, Square d, int w) {
         Edge e = new Edge(s, d, w);
-        adj[s].add(e);
+        adj[s.getNumSquare()].add(e);
     }
 
     @Override
-    public void BFS(int s) {
+    public void BFS(Square s) {
         boolean visited[] = new boolean[v];
-        LinkedList<Integer> queue = new LinkedList<Integer>();
-        visited[s] = true;
+        LinkedList<Square> queue = new LinkedList<>();
+        visited[s.getNumSquare()] = true;
         queue.add(s);
         while (!queue.isEmpty()) {
             s = queue.poll();
-            Iterator<Edge> i = getAdj()[s].listIterator();
+            Iterator<Edge<Square>> i = getAdj()[s.getNumSquare()].listIterator();
             while (i.hasNext()) {
-                int n = i.next().getD();
-                if (!visited[n]) {
-                    visited[n] = true;
+                Square n = i.next().getD();
+                if (!visited[n.getNumSquare()]) {
+                    visited[n.getNumSquare()] = true;
                     queue.add(n);
                 }
             }
@@ -48,24 +48,24 @@ public class Graph implements GraphI {
     }
 
     @Override
-    public void DFS(int s) {
+    public void DFS(Square s) {
         boolean visited[] = new boolean[v];
         DFS(s, visited);
     }
 
-    private void DFS(int s, boolean visited[]) {
-        visited[s] = true;
-        Iterator<Edge> i = getAdj()[s].listIterator();
+    private void DFS(Square s, boolean visited[]) {
+        visited[s.getNumSquare()] = true;
+        Iterator<Edge<Square>> i = getAdj()[s.getNumSquare()].listIterator();
         while (i.hasNext()) {
-            int n = i.next().getD();
-            if (!visited[n]) {
+            Square n = i.next().getD();
+            if (!visited[n.getNumSquare()]) {
                 DFS(n, visited);
             }
         }
     }
 
     @Override
-    public void prim(int s) {
+    public void prim(Square s) {
         Key k[] = new Key[v];
         boolean color[] = new boolean[v];
         int pred[] = new int[v];
@@ -73,21 +73,21 @@ public class Graph implements GraphI {
             k[i] = new Key(i, Integer.MAX_VALUE);
             color[i] = false;
         }
-        k[s].setKey(0);
-        pred[s] = -1;
+        k[s.getNumSquare()].setKey(0);
+        pred[s.getNumSquare()] = -1;
         PriorityQueue<Key> q = new PriorityQueue(v, new Key());
         for (Key key : k) {
             q.add(key);
         }
         while (!q.isEmpty()) {
             Key u = (Key) q.poll();
-            LinkedList<Edge> adj = getAdj()[u.getI()];
-            for (Edge edge : adj) {
-                if (!color[edge.getD()] && (edge.getW() < k[edge.getD()].getKey())) {
-                    q.remove(k[edge.getD()]);
-                    k[edge.getD()].setKey(edge.getW());
-                    q.add(k[edge.getD()]);
-                    pred[edge.getD()] = u.getI();
+            LinkedList<Edge<Square>> adj = getAdj()[u.getI()];
+            for (Edge<Square> edge : adj) {
+                if (!color[edge.getD().getNumSquare()] && (edge.getW() < k[edge.getD().getNumSquare()].getKey())) {
+                    q.remove(k[edge.getD().getNumSquare()]);
+                    k[edge.getD().getNumSquare()].setKey(edge.getW());
+                    q.add(k[edge.getD().getNumSquare()]);
+                    pred[edge.getD().getNumSquare()] = u.getI();
                 }
             }
             color[u.getI()] = true;
@@ -96,7 +96,7 @@ public class Graph implements GraphI {
 
     @Override
     public void kruskal() {
-        LinkedList<Edge>[] adj = getAdj();
+        LinkedList<Edge<Square>>[] adj = getAdj();
         PriorityQueue<Edge> pq = new PriorityQueue<>(adj.length, new Edge());
         for (int i = 0; i < adj.length; i++) {
             for (int j = 0; j < adj[i].size(); j++) {
@@ -105,13 +105,13 @@ public class Graph implements GraphI {
         }
         int[] parent = new int[v];
         makeSet(v, parent);
-        ArrayList<Edge> mst = new ArrayList<>();
+        ArrayList<Edge<Square>> mst = new ArrayList<>();
         int index = 0;
         Iterator value = pq.iterator();
         while (value.hasNext()) {
-            Edge edge = (Edge) value.next();
-            int x_set = find(parent, edge.getS());
-            int y_set = find(parent, edge.getD());
+            Edge<Square> edge = (Edge) value.next();
+            int x_set = find(parent, edge.getS().getNumSquare());
+            int y_set = find(parent, edge.getD().getNumSquare());
             if (x_set != y_set) {
                 mst.add(edge);
                 index++;
@@ -140,13 +140,13 @@ public class Graph implements GraphI {
     }
 
     @Override
-    public void dijkstra(int s) {
+    public void dijkstra(Square s) {
         int[] dist = new int[v];
         int[] prev = new int[v];
         PriorityQueue<Distance> q = new PriorityQueue(v, new Distance());
-        dist[s] = 0;
+        dist[s.getNumSquare()] = 0;
         for (int i = 0; i < v; i++) {
-            if (i != s) {
+            if (i != s.getNumSquare()) {
                 dist[i] = Integer.MAX_VALUE;
             }
             prev[i] = -1;
@@ -156,7 +156,7 @@ public class Graph implements GraphI {
             int u = q.remove().getI();
             for (int i = 0; i < getAdj()[u].size(); i++) {
                 int alt = dist[u] + getAdj()[u].get(i).getW();
-                if (alt < dist[getAdj()[u].get(i).getD()]) {
+                if (alt < dist[getAdj()[u].get(i).getD().getNumSquare()]) {
                     Object[] distAr = q.toArray();
                     Distance[] distArr = new Distance[q.size()];
                     for (int j = 0; j < distArr.length; j++) {
@@ -164,14 +164,14 @@ public class Graph implements GraphI {
                     }
                     Distance temp = new Distance(-1, -1);
                     for (int j = 0; j < distArr.length; j++) {
-                        if (distArr[j].getI() == getAdj()[u].get(i).getD()) {
+                        if (distArr[j].getI() == getAdj()[u].get(i).getD().getNumSquare()) {
                             temp = distArr[j];
                         }
                     }
                     q.remove(temp);
-                    dist[getAdj()[u].get(i).getD()] = alt;
-                    prev[getAdj()[u].get(i).getD()] = u;
-                    q.add(new Distance(getAdj()[u].get(i).getD(), alt));
+                    dist[getAdj()[u].get(i).getD().getNumSquare()] = alt;
+                    prev[getAdj()[u].get(i).getD().getNumSquare()] = u;
+                    q.add(new Distance(getAdj()[u].get(i).getD().getNumSquare(), alt));
                 }
             }
         }
@@ -192,10 +192,10 @@ public class Graph implements GraphI {
                 }
             }
         }
-        LinkedList<Edge> adj[] = getAdj();
+        LinkedList<Edge<Square>> adj[] = getAdj();
         for (int i = 0; i < adj.length; i++) {
             for (int j = 0; j < adj[i].size(); j++) {
-                arr[adj[i].get(j).getS()][adj[i].get(j).getD()] = adj[i].get(j).getW();
+                arr[adj[i].get(j).getS().getNumSquare()][adj[i].get(j).getD().getNumSquare()] = adj[i].get(j).getW();
             }
         }
         for (int k = 0; k < arr.length; k++) {

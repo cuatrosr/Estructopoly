@@ -1,11 +1,11 @@
 package model.data_structure;
 
-public interface GraphI {
-    void addEdge(int s, int d, int w);
-    void BFS(int s);
-    void DFS(int s);
-    void prim(int s);
+public interface GraphI<T> {
+    void addEdge(T s, T d, int w);
+    void BFS(T s);
+    void DFS(T s);
+    void prim(T s);
     void kruskal();
-    void dijkstra(int s);
+    void dijkstra(T s);
     void floydWarshall();
 }

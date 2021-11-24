@@ -1,79 +1,78 @@
 package model.objects;
 
 import java.io.Serializable;
-
-import model.data_structure.*;
+import java.util.LinkedList;
 
 public class Board implements Serializable {
 
     private static final long serialVersionUID = 262921139849267465L;
-    private MeLinkedLists<Properties> propertiesSquare;
-    private MeLinkedLists<Train> trainSquare;
-    private MeLinkedLists<PublicServices> publicServicesSquare;
-    private MeLinkedLists<WildCards> wildCardsSquare;
-    private MeLinkedLists<CommunSquare> communSquare;
-    private MeLinkedLists<Token> players;
+    private LinkedList<Properties> propertiesSquare;
+    private LinkedList<Train> trainSquare;
+    private LinkedList<PublicServices> publicServicesSquare;
+    private LinkedList<WildCards> wildCardsSquare;
+    private LinkedList<CommunSquare> communSquare;
+    private LinkedList<Token> players;
     private BinaryTreeCommunity communityServiceCards;
     private BinaryTreeFortune fortuneCards;
     private int turn;
 
     public Board() {
-        this.propertiesSquare = new MeLinkedLists<>();
-        this.wildCardsSquare = new MeLinkedLists<>();
-        this.communSquare = new MeLinkedLists<>();
-        this.players = new MeLinkedLists<>();
+        this.propertiesSquare = new LinkedList<>();
+        this.wildCardsSquare = new LinkedList<>();
+        this.communSquare = new LinkedList<>();
+        this.players = new LinkedList<>();
         this.communityServiceCards = new BinaryTreeCommunity();
         this.fortuneCards = new BinaryTreeFortune();
-        this.trainSquare = new MeLinkedLists<>();
-        this.publicServicesSquare = new MeLinkedLists<>();
+        this.trainSquare = new LinkedList<>();
+        this.publicServicesSquare = new LinkedList<>();
         turn = 0;
     }
 
-    public MeLinkedLists<Properties> getPropertiesSquare() {
+    public LinkedList<Properties> getPropertiesSquare() {
         return this.propertiesSquare;
     }
 
-    public void setPropertiesSquare(MeLinkedLists<Properties> propertiesSquare) {
+    public void setPropertiesSquare(LinkedList<Properties> propertiesSquare) {
         this.propertiesSquare = propertiesSquare;
     }
 
-    public MeLinkedLists<Train> getTrainSquare() {
+    public LinkedList<Train> getTrainSquare() {
         return this.trainSquare;
     }
 
-    public void setTrainSquare(MeLinkedLists<Train> trainSquare) {
+    public void setTrainSquare(LinkedList<Train> trainSquare) {
         this.trainSquare = trainSquare;
     }
 
-    public MeLinkedLists<PublicServices> getPublicServicesSquare() {
+    public LinkedList<PublicServices> getPublicServicesSquare() {
         return this.publicServicesSquare;
     }
 
-    public void setPublicServicesSquare(MeLinkedLists<PublicServices> publicServicesSquare) {
+    public void setPublicServicesSquare(LinkedList<PublicServices> publicServicesSquare) {
         this.publicServicesSquare = publicServicesSquare;
     }
 
-    public MeLinkedLists<WildCards> getWildCardsSquare() {
+    public LinkedList<WildCards> getWildCardsSquare() {
         return this.wildCardsSquare;
     }
 
-    public void setWildCardsSquare(MeLinkedLists<WildCards> wildCardsSquare) {
+    public void setWildCardsSquare(LinkedList<WildCards> wildCardsSquare) {
         this.wildCardsSquare = wildCardsSquare;
     }
 
-    public MeLinkedLists<CommunSquare> getCommunSquare() {
+    public LinkedList<CommunSquare> getCommunSquare() {
         return this.communSquare;
     }
 
-    public void setCommunSquare(MeLinkedLists<CommunSquare> communSquare) {
+    public void setCommunSquare(LinkedList<CommunSquare> communSquare) {
         this.communSquare = communSquare;
     }
 
-    public MeLinkedLists<Token> getPlayers() {
+    public LinkedList<Token> getPlayers() {
         return this.players;
     }
 
-    public void setPlayers(MeLinkedLists<Token> players) {
+    public void setPlayers(LinkedList<Token> players) {
         this.players = players;
     }
 
