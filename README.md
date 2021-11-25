@@ -17,6 +17,6 @@ ___
 ___
 ## Resources (Documentation and other links)
 
-   * Engineering Method ([Click here](https://github.com/cuatrosr/Estructopoly/blob/main/docs/Engineering%20Method.docx))
+   * Engineering Method ([Click here](https://github.com/cuatrosr/Estructopoly/blob/main/docs/Engineering%20Method.pdf))
 
 
