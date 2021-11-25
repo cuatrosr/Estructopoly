@@ -72,7 +72,7 @@ public class GraphTest {
     }
 
     void setup5() {
-        Graph g = new Graph(4);
+        g = new Graph(4);
         g.addEdge(0, 1, 0);
         g.addEdge(0, 2, 0);
         g.addEdge(1, 2, 0);
@@ -128,7 +128,8 @@ public class GraphTest {
     @Test
     public void DFS() {
         setup5();
-        String expected = "2 0 1 3";
+        String expected = "2 0 1 3 ";
         String actual = g.DFS(2);
+        assertEquals(expected, actual);
     }
 }
