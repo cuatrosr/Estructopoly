@@ -51,21 +51,23 @@ public class Graph<T> implements GraphI<T> {
     }
 
     @Override
-    public void DFS(T s) {
+    public String DFS(T s) {
         boolean visited[] = new boolean[v];
         String msg = ""; 
-        DFS(msg, Integer.parseInt(String.valueOf(s)), visited);
+        return DFS(msg, Integer.parseInt(String.valueOf(s)), visited);
     }
 
     private String DFS(String msg, int s, boolean visited[]) {
         visited[s] = true;
+        msg += s + " ";
         Iterator<Edge<T>> i = getAdj()[s].listIterator();
         while (i.hasNext()) {
             T n = i.next().getD();
             if (!visited[Integer.parseInt(String.valueOf(n))]) {
-                DFS(msg, Integer.parseInt(String.valueOf(n)), visited);
+                msg = DFS(msg, Integer.parseInt(String.valueOf(n)), visited);
             }
         }
+        return msg;
     }
 
     @Override
