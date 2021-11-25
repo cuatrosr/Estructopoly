@@ -31,6 +31,6 @@ public class Edge<T> implements Comparator<Edge<T>> {
 
     @Override
     public int compare(Edge<T> e1, Edge<T> e2) {
-        return e1.compare(e1, e2);
+        return Integer.parseInt(String.valueOf(e1.getW())) - Integer.parseInt(String.valueOf(e2.getW()));
     }
 }

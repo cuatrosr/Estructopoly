@@ -29,6 +29,6 @@ public class Key<T> implements Comparator<Key<T>> {
 
     @Override
     public int compare(Key<T> k1, Key<T> k2) {
-        return k1.compare(k1, k2);
+        return Integer.parseInt(String.valueOf(k1.getKey())) - Integer.parseInt(String.valueOf(k2.getKey()));
     }
 }

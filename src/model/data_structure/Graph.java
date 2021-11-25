@@ -1,11 +1,12 @@
 package model.data_structure;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 
-public class Graph<T> {
+public class Graph<T> implements GraphI<T> {
 
     private int v;
     private LinkedList<Edge<T>> adj[];
@@ -26,14 +27,17 @@ public class Graph<T> {
         Edge<T> e = new Edge(s, d, w);
         adj[Integer.parseInt(String.valueOf(s))].add(e);
     }
-
-    public void BFS(T s) {
+    
+    @Override
+    public String BFS(T s) {
+        String msg = "";
         boolean visited[] = new boolean[v];
         LinkedList<T> queue = new LinkedList<>();
         visited[Integer.parseInt(String.valueOf(s))] = true;
         queue.add(s);
         while (!queue.isEmpty()) {
             s = queue.poll();
+            msg += s + " ";
             Iterator<Edge<T>> i = getAdj()[Integer.parseInt(String.valueOf(s))].listIterator();
             while (i.hasNext()) {
                 T n = i.next().getD();
@@ -43,25 +47,29 @@ public class Graph<T> {
                 }
             }
         }
+        return msg;
     }
 
+    @Override
     public void DFS(T s) {
         boolean visited[] = new boolean[v];
-        DFS(Integer.parseInt(String.valueOf(s)), visited);
+        String msg = ""; 
+        DFS(msg, Integer.parseInt(String.valueOf(s)), visited);
     }
 
-    private void DFS(int s, boolean visited[]) {
+    private String DFS(String msg, int s, boolean visited[]) {
         visited[s] = true;
         Iterator<Edge<T>> i = getAdj()[s].listIterator();
         while (i.hasNext()) {
             T n = i.next().getD();
             if (!visited[Integer.parseInt(String.valueOf(n))]) {
-                DFS(Integer.parseInt(String.valueOf(n)), visited);
+                DFS(msg, Integer.parseInt(String.valueOf(n)), visited);
             }
         }
     }
 
-    public void prim(T s) {
+    @Override
+    public int prim(T s) {
         Key<Integer> k[] = new Key[v];
         boolean color[] = new boolean[v];
         int pred[] = new int[v];
@@ -88,9 +96,15 @@ public class Graph<T> {
             }
             color[u.getI()] = true;
         }
+        int keySum = 0;
+        for (Key<Integer> k1 : k) {
+            keySum += k1.getKey();
+        }
+        return keySum;
     }
 
-    public void kruskal() {
+    @Override
+    public int kruskal() {
         LinkedList<Edge<T>>[] adj = getAdj();
         PriorityQueue<Edge<T>> pq = new PriorityQueue<>(adj.length, new Edge<>());
         for (int i = 0; i < adj.length; i++) {
@@ -104,7 +118,7 @@ public class Graph<T> {
         int index = 0;
         Iterator value = pq.iterator();
         while (value.hasNext()) {
-            Edge edge = (Edge) value.next();
+            Edge<T> edge = (Edge<T>) value.next();
             int x_set = find(parent, Integer.parseInt(String.valueOf(edge.getS())));
             int y_set = find(parent, Integer.parseInt(String.valueOf(edge.getD())));
             if (x_set != y_set) {
@@ -113,6 +127,11 @@ public class Graph<T> {
                 union(parent, x_set, y_set);
             }
         }
+        int kruskal = 0;
+        for (int i = 0; i < mst.size(); i++) {
+            kruskal += Integer.parseInt(String.valueOf(mst.get(i).getW()));
+        }
+        return kruskal;
     }
 
     private static void makeSet(int n, int[] parent) {
@@ -134,7 +153,8 @@ public class Graph<T> {
         parent[y_set_parent] = x_set_parent;
     }
 
-    public void dijkstra(T s) {
+    @Override
+    public String dijkstra(T s) {
         int[] dist = new int[v];
         int[] prev = new int[v];
         PriorityQueue<Distance<T>> q = new PriorityQueue(v, new Distance<T>());
@@ -169,9 +189,11 @@ public class Graph<T> {
                 }
             }
         }
+        return Arrays.toString(dist);
     }
 
-    public void floydWarshall() {
+    @Override
+    public String floydWarshall() {
         int[][] arr = new int[v][v];
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr.length; j++) {
@@ -200,5 +222,25 @@ public class Graph<T> {
                 }
             }
         }
+        return soutMatrix(arr);
+    }
+
+    public static String soutMatrix(int[][] arr) {
+        String msg = "";
+        for (int x = 0; x < arr.length; x++) {
+            msg += "|";
+            for (int y = 0; y < arr[x].length; y++) {
+                if (arr[x][y] != Integer.MAX_VALUE) {
+                    msg += arr[x][y];
+                } else {
+                    msg += "∞";
+                }
+                if (y != arr[x].length - 1) {
+                    msg += "\t";
+                }
+            }
+            msg += "|\n";
+        }
+        return msg;
     }
 }

@@ -1,7 +1,7 @@
 package model.binary_test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import static org.junit.Assert.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import model.objects.Token;

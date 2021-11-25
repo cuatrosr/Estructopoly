@@ -30,6 +30,6 @@ public class Distance<T> implements Comparator<Distance<T>> {
 
     @Override
     public int compare(Distance<T> d1, Distance<T> d2) {
-        return d1.compare(d1, d2);
+        return Integer.parseInt(String.valueOf(d1.getDist())) - Integer.parseInt(String.valueOf(d2.getDist()));
     }
 }

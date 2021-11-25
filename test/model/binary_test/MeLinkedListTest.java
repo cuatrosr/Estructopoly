@@ -1,9 +1,8 @@
 package model.binary_test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import org.junit.Test;
+import static org.junit.Assert.*;
 import java.util.ArrayList;
-import org.junit.jupiter.api.Test;
 import model.data_structure.MeLinkedLists;
 import javafx.scene.image.ImageView;
 import model.objects.Token;
