@@ -2,16 +2,16 @@ package model.data_structure;
 
 import java.util.Comparator;
 
-public class Edge<T> implements Comparator<Edge> {
+public class Edge<T> implements Comparator<Edge<T>> {
 
     private T s;
     private T d;
-    private int w;
+    private T w;
 
     public Edge() {
     }
 
-    public Edge(T s, T d, int w) {
+    public Edge(T s, T d, T w) {
         this.s = s;
         this.d = d;
         this.w = w;
@@ -25,12 +25,12 @@ public class Edge<T> implements Comparator<Edge> {
         return d;
     }
 
-    public int getW() {
+    public T getW() {
         return w;
     }
 
     @Override
-    public int compare(Edge e1, Edge e2) {
-        return e1.getW() - e2.getW();
+    public int compare(Edge<T> e1, Edge<T> e2) {
+        return e1.compare(e1, e2);
     }
 }

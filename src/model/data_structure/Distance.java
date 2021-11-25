@@ -2,24 +2,24 @@ package model.data_structure;
 
 import java.util.Comparator;
 
-public class Distance implements Comparator<Distance> {
+public class Distance<T> implements Comparator<Distance<T>> {
 
-    private int i;
-    private int dist;
+    private T i;
+    private T dist;
 
     Distance() {
     }
 
-    Distance(int i, int dist) {
+    Distance(T i, T dist) {
         this.i = i;
         this.dist = dist;
     }
 
-    public int getI() {
+    public T getI() {
         return i;
     }
 
-    public int getDist() {
+    public T getDist() {
         return dist;
     }
 
@@ -29,7 +29,7 @@ public class Distance implements Comparator<Distance> {
     }
 
     @Override
-    public int compare(Distance d1, Distance d2) {
-        return d1.getDist() - d2.getDist();
+    public int compare(Distance<T> d1, Distance<T> d2) {
+        return d1.compare(d1, d2);
     }
 }

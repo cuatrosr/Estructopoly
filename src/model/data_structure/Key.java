@@ -2,33 +2,33 @@ package model.data_structure;
 
 import java.util.Comparator;
 
-public class Key implements Comparator<Key> {
+public class Key<T> implements Comparator<Key<T>> {
 
-    private int i;
-    private int key;
+    private T i;
+    private T key;
 
     Key() {
     }
 
-    Key(int i, int key) {
+    Key(T i, T key) {
         this.i = i;
         this.key = key;
     }
 
-    public int getI() {
+    public T getI() {
         return i;
     }
 
-    public int getKey() {
+    public T getKey() {
         return key;
     }
 
-    public void setKey(int key) {
+    public void setKey(T key) {
         this.key = key;
     }
 
     @Override
-    public int compare(Key k1, Key k2) {
-        return k1.getKey() - k2.getKey();
+    public int compare(Key<T> k1, Key<T> k2) {
+        return k1.compare(k1, k2);
     }
 }
