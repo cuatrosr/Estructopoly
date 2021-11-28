@@ -6,12 +6,12 @@ public class Edge<T> implements Comparator<Edge<T>> {
 
     private T s;
     private T d;
-    private T w;
+    private int w;
 
     public Edge() {
     }
 
-    public Edge(T s, T d, T w) {
+    public Edge(T s, T d, int w) {
         this.s = s;
         this.d = d;
         this.w = w;
@@ -25,7 +25,7 @@ public class Edge<T> implements Comparator<Edge<T>> {
         return d;
     }
 
-    public T getW() {
+    public int getW() {
         return w;
     }
 

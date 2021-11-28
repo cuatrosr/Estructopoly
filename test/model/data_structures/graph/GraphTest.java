@@ -1,4 +1,4 @@
-package model.data_structure;
+package model.data_structures.graph;
 
 import org.junit.Test;
 import static org.junit.Assert.*;

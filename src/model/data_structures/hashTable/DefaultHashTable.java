@@ -2,31 +2,33 @@ package model.data_structures.hashTable;
 
 import java.util.Objects;
 
-public class DefaultHashTable<K, V> implements model.interface_class.HashTable<K, V> {
+import java.util.Objects;
 
-    class HashNode<K, V> {
+class HashNode<K, V> {
 
-        K key;
-        V value;
+    K key;
+    V value;
 
-        HashNode<K, V> next;
-        HashNode<K, V> prev;
+    HashNode<K, V> next;
+    HashNode<K, V> prev;
 
-        public HashNode(K key, V value) {
-            this.key = key;
-            this.value = value;
-            next = null;
-            prev = null;
-        }
-
-        public K getKey() {
-            return key;
-        }
-
-        public V getValue() {
-            return value;
-        }
+    public HashNode(K key, V value) {
+        this.key = key;
+        this.value = value;
+        next = null;
+        prev = null;
     }
+
+    public K getKey() {
+        return key;
+    }
+
+    public V getValue() {
+        return value;
+    }
+}
+
+public class DefaultHashTable<K, V> implements model.interface_class.HashTable<K, V> {
 
     private HashNode<?, ?>[] table;
     private int size;
@@ -86,9 +88,8 @@ public class DefaultHashTable<K, V> implements model.interface_class.HashTable<K
                     return;
 
                 }
-            }catch (NullPointerException e){}
-
-
+            } catch (NullPointerException e) {
+            }
 
             i++;
 
@@ -107,7 +108,7 @@ public class DefaultHashTable<K, V> implements model.interface_class.HashTable<K
         do {
 
             j = hash(key, i);
-           
+
             if (table[j] != null && table[j].getKey().equals(key)) {
                 return (V) table[j].getValue();
 

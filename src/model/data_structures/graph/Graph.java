@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
+import model.objects.Square;
 
 public class Graph<T> implements model.interface_class.GraphI<T> {
 
@@ -23,26 +24,26 @@ public class Graph<T> implements model.interface_class.GraphI<T> {
         return adj;
     }
 
-    public void addEdge(T s, T d, T w) {
+    public void addEdge(T s, T d, int w) {
         Edge<T> e = new Edge(s, d, w);
         adj[Integer.parseInt(String.valueOf(s))].add(e);
     }
-    
+
     @Override
     public String BFS(T s) {
         String msg = "";
         boolean visited[] = new boolean[v];
         LinkedList<T> queue = new LinkedList<>();
-        visited[Integer.parseInt(String.valueOf(s))] = true;
+        visited[((Square) s).getNumSquare()] = true;
         queue.add(s);
         while (!queue.isEmpty()) {
             s = queue.poll();
-            msg += s + " ";
-            Iterator<Edge<T>> i = getAdj()[Integer.parseInt(String.valueOf(s))].listIterator();
+            msg += ((Square) s).getNumSquare() + " ";
+            Iterator<Edge<T>> i = getAdj()[((Square) s).getNumSquare()].listIterator();
             while (i.hasNext()) {
                 T n = i.next().getD();
-                if (!visited[Integer.parseInt(String.valueOf(n))]) {
-                    visited[Integer.parseInt(String.valueOf(n))] = true;
+                if (!visited[((Square) n).getNumSquare()]) {
+                    visited[((Square) n).getNumSquare()] = true;
                     queue.add(n);
                 }
             }
@@ -53,8 +54,8 @@ public class Graph<T> implements model.interface_class.GraphI<T> {
     @Override
     public String DFS(T s) {
         boolean visited[] = new boolean[v];
-        String msg = ""; 
-        return DFS(msg, Integer.parseInt(String.valueOf(s)), visited);
+        String msg = "";
+        return DFS(msg, ((Square) s).getNumSquare(), visited);
     }
 
     private String DFS(String msg, int s, boolean visited[]) {
@@ -63,8 +64,8 @@ public class Graph<T> implements model.interface_class.GraphI<T> {
         Iterator<Edge<T>> i = getAdj()[s].listIterator();
         while (i.hasNext()) {
             T n = i.next().getD();
-            if (!visited[Integer.parseInt(String.valueOf(n))]) {
-                msg = DFS(msg, Integer.parseInt(String.valueOf(n)), visited);
+            if (!visited[((Square) n).getNumSquare()]) {
+                msg = DFS(msg, ((Square) n).getNumSquare(), visited);
             }
         }
         return msg;
@@ -79,8 +80,8 @@ public class Graph<T> implements model.interface_class.GraphI<T> {
             k[i] = new Key(i, Integer.MAX_VALUE);
             color[i] = false;
         }
-        k[Integer.parseInt(String.valueOf(s))].setKey(0);
-        pred[Integer.parseInt(String.valueOf(s))] = -1;
+        k[((Square) s).getNumSquare()].setKey(0);
+        pred[((Square) s).getNumSquare()] = -1;
         PriorityQueue<Key<Integer>> q = new PriorityQueue(v, new Key<Integer>());
         for (Key key : k) {
             q.add(key);
@@ -89,11 +90,11 @@ public class Graph<T> implements model.interface_class.GraphI<T> {
             Key<Integer> u = (Key<Integer>) q.poll();
             LinkedList<Edge<T>> adj = getAdj()[u.getI()];
             for (Edge<T> edge : adj) {
-                if (!color[Integer.parseInt(String.valueOf(edge.getD()))] && (Integer.parseInt(String.valueOf(edge.getW())) < k[Integer.parseInt(String.valueOf(edge.getD()))].getKey())) {
-                    q.remove(k[Integer.parseInt(String.valueOf(edge.getD()))]);
-                    k[Integer.parseInt(String.valueOf(edge.getD()))].setKey(Integer.parseInt(String.valueOf(edge.getW())));
-                    q.add(k[Integer.parseInt(String.valueOf(edge.getD()))]);
-                    pred[Integer.parseInt(String.valueOf(edge.getD()))] = u.getI();
+                if (!color[((Square) edge.getD()).getNumSquare()] && (edge.getW()) < k[((Square) edge.getD()).getNumSquare()].getKey()) {
+                    q.remove(k[((Square) edge.getD()).getNumSquare()]);
+                    k[((Square) edge.getD()).getNumSquare()].setKey(edge.getW());
+                    q.add(k[((Square) edge.getD()).getNumSquare()]);
+                    pred[((Square) edge.getD()).getNumSquare()] = u.getI();
                 }
             }
             color[u.getI()] = true;
@@ -121,8 +122,8 @@ public class Graph<T> implements model.interface_class.GraphI<T> {
         Iterator value = pq.iterator();
         while (value.hasNext()) {
             Edge<T> edge = (Edge<T>) value.next();
-            int x_set = find(parent, Integer.parseInt(String.valueOf(edge.getS())));
-            int y_set = find(parent, Integer.parseInt(String.valueOf(edge.getD())));
+            int x_set = find(parent, ((Square) edge.getS()).getNumSquare());
+            int y_set = find(parent, ((Square) edge.getD()).getNumSquare());
             if (x_set != y_set) {
                 mst.add(edge);
                 index++;
@@ -131,7 +132,7 @@ public class Graph<T> implements model.interface_class.GraphI<T> {
         }
         int kruskal = 0;
         for (int i = 0; i < mst.size(); i++) {
-            kruskal += Integer.parseInt(String.valueOf(mst.get(i).getW()));
+            kruskal += mst.get(i).getW();
         }
         return kruskal;
     }
@@ -160,19 +161,19 @@ public class Graph<T> implements model.interface_class.GraphI<T> {
         int[] dist = new int[v];
         int[] prev = new int[v];
         PriorityQueue<Distance<T>> q = new PriorityQueue(v, new Distance<T>());
-        dist[Integer.parseInt(String.valueOf(s))] = 0;
+        dist[((Square) s).getNumSquare()] = 0;
         for (int i = 0; i < v; i++) {
-            if (i != Integer.parseInt(String.valueOf(s))) {
+            if (i != ((Square) s).getNumSquare()) {
                 dist[i] = Integer.MAX_VALUE;
             }
             prev[i] = -1;
             q.add(new Distance(i, dist[i]));
         }
         while (!q.isEmpty()) {
-            int u = Integer.parseInt(String.valueOf(q.remove().getI()));
+            int u = ((Square) q.remove().getI()).getNumSquare();
             for (int i = 0; i < getAdj()[u].size(); i++) {
-                int alt = dist[u] + Integer.parseInt(String.valueOf(getAdj()[u].get(i).getW()));
-                if (alt < dist[Integer.parseInt(String.valueOf(getAdj()[u].get(i).getD()))]) {
+                int alt = dist[u] + getAdj()[u].get(i).getW();
+                if (alt < dist[((Square) getAdj()[u].get(i).getD()).getNumSquare()]) {
                     Object[] distAr = q.toArray();
                     Distance<T>[] distArr = new Distance[q.size()];
                     for (int j = 0; j < distArr.length; j++) {
@@ -185,8 +186,8 @@ public class Graph<T> implements model.interface_class.GraphI<T> {
                         }
                     }
                     q.remove(temp);
-                    dist[Integer.parseInt(String.valueOf(getAdj()[u].get(i).getD()))] = alt;
-                    prev[Integer.parseInt(String.valueOf(getAdj()[u].get(i).getD()))] = u;
+                    dist[((Square) getAdj()[u].get(i).getD()).getNumSquare()] = alt;
+                    prev[((Square) getAdj()[u].get(i).getD()).getNumSquare()] = u;
                     q.add(new Distance(getAdj()[u].get(i).getD(), alt));
                 }
             }
@@ -212,7 +213,7 @@ public class Graph<T> implements model.interface_class.GraphI<T> {
         LinkedList<Edge<T>> adj[] = getAdj();
         for (int i = 0; i < adj.length; i++) {
             for (int j = 0; j < adj[i].size(); j++) {
-                arr[Integer.parseInt(String.valueOf(adj[i].get(j).getS()))][Integer.parseInt(String.valueOf(adj[i].get(j).getD()))] = Integer.parseInt(String.valueOf(adj[i].get(j).getW()));
+                arr[((Square) adj[i].get(j).getS()).getNumSquare()][((Square) adj[i].get(j).getD()).getNumSquare()] = adj[i].get(j).getW();
             }
         }
         for (int k = 0; k < arr.length; k++) {
