@@ -1,22 +1,16 @@
 package model.objects;
 
 import java.io.Serializable;
-import model.data_structure.MeLinkedLists;
+import java.util.LinkedList;
 
 public abstract class Square implements Serializable {
 
     private static final long serialVersionUID = -1720566563896120783L;
     private int numSquare;
-    private int typeSquare; // 0 = propiedad, 1 = wild y 2 = commun
-    private MeLinkedLists<Player> players;
-
-    protected Square(int numSquare, int typeSquare) {
-        this.numSquare = numSquare;
-        this.typeSquare = typeSquare;
-        this.players = new MeLinkedLists<>();
-    }
+    private LinkedList<Player> players;
 
     protected Square() {
+        this.players = new LinkedList<>();
     }
 
     public int getNumSquare() {
@@ -27,19 +21,11 @@ public abstract class Square implements Serializable {
         this.numSquare = numSquare;
     }
 
-    public int getTypeSquare() {
-        return this.typeSquare;
-    }
-
-    public void setTypeSquare(int typeSquare) {
-        this.typeSquare = typeSquare;
-    }
-
-    public MeLinkedLists<Player> getPlayers() {
+    public LinkedList<Player> getPlayers() {
         return this.players;
     }
 
-    public void setPlayers(MeLinkedLists<Player> players) {
+    public void setPlayers(LinkedList<Player> players) {
         this.players = players;
     }
 

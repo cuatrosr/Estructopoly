@@ -3,7 +3,6 @@ package model.objects;
 import java.io.IOException;
 
 import javafx.application.Platform;
-import ui.ApoTwoPolyGUI;
 
 public class FortuneCards extends WildCards {
 
@@ -12,11 +11,9 @@ public class FortuneCards extends WildCards {
     private int idAction;
 
     public FortuneCards(String card, int typeAction) {
+        super();
         this.card = card;
         this.idAction = typeAction;
-    }
-
-    public FortuneCards() {
     }
 
     public String getCard() {
@@ -35,11 +32,19 @@ public class FortuneCards extends WildCards {
         this.idAction = typeAction;
     }
 
+    public FortuneCards roll(Board board) throws IOException {
+        FortuneCards aux = board.getFortuneCards().dequeue();
+        aux.action(board);
+        board.getFortuneCards().enqueue(aux);
+        return aux;
+
+    }
+
     @Override
-    public Board action(Board board, ApoTwoPolyGUI gui) throws IOException {
+    public void action(Board board) throws IOException {
 
         int aux = 0;
-
+        /*
         switch (idAction) {
             case 1:
 
@@ -154,37 +159,14 @@ public class FortuneCards extends WildCards {
 
         }
 
-        return board;
+       */
 
     }
 
     @Override
-    public Board setMoney(Board board, int aux, ApoTwoPolyGUI gui) throws IOException {
+    public void setMoney(Board board, int aux) throws IOException {
 
-        if (aux < 0 && board.getPlayers().get(board.getTurn()).getMoney() < (aux) * (-1)) {
 
-            Platform.runLater(new Thread() {
-                @Override
-                public void run() {
-
-                    try {
-                        gui.bankruptcy((aux) * (-1), null);
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-
-                    }
-                }
-
-            });
-
-            return gui.getBoard();
-
-        } else {
-            board.getPlayers().get(board.getTurn()).setMoney(board.getPlayers().get(board.getTurn()).getMoney() + aux);
-            return board;
-
-        }
 
     }
 

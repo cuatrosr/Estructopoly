@@ -1,105 +1,96 @@
 package model.objects;
 
+import model.data_structures.graph.Graph;
+import model.data_structures.hashTable.DefaultHashTable;
+import model.data_structures.queueAndStack.DefaultQueue;
+import model.interface_class.HashTable;
+import model.interface_class.Queue;
+
 import java.io.Serializable;
-import model.data_structure.BinaryTreeCommunity;
-import model.data_structure.BinaryTreeFortune;
-import model.data_structure.MeLinkedLists;
 
 public class Board implements Serializable {
 
-    private static final long serialVersionUID = 262921139849267465L;
-    private MeLinkedLists<Properties> propertiesSquare;
-    private MeLinkedLists<Train> trainSquare;
-    private MeLinkedLists<PublicServices> publicServicesSquare;
-    private MeLinkedLists<WildCards> wildCardsSquare;
-    private MeLinkedLists<CommunSquare> communSquare;
-    private MeLinkedLists<Token> players;
-    private BinaryTreeCommunity communityServiceCards;
-    private BinaryTreeFortune fortuneCards;
-    private int turn;
+    private Graph<Square> gameBoard;
+    private Queue<Token> players;
+    private HashTable<String, Token> playersHash;
+    private HashTable<String, Properties> propertiesHash;
+    private Queue<FortuneCards> fortuneCards;
+    private Queue<CommunityServiceCards> communityServiceCards;
+    private Token inTurn;
+    private Jail jail;
 
-    public Board() {
-        this.propertiesSquare = new MeLinkedLists<>();
-        this.wildCardsSquare = new MeLinkedLists<>();
-        this.communSquare = new MeLinkedLists<>();
-        this.players = new MeLinkedLists<>();
-        this.communityServiceCards = new BinaryTreeCommunity();
-        this.fortuneCards = new BinaryTreeFortune();
-        this.trainSquare = new MeLinkedLists<>();
-        this.publicServicesSquare = new MeLinkedLists<>();
-        turn = 0;
+    public Board(Jail jail) {
+        this.gameBoard = new Graph<>(40);
+        this.players = new DefaultQueue<>();
+        this.playersHash = new DefaultHashTable<>(8);
+        this.fortuneCards = new DefaultQueue<>();
+        this.communityServiceCards = new DefaultQueue<>();
+        this.propertiesHash = new DefaultHashTable<>(28);
+        this.inTurn = new Token();
+        this.jail = jail;
     }
 
-    public MeLinkedLists<Properties> getPropertiesSquare() {
-        return this.propertiesSquare;
+    public Graph<Square> getGameBoard() {
+        return gameBoard;
     }
 
-    public void setPropertiesSquare(MeLinkedLists<Properties> propertiesSquare) {
-        this.propertiesSquare = propertiesSquare;
+    public void setGameBoard(Graph<Square> gameBoard) {
+        this.gameBoard = gameBoard;
     }
 
-    public MeLinkedLists<Train> getTrainSquare() {
-        return this.trainSquare;
+    public Queue<Token> getPlayers() {
+        return players;
     }
 
-    public void setTrainSquare(MeLinkedLists<Train> trainSquare) {
-        this.trainSquare = trainSquare;
-    }
-
-    public MeLinkedLists<PublicServices> getPublicServicesSquare() {
-        return this.publicServicesSquare;
-    }
-
-    public void setPublicServicesSquare(MeLinkedLists<PublicServices> publicServicesSquare) {
-        this.publicServicesSquare = publicServicesSquare;
-    }
-
-    public MeLinkedLists<WildCards> getWildCardsSquare() {
-        return this.wildCardsSquare;
-    }
-
-    public void setWildCardsSquare(MeLinkedLists<WildCards> wildCardsSquare) {
-        this.wildCardsSquare = wildCardsSquare;
-    }
-
-    public MeLinkedLists<CommunSquare> getCommunSquare() {
-        return this.communSquare;
-    }
-
-    public void setCommunSquare(MeLinkedLists<CommunSquare> communSquare) {
-        this.communSquare = communSquare;
-    }
-
-    public MeLinkedLists<Token> getPlayers() {
-        return this.players;
-    }
-
-    public void setPlayers(MeLinkedLists<Token> players) {
+    public void setPlayers(Queue<Token> players) {
         this.players = players;
     }
 
-    public BinaryTreeCommunity getCommunityServiceCards() {
-        return this.communityServiceCards;
+    public HashTable<String, Token> getPlayersHash() {
+        return playersHash;
     }
 
-    public void setCommunityServiceCards(BinaryTreeCommunity communityServiceCards) {
-        this.communityServiceCards = communityServiceCards;
+    public void setPlayersHash(HashTable<String, Token> playersHash) {
+        this.playersHash = playersHash;
     }
 
-    public BinaryTreeFortune getFortuneCards() {
-        return this.fortuneCards;
+    public Queue<FortuneCards> getFortuneCards() {
+        return fortuneCards;
     }
 
-    public void setFortuneCards(BinaryTreeFortune fortuneCards) {
+    public void setFortuneCards(Queue<FortuneCards> fortuneCards) {
         this.fortuneCards = fortuneCards;
     }
 
-    public int getTurn() {
-        return this.turn;
+    public Queue<CommunityServiceCards> getCommunityServiceCards() {
+        return communityServiceCards;
     }
 
-    public void setTurn(int turn) {
-        this.turn = turn;
+    public void setCommunityServiceCards(Queue<CommunityServiceCards> communityServiceCards) {
+        this.communityServiceCards = communityServiceCards;
     }
 
+    public Token getInTurn() {
+        return inTurn;
+    }
+
+    public void setInTurn(Token inTurn) {
+        this.inTurn = inTurn;
+    }
+
+    public Jail getJail() {
+        return jail;
+    }
+
+    public void setJail(Jail jail) {
+        this.jail = jail;
+    }
+
+    public HashTable<String, Properties> getPropertiesHash() {
+        return propertiesHash;
+    }
+
+    public void setPropertiesHash(HashTable<String, Properties> propertiesHash) {
+        this.propertiesHash = propertiesHash;
+    }
 }

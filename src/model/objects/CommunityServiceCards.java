@@ -3,7 +3,6 @@ package model.objects;
 import java.io.IOException;
 
 import javafx.application.Platform;
-import ui.ApoTwoPolyGUI;
 
 public class CommunityServiceCards extends WildCards {
 
@@ -12,11 +11,9 @@ public class CommunityServiceCards extends WildCards {
     private int idAction;
 
     public CommunityServiceCards(String card, int typeAction) {
+        super();
         this.card = card;
         this.idAction = typeAction;
-    }
-
-    public CommunityServiceCards() {
     }
 
     public String getCard() {
@@ -35,11 +32,18 @@ public class CommunityServiceCards extends WildCards {
         this.idAction = idAction;
     }
 
+    public CommunityServiceCards roll(Board board) throws IOException {
+        CommunityServiceCards aux = board.getCommunityServiceCards().dequeue();
+        aux.action(board);
+        board.getCommunityServiceCards().enqueue(aux);
+        return aux;
+    }
+
     @Override
-    public Board action(Board board, ApoTwoPolyGUI gui) throws IOException {
+    public void action(Board board) throws IOException {
 
         int aux = 0;
-
+        /*
         switch (idAction) {
             case 1:
                 board.getPlayers().get(board.getTurn()).setEspecialCards(true);
@@ -141,36 +145,11 @@ public class CommunityServiceCards extends WildCards {
 
         }
 
-        return board;
-
+        */
     }
 
     @Override
-    public Board setMoney(Board board, int aux, ApoTwoPolyGUI gui) throws IOException {
-        if (aux < 0 && board.getPlayers().get(board.getTurn()).getMoney() < (aux) * (-1)) {
-
-            Platform.runLater(new Thread() {
-                @Override
-                public void run() {
-
-                    try {
-                        gui.bankruptcy((aux) * (-1), null);
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-
-                    }
-                }
-
-            });
-
-            return gui.getBoard();
-
-        } else {
-            board.getPlayers().get(board.getTurn()).setMoney(board.getPlayers().get(board.getTurn()).getMoney() + aux);
-            return board;
-
-        }
+    public void setMoney(Board board, int aux) throws IOException {
 
     }
 

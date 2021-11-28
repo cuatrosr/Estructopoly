@@ -1,14 +1,14 @@
 package model.objects;
 
 import java.io.Serializable;
-import model.data_structure.MeLinkedLists;
+
+import model.data_structures.hashTable.DefaultHashTable;
+import model.interface_class.HashTable;
 
 public abstract class Player implements Serializable {
 
     private static final long serialVersionUID = 5780182730822343543L;
-    private MeLinkedLists<Properties> properties;
-    private MeLinkedLists<Train> trains;
-    private MeLinkedLists<PublicServices> publicServices;
+    private HashTable<String, Properties> propertiesHash;
     private boolean especialCards;
     private int money;
     private int position;
@@ -20,9 +20,7 @@ public abstract class Player implements Serializable {
     private String namePlayer;
 
     protected Player(int money, String nameToken) {
-        this.properties = new MeLinkedLists<>();
-        this.trains = new MeLinkedLists<>();
-        this.publicServices = new MeLinkedLists<>();
+        this.propertiesHash = new DefaultHashTable<>(28);
         this.especialCards = false;
         this.money = money;
         this.position = 0;
@@ -33,7 +31,7 @@ public abstract class Player implements Serializable {
     }
 
     protected Player(int money, String nameToken, int numProperties, String namePlayer) {
-
+        this.propertiesHash = new DefaultHashTable<>(28);
         this.money = money;
         this.nameToken = nameToken;
         this.namePlayer = namePlayer;
@@ -44,28 +42,12 @@ public abstract class Player implements Serializable {
     protected Player() {
     }
 
-    public MeLinkedLists<Properties> getProperties() {
-        return this.properties;
+    public HashTable<String, Properties> getPropertiesHash() {
+        return propertiesHash;
     }
 
-    public void setProperties(MeLinkedLists<Properties> properties) {
-        this.properties = properties;
-    }
-
-    public MeLinkedLists<Train> getTrains() {
-        return this.trains;
-    }
-
-    public void setTrains(MeLinkedLists<Train> trains) {
-        this.trains = trains;
-    }
-
-    public MeLinkedLists<PublicServices> getPublicServices() {
-        return this.publicServices;
-    }
-
-    public void setPublicServices(MeLinkedLists<PublicServices> publicServices) {
-        this.publicServices = publicServices;
+    public void setPropertiesHash(HashTable<String, Properties> propertiesHash) {
+        this.propertiesHash = propertiesHash;
     }
 
     public boolean isEspecialCards() {

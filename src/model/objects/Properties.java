@@ -4,7 +4,6 @@ public class Properties extends Square {
 
     private static final long serialVersionUID = -1150550527535536653L;
     private String property;
-    private String imageView;
     private Player owner;
     private int costProperty;
     private int rentalProperty;
@@ -20,8 +19,8 @@ public class Properties extends Square {
     private int id;
     private int idHotel;
 
-    public Properties(String property, int costProperty, int rentalProperty, int[] rentalHousesAndHotel, int costHousesAndHotel, int mortgage, int numSquare, int typeSquare, String imageView, int family, int amountFamily, int hierarchy, String name, int idHotel) {
-        super(numSquare, typeSquare);
+    public Properties(String property, int costProperty, int rentalProperty, int[] rentalHousesAndHotel, int costHousesAndHotel, int mortgage, int family, int amountFamily, int hierarchy, String name, int idHotel) {
+        super();
         this.property = property;
         this.costProperty = costProperty;
         this.rentalProperty = rentalProperty;
@@ -31,7 +30,6 @@ public class Properties extends Square {
         this.costHousesAndHotel = costHousesAndHotel;
         this.mortgage = mortgage;
         this.owner = null;
-        this.imageView = imageView;
         this.family = family;
         this.amountFamily = amountFamily;
         this.hierarchy = hierarchy;
@@ -40,30 +38,25 @@ public class Properties extends Square {
         this.idHotel = idHotel;
     }
 
-    public Properties(String property, int costProperty, int rentalProperty, int numSquare, int typeSquare, int mortgage, String imageView, String name) {
-        super(numSquare, typeSquare);
+    public Properties(String property, int costProperty, int rentalProperty, int typeSquare, int mortgage, String name) {
+        super();
         this.property = property;
         this.costProperty = costProperty;
         this.rentalProperty = rentalProperty;
         this.mortgage = mortgage;
-        this.imageView = imageView;
         this.name = name;
         this.id = 2;
 
     }
 
-    public Properties(String property, int costProperty, int numSquare, int typeSquare, int mortgage, String imageView, String name) {
-        super(numSquare, typeSquare);
+    public Properties(String property, int costProperty, int typeSquare, int mortgage, String name) {
+        super();
         this.property = property;
         this.costProperty = costProperty;
         this.mortgage = mortgage;
-        this.imageView = imageView;
         this.name = name;
         this.id = 3;
 
-    }
-
-    public Properties() {
     }
 
     public String getProperty() {
@@ -72,14 +65,6 @@ public class Properties extends Square {
 
     public void setProperty(String property) {
         this.property = property;
-    }
-
-    public String getImageView() {
-        return this.imageView;
-    }
-
-    public void setImageView(String imageView) {
-        this.imageView = imageView;
     }
 
     public Player getOwner() {
@@ -198,8 +183,12 @@ public class Properties extends Square {
         this.idHotel = idHotel;
     }
 
-    public Properties propeties(Board board, int index) {
-        return board.getPropertiesSquare().get(index);
+    public Properties propeties(Board board, String index) {
+        return (Properties) board.getPropertiesHash().search(index);
+    }
+
+    public void action() {
+
     }
 
 }
