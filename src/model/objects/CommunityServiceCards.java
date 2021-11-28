@@ -10,8 +10,8 @@ public class CommunityServiceCards extends WildCards {
     private String card;
     private int idAction;
 
-    public CommunityServiceCards(String card, int typeAction) {
-        super();
+    public CommunityServiceCards(int numSquare, String card, int typeAction) {
+        super(numSquare);
         this.card = card;
         this.idAction = typeAction;
     }

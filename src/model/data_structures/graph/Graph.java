@@ -26,7 +26,7 @@ public class Graph<T> implements model.interface_class.GraphI<T> {
 
     public void addEdge(T s, T d, int w) {
         Edge<T> e = new Edge(s, d, w);
-        adj[Integer.parseInt(String.valueOf(s))].add(e);
+        adj[((Square) s).getNumSquare()].add(e);
     }
 
     @Override
@@ -157,38 +157,39 @@ public class Graph<T> implements model.interface_class.GraphI<T> {
     }
 
     @Override
-    public String dijkstra(T s) {
+    public String dijkstra(T sa) {
         int[] dist = new int[v];
         int[] prev = new int[v];
-        PriorityQueue<Distance<T>> q = new PriorityQueue(v, new Distance<T>());
-        dist[((Square) s).getNumSquare()] = 0;
+        Square s = (Square) sa;
+        PriorityQueue<Distance<Integer>> q = new PriorityQueue(v, new Distance<Integer>());
+        dist[s.getNumSquare()] = 0;
         for (int i = 0; i < v; i++) {
-            if (i != ((Square) s).getNumSquare()) {
+            if (i != s.getNumSquare()) {
                 dist[i] = Integer.MAX_VALUE;
             }
             prev[i] = -1;
             q.add(new Distance(i, dist[i]));
         }
         while (!q.isEmpty()) {
-            int u = ((Square) q.remove().getI()).getNumSquare();
+            int u = q.remove().getI();
             for (int i = 0; i < getAdj()[u].size(); i++) {
                 int alt = dist[u] + getAdj()[u].get(i).getW();
                 if (alt < dist[((Square) getAdj()[u].get(i).getD()).getNumSquare()]) {
                     Object[] distAr = q.toArray();
-                    Distance<T>[] distArr = new Distance[q.size()];
+                    Distance<Integer>[] distArr = new Distance[q.size()];
                     for (int j = 0; j < distArr.length; j++) {
-                        distArr[j] = (Distance<T>) distAr[j];
+                        distArr[j] = (Distance<Integer>) distAr[j];
                     }
-                    Distance<T> temp = new Distance(-1, -1);
+                    Distance<Integer> temp = new Distance(-1, -1);
                     for (int j = 0; j < distArr.length; j++) {
-                        if (distArr[j].getI() == getAdj()[u].get(i).getD()) {
+                        if (distArr[j].getI() == ((Square) getAdj()[u].get(i).getD()).getNumSquare()) {
                             temp = distArr[j];
                         }
                     }
                     q.remove(temp);
                     dist[((Square) getAdj()[u].get(i).getD()).getNumSquare()] = alt;
                     prev[((Square) getAdj()[u].get(i).getD()).getNumSquare()] = u;
-                    q.add(new Distance(getAdj()[u].get(i).getD(), alt));
+                    q.add(new Distance(((Square) getAdj()[u].get(i).getD()).getNumSquare(), alt));
                 }
             }
         }

@@ -6,8 +6,8 @@ public class Taxes extends CommunSquare implements Serializable {
 
     private int amount;
 
-    public Taxes(int amount) {
-        super();
+    public Taxes(int numSquare, int amount) {
+        super(numSquare);
         this.amount = amount;
     }
 

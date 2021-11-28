@@ -6,8 +6,8 @@ public abstract class WildCards extends Square {
 
     private static final long serialVersionUID = 192875853834156303L;
 
-    protected WildCards() {
-        super();
+    protected WildCards(int numSquare) {
+        super(numSquare);
     }
 
     abstract void action(Board board) throws IOException;

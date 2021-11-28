@@ -15,7 +15,7 @@ public class Load {
 
     public void escribir() throws IOException, ClassNotFoundException {
 
-        Jail jail = new Jail();
+        Jail jail = new Jail(0);
 
         oos = new ObjectOutputStream(new FileOutputStream("data\\Data.txt"));
         oos.writeObject(board);

@@ -6,8 +6,8 @@ import java.util.LinkedList;
 public class Jail extends CommunSquare implements Serializable {
     private LinkedList<Player> list;
 
-    public Jail() {
-        super();
+    public Jail(int numSquare) {
+        super(numSquare);
         this.list = new LinkedList<>();
     }
 

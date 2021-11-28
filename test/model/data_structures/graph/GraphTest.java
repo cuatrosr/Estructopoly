@@ -1,91 +1,83 @@
 package model.data_structures.graph;
 
+import model.objects.CommunSquare;
+import model.objects.Square;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class GraphTest {
 
-    public Graph<Integer> g;
+    public Graph<Square> g;
 
     void setup1() {
         g = new Graph<>(5);
-        g.addEdge(0, 1, 15);
-        g.addEdge(1, 0, 15);
-        g.addEdge(0, 2, 11);
-        g.addEdge(2, 0, 11);
-        g.addEdge(1, 2, 12);
-        g.addEdge(2, 1, 12);
-        g.addEdge(1, 3, 14);
-        g.addEdge(3, 1, 14);
-        g.addEdge(1, 4, 1);
-        g.addEdge(4, 1, 1);
-        g.addEdge(2, 3, 3);
-        g.addEdge(3, 2, 3);
-        g.addEdge(3, 4, 2);
-        g.addEdge(4, 3, 2);
+        g.addEdge(new CommunSquare(0), new CommunSquare(1), 15);
+        g.addEdge(new CommunSquare(1), new CommunSquare(0), 15);
+        g.addEdge(new CommunSquare(0), new CommunSquare(2), 11);
+        g.addEdge(new CommunSquare(2), new CommunSquare(0), 11);
+        g.addEdge(new CommunSquare(1), new CommunSquare(2), 12);
+        g.addEdge(new CommunSquare(2), new CommunSquare(1), 12);
+        g.addEdge(new CommunSquare(1), new CommunSquare(3), 14);
+        g.addEdge(new CommunSquare(3), new CommunSquare(1), 14);
+        g.addEdge(new CommunSquare(1), new CommunSquare(4), 1);
+        g.addEdge(new CommunSquare(4), new CommunSquare(1), 1);
+        g.addEdge(new CommunSquare(2), new CommunSquare(3), 3);
+        g.addEdge(new CommunSquare(3), new CommunSquare(2), 3);
+        g.addEdge(new CommunSquare(3), new CommunSquare(4), 2);
+        g.addEdge(new CommunSquare(4), new CommunSquare(3), 2);
     }
 
     void setup2() {
         g = new Graph<>(5);
-        g.addEdge(0, 1, 15);
-        g.addEdge(1, 0, 15);
-        g.addEdge(0, 2, 10);
-        g.addEdge(2, 0, 10);
-        g.addEdge(2, 3, 6);
-        g.addEdge(3, 2, 6);
-        g.addEdge(2, 1, 7);
-        g.addEdge(1, 2, 7);
-        g.addEdge(3, 1, 11);
-        g.addEdge(1, 3, 11);
-        g.addEdge(3, 4, 13);
-        g.addEdge(4, 3, 13);
-        g.addEdge(1, 4, 4);
-        g.addEdge(4, 1, 4);
+        g.addEdge(new CommunSquare(0), new CommunSquare(1), 15);
+        g.addEdge(new CommunSquare(1), new CommunSquare(0), 15);
+        g.addEdge(new CommunSquare(0), new CommunSquare(2), 10);
+        g.addEdge(new CommunSquare(2), new CommunSquare(0), 10);
+        g.addEdge(new CommunSquare(2), new CommunSquare(3), 6);
+        g.addEdge(new CommunSquare(3), new CommunSquare(2), 6);
+        g.addEdge(new CommunSquare(2), new CommunSquare(1), 7);
+        g.addEdge(new CommunSquare(1), new CommunSquare(2), 7);
+        g.addEdge(new CommunSquare(3), new CommunSquare(1), 11);
+        g.addEdge(new CommunSquare(1), new CommunSquare(3), 11);
+        g.addEdge(new CommunSquare(3), new CommunSquare(4), 13);
+        g.addEdge(new CommunSquare(4), new CommunSquare(3), 13);
+        g.addEdge(new CommunSquare(1), new CommunSquare(4), 4);
+        g.addEdge(new CommunSquare(4), new CommunSquare(1), 4);
     }
 
     void setup3() {
         g = new Graph<>(5);
-        g.addEdge(0, 1, 5);
-        g.addEdge(1, 0, 5);
-        g.addEdge(0, 2, 5);
-        g.addEdge(2, 0, 5);
-        g.addEdge(0, 3, 5);
-        g.addEdge(3, 0, 5);
-        g.addEdge(0, 4, 5);
-        g.addEdge(4, 0, 5);
-        g.addEdge(2, 3, 8);
-        g.addEdge(3, 2, 8);
-        g.addEdge(3, 4, 8);
-        g.addEdge(4, 3, 8);
-        g.addEdge(1, 2, 2);
-        g.addEdge(2, 1, 2);
+        g.addEdge(new CommunSquare(0), new CommunSquare(1), 5);
+        g.addEdge(new CommunSquare(1), new CommunSquare(0), 5);
+        g.addEdge(new CommunSquare(0), new CommunSquare(2), 5);
+        g.addEdge(new CommunSquare(2), new CommunSquare(0), 5);
+        g.addEdge(new CommunSquare(0), new CommunSquare(3), 5);
+        g.addEdge(new CommunSquare(3), new CommunSquare(0), 5);
+        g.addEdge(new CommunSquare(0), new CommunSquare(4), 5);
+        g.addEdge(new CommunSquare(4), new CommunSquare(0), 5);
+        g.addEdge(new CommunSquare(2), new CommunSquare(3), 8);
+        g.addEdge(new CommunSquare(3), new CommunSquare(2), 8);
+        g.addEdge(new CommunSquare(3), new CommunSquare(4), 8);
+        g.addEdge(new CommunSquare(4), new CommunSquare(3), 8);
+        g.addEdge(new CommunSquare(1), new CommunSquare(2), 2);
+        g.addEdge(new CommunSquare(2), new CommunSquare(1), 2);
     }
 
     void setup4() {
         g = new Graph<>(4);
-        g.addEdge(0, 1, 0);
-        g.addEdge(0, 2, 0);
-        g.addEdge(1, 2, 0);
-        g.addEdge(2, 0, 0);
-        g.addEdge(2, 3, 0);
-        g.addEdge(3, 3, 0);
-    }
-
-    void setup5() {
-        g = new Graph(4);
-        g.addEdge(0, 1, 0);
-        g.addEdge(0, 2, 0);
-        g.addEdge(1, 2, 0);
-        g.addEdge(2, 0, 0);
-        g.addEdge(2, 3, 0);
-        g.addEdge(3, 3, 0);
+        g.addEdge(new CommunSquare(0), new CommunSquare(1), 0);
+        g.addEdge(new CommunSquare(0), new CommunSquare(2), 0);
+        g.addEdge(new CommunSquare(1), new CommunSquare(2), 0);
+        g.addEdge(new CommunSquare(2), new CommunSquare(0), 0);
+        g.addEdge(new CommunSquare(2), new CommunSquare(3), 0);
+        g.addEdge(new CommunSquare(3), new CommunSquare(3), 0);
     }
 
     @Test
     public void dijkstra() {
         setup1();
         String expected = "[0, 15, 11, 14, 16]";
-        String actual = g.dijkstra(0);
+        String actual = g.dijkstra(new CommunSquare(0));
         assertEquals(expected, actual);
     }
 
@@ -105,7 +97,7 @@ public class GraphTest {
     public void prim() {
         setup2();
         int expected = 27;
-        int actual = g.prim(0);
+        int actual = g.prim(new CommunSquare(0));
         assertEquals(expected, actual);
     }
 
@@ -121,15 +113,15 @@ public class GraphTest {
     public void BFS() {
         setup4();
         String expected = "2 0 3 1 ";
-        String actual = g.BFS(2);
+        String actual = g.BFS(new CommunSquare(2));
         assertEquals(expected, actual);
     }
-    
+
     @Test
     public void DFS() {
-        setup5();
+        setup4();
         String expected = "2 0 1 3 ";
-        String actual = g.DFS(2);
+        String actual = g.DFS(new CommunSquare(2));
         assertEquals(expected, actual);
     }
 }

@@ -19,8 +19,8 @@ public class Properties extends Square {
     private int id;
     private int idHotel;
 
-    public Properties(String property, int costProperty, int rentalProperty, int[] rentalHousesAndHotel, int costHousesAndHotel, int mortgage, int family, int amountFamily, int hierarchy, String name, int idHotel) {
-        super();
+    public Properties(int numSquare, String property, int costProperty, int rentalProperty, int[] rentalHousesAndHotel, int costHousesAndHotel, int mortgage, int family, int amountFamily, int hierarchy, String name, int idHotel) {
+        super(numSquare);
         this.property = property;
         this.costProperty = costProperty;
         this.rentalProperty = rentalProperty;
@@ -38,8 +38,8 @@ public class Properties extends Square {
         this.idHotel = idHotel;
     }
 
-    public Properties(String property, int costProperty, int rentalProperty, int typeSquare, int mortgage, String name) {
-        super();
+    public Properties(int numSquare, String property, int costProperty, int rentalProperty, int typeSquare, int mortgage, String name) {
+        super(numSquare);
         this.property = property;
         this.costProperty = costProperty;
         this.rentalProperty = rentalProperty;
@@ -49,8 +49,8 @@ public class Properties extends Square {
 
     }
 
-    public Properties(String property, int costProperty, int typeSquare, int mortgage, String name) {
-        super();
+    public Properties(int numSquare, String property, int costProperty, int typeSquare, int mortgage, String name) {
+        super(numSquare);
         this.property = property;
         this.costProperty = costProperty;
         this.mortgage = mortgage;

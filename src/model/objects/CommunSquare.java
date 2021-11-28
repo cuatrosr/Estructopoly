@@ -7,14 +7,13 @@ public class CommunSquare extends Square implements Serializable {
     private static final long serialVersionUID = -5814743446433770091L;
     private final int MONEY = 200;
 
-    public CommunSquare() {
-        super();
-
+    public CommunSquare(int numSquare) {
+        super(numSquare);
     }
 
     public boolean action(int index, Board board) {
 
-        switch (index){
+        switch (index) {
             case 0:
                 board.getInTurn().setMoney(board.getInTurn().getMoney() + MONEY);
                 return true;
@@ -23,7 +22,6 @@ public class CommunSquare extends Square implements Serializable {
                 return false;
 
         }
-
 
     }
 
