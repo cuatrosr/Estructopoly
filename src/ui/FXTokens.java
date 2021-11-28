@@ -12,6 +12,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.objects.Board;
+
 import java.io.IOException;
 
 public class FXTokens {
@@ -50,10 +52,18 @@ public class FXTokens {
 
     private FXBoard fxBoard;
 
+    private Board board;
+
     public FXTokens(FXMainController mainController) {
+        board = new Board();
         this.mainController = mainController;
         fxBoard = new FXBoard(mainController);
     }
+
+    public void setBoard(Board board) {
+        this.board = board;
+    }
+
 
     @FXML
     void back(ActionEvent event) {
@@ -83,6 +93,7 @@ public class FXTokens {
             }
         }
         fxBoard.setPlayers(players);
+        fxBoard.setBoard(board);
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/board.fxml"));
             fxmlLoader.setController(fxBoard);

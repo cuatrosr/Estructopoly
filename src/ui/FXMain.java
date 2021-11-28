@@ -8,14 +8,20 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
+import model.objects.Board;
+
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.Objects;
 
 public class FXMain extends Application {
 
     FXMainController mainController;
 
-    public FXMain() {
+    private ObjectInputStream ois= new ObjectInputStream(new FileInputStream("data\\Data.txt"));
+
+    public FXMain() throws IOException {
         mainController = new FXMainController();
     }
 
@@ -24,7 +30,10 @@ public class FXMain extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage) throws IOException, ClassNotFoundException {
+
+        mainController.setBoard(initBoard());
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/main.fxml"));
         fxmlLoader.setController(mainController);
         Parent root = fxmlLoader.load();
@@ -52,5 +61,16 @@ public class FXMain extends Application {
         System.exit(0);
         mainController.getFXBoard().getTimer().cancel();
         System.out.println("Game stopped.");
+    }
+
+    @Override
+    public void init() throws ClassNotFoundException, IOException{
+        //Load load = new Load();
+        //load.escribir();
+
+    }
+
+    public Board initBoard() throws IOException, ClassNotFoundException {
+       return (Board) ois.readObject();
     }
 }

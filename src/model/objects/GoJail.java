@@ -2,9 +2,9 @@ package model.objects;
 
 import java.io.Serializable;
 
-public class goJail extends CommunSquare implements Serializable {
+public class GoJail extends CommunSquare implements Serializable {
 
-    public goJail(int numSquare) {
+    public GoJail(int numSquare) {
         super(numSquare);
     }
 

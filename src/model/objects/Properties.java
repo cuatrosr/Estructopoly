@@ -14,12 +14,10 @@ public class Properties extends Square {
     private int mortgage;
     private int family;
     private int amountFamily;
-    private int hierarchy;
     private String name;
     private int id;
-    private int idHotel;
 
-    public Properties(int numSquare, String property, int costProperty, int rentalProperty, int[] rentalHousesAndHotel, int costHousesAndHotel, int mortgage, int family, int amountFamily, int hierarchy, String name, int idHotel) {
+    public Properties(String property, int costProperty, int rentalProperty, int[] rentalHousesAndHotel, int costHousesAndHotel, int mortgage, int numSquare, int family, int amountFamily, String name) {
         super(numSquare);
         this.property = property;
         this.costProperty = costProperty;
@@ -32,13 +30,11 @@ public class Properties extends Square {
         this.owner = null;
         this.family = family;
         this.amountFamily = amountFamily;
-        this.hierarchy = hierarchy;
         this.name = name;
         this.id = 1;
-        this.idHotel = idHotel;
     }
 
-    public Properties(int numSquare, String property, int costProperty, int rentalProperty, int typeSquare, int mortgage, String name) {
+    public Properties(int numSquare, String property, int costProperty, int rentalProperty, int mortgage, String name) {
         super(numSquare);
         this.property = property;
         this.costProperty = costProperty;
@@ -49,7 +45,7 @@ public class Properties extends Square {
 
     }
 
-    public Properties(int numSquare, String property, int costProperty, int typeSquare, int mortgage, String name) {
+    public Properties(int numSquare, String property, int costProperty, int mortgage, String name) {
         super(numSquare);
         this.property = property;
         this.costProperty = costProperty;
@@ -151,14 +147,6 @@ public class Properties extends Square {
         this.amountFamily = amountFamily;
     }
 
-    public int getHierarchy() {
-        return this.hierarchy;
-    }
-
-    public void setHierarchy(int hierarchy) {
-        this.hierarchy = hierarchy;
-    }
-
     public String getName() {
         return this.name;
     }
@@ -173,14 +161,6 @@ public class Properties extends Square {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getIdHotel() {
-        return this.idHotel;
-    }
-
-    public void setIdHotel(int idHotel) {
-        this.idHotel = idHotel;
     }
 
     public Properties propeties(Board board, String index) {

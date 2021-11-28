@@ -10,6 +10,8 @@ public abstract class WildCards extends Square {
         super(numSquare);
     }
 
+    protected WildCards() {super();}
+
     abstract void action(Board board) throws IOException;
 
     abstract void setMoney(Board board, int aux) throws IOException;

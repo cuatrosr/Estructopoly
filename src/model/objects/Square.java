@@ -14,6 +14,9 @@ public abstract class Square implements Serializable {
         this.players = new LinkedList<>();
     }
 
+    protected Square() {this.players = new LinkedList<>();}
+
+
     public int getNumSquare() {
         return this.numSquare;
     }

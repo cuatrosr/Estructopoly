@@ -30,6 +30,8 @@ public class Board implements Serializable {
         this.jail = jail;
     }
 
+    public Board() {}
+
     public Graph<Square> getGameBoard() {
         return gameBoard;
     }

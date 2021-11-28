@@ -20,6 +20,8 @@ import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.objects.Board;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
@@ -29,6 +31,7 @@ public class FXMainController implements Initializable, Listeners {
 
     @FXML
     private BorderPane mainPane = new BorderPane();
+    private Board board;
 
     @FXML
     private JFXToggleButton fullscreenTGB = new JFXToggleButton();
@@ -42,10 +45,15 @@ public class FXMainController implements Initializable, Listeners {
     String currentScene;
 
     public FXMainController() {
+        board = new Board();
         fxTokens = new FXTokens(this);
         glowApplied = false;
         screenBounds = Screen.getPrimary().getVisualBounds();
         currentScene = "Menu";
+    }
+
+    public void setBoard(Board board) {
+        this.board = board;
     }
 
     @Override
@@ -78,6 +86,7 @@ public class FXMainController implements Initializable, Listeners {
     void play(ActionEvent event) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/select-players.fxml"));
+            fxTokens.setBoard(board);
             fxmlLoader.setController(fxTokens);
             Parent root = fxmlLoader.load();
             mainPane.setCenter(root);

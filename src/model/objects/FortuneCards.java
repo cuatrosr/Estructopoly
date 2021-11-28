@@ -10,8 +10,11 @@ public class FortuneCards extends WildCards {
     private String card;
     private int idAction;
 
-    public FortuneCards(int numSquare, String card, int typeAction) {
+    public FortuneCards(int numSquare) {
         super(numSquare);
+    }
+    public FortuneCards(String card, int typeAction) {
+        super();
         this.card = card;
         this.idAction = typeAction;
     }

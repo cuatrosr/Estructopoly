@@ -24,6 +24,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import model.objects.Board;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -86,10 +88,17 @@ public class FXBoard implements Initializable {
 
     private ObservableList<String> players;
 
+    private Board board;
+
     public FXBoard(FXMainController mainController) {
         this.mainController = mainController;
+        board = new Board();
         fxSettings = new FXSettings(mainController, this);
         fxAll = new FXAllProperties(mainController, this);
+    }
+
+    public void setBoard(Board board) {
+        this.board = board;
     }
 
     /*METHODS*/
