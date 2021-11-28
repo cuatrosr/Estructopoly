@@ -24,6 +24,7 @@ public class Graph<T> implements model.interface_class.GraphI<T> {
         return adj;
     }
 
+    @Override
     public void addEdge(T s, T d, int w) {
         Edge<T> e = new Edge(s, d, w);
         adj[((Square) s).getNumSquare()].add(e);
