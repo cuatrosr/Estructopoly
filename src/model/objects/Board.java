@@ -10,12 +10,12 @@ import java.io.Serializable;
 
 public class Board implements Serializable {
 
-    private Graph<Square> gameBoard;
+    private Graph<Square> gameBoard; //YA
     private Queue<Token> players;
-    private HashTable<String, Token> playersHash;
-    private HashTable<String, Properties> propertiesHash;
-    private Queue<FortuneCards> fortuneCards;
-    private Queue<CommunityServiceCards> communityServiceCards;
+    private HashTable<String, Token> playersHash; 
+    private HashTable<String, Properties> propertiesHash; //YA
+    private Queue<FortuneCards> fortuneCards; //YA
+    private Queue<CommunityServiceCards> communityServiceCards; //YA
     private Token inTurn;
     private Jail jail;
 
