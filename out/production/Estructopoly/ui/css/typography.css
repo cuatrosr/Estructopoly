@@ -1,0 +1,16 @@
+@font-face {
+    font-family: "Kabel Bd";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/KabelBdNormal.ttf");
+}
+
+@font-face {
+    font-family: "KabelMedium";
+    src: url(../fonts/KabelMedium.ttf);
+}
+
+@font-face {
+    font-family: "ITC Kabel Std Book";
+    src: url(../fonts/ITCKabelStd-Book.otf);
+}

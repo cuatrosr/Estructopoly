@@ -1,0 +1,123 @@
+@import url("variables.css");
+@import url("typography.css");
+
+.separator {
+    -fx-opacity: 0;
+}
+
+.jfx-button {
+    -fx-font-size: 19px;
+    -fx-pref-width: 210px;
+    -fx-pref-height: 60px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-text-fill: -SNOW-WHITE;
+    -fx-font-family: "Kabel Bd";
+    -fx-background-color: -DEEP-RED;
+    -fx-wrap-text: true;
+}
+
+.jfx-button:hover {
+    -fx-background-color: lightcoral;
+}
+
+.jfx-toggle-button {
+    -jfx-toggle-color: -DEEP-RED;
+    -jfx-toggle-line-color: lightcoral;
+    -fx-text-fill: white;
+    -fx-font-family: "Kabel Bd";
+    -fx-font-size: 14px;
+}
+
+/*LIST VIEW*/
+
+.jfx-list-view {
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
+    -fx-background-color: transparent;
+    -fx-border-color: -DARK-SECONDARY;
+    -fx-effect: dropshadow(gaussian, -TEXT-2, 12, 0.2, 0, 0);
+    -jfx-cell-horizontal-margin: 10;
+    -fx-padding: 10;
+    -fx-font-size: 18px
+}
+
+.list-cell .jfx-rippler {
+    -jfx-rippler-fill: -DARK-PRIMARY;
+    -jfx-rippler-radius: 100;
+}
+
+.list-cell > .label, .list-cell {
+    -fx-background-color: -PRIMARY-COLOR;
+    -fx-text-fill: -TEXT-2;
+    -fx-background-radius: 5;
+    -fx-border-color: -DARK-PRIMARY;
+    -fx-border-size: 5;
+    -fx-border-radius: 5;
+}
+
+.jfx-list-view .list-cell:hover > .label, .jfx-list-view .list-cell:hover,
+.jfx-list-view .list-cell:filled:selected > .label, .jfx-list-view .list-cell:filled:selected {
+    -fx-background-color: -LIGHT-COLOR;
+    -fx-text-fill: -DARK-SECONDARY;
+    -fx-background-radius: 5;
+}
+
+.jfx-list-view .virtual-flow .scroll-bar:vertical .track-background,  .jfx-list-view .virtual-flow .scroll-bar:vertical .track,
+.jfx-list-view .virtual-flow .scroll-bar:horizontal .track-background,  .jfx-list-view .virtual-flow .scroll-bar:horizontal .track {
+    -fx-background-color: -LIGHT-COLOR;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: -DARK-PRIMARY;
+}
+
+.jfx-list-view .virtual-flow .scroll-bar:vertical .thumb,  .jfx-list-view .virtual-flow .scroll-bar:vertical .increment-button,
+.jfx-list-view .virtual-flow .scroll-bar:vertical .decrement-button, .jfx-list-view .virtual-flow .scroll-bar:horizontal .thumb,
+.jfx-list-view .virtual-flow .scroll-bar:horizontal .increment-button, .jfx-list-view .virtual-flow .scroll-bar:horizontal .decrement-button {
+    -fx-background-color: -SECONDARY-COLOR;
+    -fx-background-radius: 10;
+}
+
+.subtitles {
+    -fx-font-family: "Kabel Bd";
+    -fx-font-size: 18px;
+    -fx-text-fill: black;
+}
+
+.custom-close {
+    -fx-font-size: 15px;
+    -fx-pref-width: 30px;
+    -fx-pref-height: 30px;
+    -fx-background-radius: 50px;
+    -fx-border-radius: 54px;
+    -fx-border-width: 2px;
+    -fx-background-color: lightcoral;
+    -fx-text-fill: black;
+}
+
+.settings-cont {
+    -fx-background-color: rgba(0, 0, 0, 0.37);
+    -fx-background-radius: 25;
+    -fx-effect: dropshadow(gaussian, -TEXT-2, 12, 0.2, 0, 0);
+}
+
+.settings-window {
+    -fx-background-color: transparent;
+    -fx-background-radius: 25px;
+}
+
+.titles {
+    -fx-font-family: "Kabel Bd";
+    -fx-font-size: 52px;
+    -fx-text-fill: white;
+}
+
+.jfx-button-settings {
+    -fx-pref-width: 260px;
+}
+
+.timer-stop {
+    -fx-font-family: "Kabel Bd";
+    -fx-font-size: 18px;
+    -fx-text-fill: linear-gradient( lightcoral 50%, white 100%);
+}

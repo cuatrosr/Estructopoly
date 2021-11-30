@@ -142,6 +142,7 @@ public class FXMainController implements Initializable, Listeners {
             if (currentScene.equals("Menu")) {
                 play(null);
             } else if (currentScene.equals("Tokens")) {
+                currentScene = "Game";
                 fxTokens.loadBoard(null);
             }
         } else if (typed.equals(KeyCode.M)) {
@@ -162,6 +163,22 @@ public class FXMainController implements Initializable, Listeners {
             boolean select = fullscreenTGB.isSelected();
             fullscreenTGB.setSelected(!select);
             toggleFullscreen(null);
+        }
+
+        //Game controls => T D P N O S
+
+        else if (typed.equals(KeyCode.T)) {
+            getFXBoard().allProperties(null);
+        } else if (typed.equals(KeyCode.D)) {
+            getFXBoard().rollDice(null);
+        } else if (typed.equals(KeyCode.P)) {
+            getFXBoard().properties(null);
+        } else if (typed.equals(KeyCode.N)) {
+            getFXBoard().gamble(null);
+        } else if (typed.equals(KeyCode.O)) {
+            getFXBoard().patrimony(null);
+        } else if (typed.equals(KeyCode.S)) {
+            getFXBoard().next(null);
         }
     }
 

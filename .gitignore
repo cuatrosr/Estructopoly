@@ -6,3 +6,5 @@ bin
 /build.xml
 /build/
 /dist/
+Estructopoly.iml
+manifest.mf

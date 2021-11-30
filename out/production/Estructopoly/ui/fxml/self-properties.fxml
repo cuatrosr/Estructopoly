@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <ListView prefHeight="200.0" prefWidth="273.0">
+                     <VBox.margin>
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                     </VBox.margin>
+                  </ListView>
+               </children></VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <JFXButton text="Hipotecar (H)" />
+                  <JFXButton text="Vender (S)" />
+                  <JFXButton text="Pagar (P)" />
+                  <JFXButton text="Construir (C)" />
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
+               </children></VBox>
+         </children>
+      </HBox>
+   </center>
+   <stylesheets>
+      <URL value="@../css/global.css" />
+      <URL value="@../css/self.css" />
+   </stylesheets>
+</BorderPane>

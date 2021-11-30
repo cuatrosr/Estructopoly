@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="664.0" styleClass="background" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <JFXListView prefHeight="254.0" prefWidth="243.0">
+                     <VBox.margin>
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                     </VBox.margin>
+                  </JFXListView>
+                  <Label fx:id="buildingsLBL" prefHeight="27.0" prefWidth="159.0" styleClass="houses-lbl" text="C Casas (Hotel)" />
+                  <Label fx:id="mortgagePayLBL" styleClass="hotel-lbl" text="Pago de Hipoteca: $" />
+                  <Label fx:id="housePriceLBL" styleClass="houses-lbl" text="Precio por Casa" />
+                  <Label fx:id="hotelPriceLBL" styleClass="hotel-lbl" text="Precio por Hotel" />
+               </children></VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label text="Balance actual: $" />
+                  <JFXButton onAction="#doMortgage" text="Hipotecar (H)" />
+                  <JFXButton onAction="#doSell" text="Vender (S)" />
+                  <JFXButton onAction="#doPay" text="Pagar (P)" />
+                  <JFXButton onAction="#doBuild" text="Construir (C)" />
+               </children></VBox>
+         </children>
+      </HBox>
+   </center>
+   <stylesheets>
+      <URL value="@../css/global.css" />
+      <URL value="@../css/self.css" />
+   </stylesheets>
+</BorderPane>

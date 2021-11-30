@@ -11,6 +11,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.control.SelectionModel;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -80,6 +82,8 @@ public class FXBoard implements Initializable {
 
     FXAllProperties fxAll;
 
+    FXSelfProperties fxSelf;
+
     int turn = 0;
 
     private Timer timer = new Timer();
@@ -95,6 +99,7 @@ public class FXBoard implements Initializable {
         board = new Board();
         fxSettings = new FXSettings(mainController, this);
         fxAll = new FXAllProperties(mainController, this);
+        fxSelf = new FXSelfProperties(mainController, this);
     }
 
     public void setBoard(Board board) {
@@ -110,6 +115,7 @@ public class FXBoard implements Initializable {
         boardIMV.maxWidth(1000);
         Collections.shuffle(players);
         playersLV.setItems(players);
+        playersLV.setOnMouseClicked(null);
         startGame();
     }
 
@@ -125,7 +131,11 @@ public class FXBoard implements Initializable {
 
     @FXML
     void properties(ActionEvent event) {
-
+        try {
+            mainController.launchFXMLWindowed("self-properties.fxml", fxSelf, "Propiedades", Modality.WINDOW_MODAL, StageStyle.DECORATED, false);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -186,14 +196,16 @@ public class FXBoard implements Initializable {
         secs = 0;
         newTimer();
         turn = 0;
-//        turnLBL.setText("It's " + playersLV.getItems().get(turn) + "'s turn!");
-        turn++;
+        turnLBL.setText("Es turno de " + playersLV.getItems().get(turn) + "!");
     }
 
     @FXML
     void next(ActionEvent event) {
-        int current = turn - 1;
         turn++;
+        int current = turn - 1;
+        if (turn >= playersLV.getItems().size()) turn = 0;
+        if (current < 0) current = playersLV.getItems().size() - 1;
+        turnLBL.setText("Es turno de " + playersLV.getItems().get(turn) + "!");
     }
 
     @FXML
@@ -246,5 +258,9 @@ public class FXBoard implements Initializable {
 
     public void setPlayers(ObservableList<String> players) {
         this.players = players;
+    }
+
+    public Board getBoard() {
+        return board;
     }
 }

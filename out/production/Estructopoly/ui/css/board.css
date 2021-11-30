@@ -1,0 +1,57 @@
+@import url("variables.css");
+@import url("typography.css");
+
+.game-bg-pane {
+    -fx-background-image: url("../images/backgrounds/green-mat.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 100%;
+}
+
+.dice-outline {
+    -fx-fill: -DEEP-RED;
+    -fx-arc-height: 25;
+    -fx-arc-widtht: 25;
+}
+
+.side-bar {
+    -fx-background-radius: 25;
+    -fx-background-color: linear-gradient(#8FBC72 0%, #BFDBAE 100%);
+    -fx-spacing: 20;
+}
+
+.jfx-button {
+    -fx-font-size: 17px;
+    -fx-pref-width: 280px;
+    -fx-pref-height: 50px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-font-family: "Kabel Bd";
+    -fx-text-fill: -SNOW-WHITE;
+    -fx-background-color: -DEEP-RED;
+}
+
+.jfx-button:hover {
+    -fx-background-color: lightcoral;
+}
+
+.settings {
+    -fx-image: url("../images/info-settings.png");
+}
+
+.settings:hover {
+    -fx-image: url("../images/info-settings-hover.png");
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, -TEXT-2, 10, 0.2, 0, 0);
+}
+
+.current-player {
+    -fx-font-family: "Kabel Bd";
+    -fx-font-size: 17px;
+}
+
+.current-player .text {
+    -fx-fill: -ACCENT-COLOR;
+    -fx-stroke: -DARK-MINT-GREEN;
+}
+

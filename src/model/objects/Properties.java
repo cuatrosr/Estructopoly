@@ -3,6 +3,12 @@ package model.objects;
 public class Properties extends Square {
 
     private static final long serialVersionUID = -1150550527535536653L;
+    public static final String[] PROPS = {
+      "Avenida Mediterráneo", "Avenida Báltica", "Ferrocarril Reading",  "Avenida Oriental", "Avenida Vermont", "Avenida Connecticut",
+      "Plaza San Carlos", "Compañía Eléctrica", "Avenida Estados", "Avenida Virginia", "Ferrocarril Pennsylvania", "Plaza St. James", "Avenida Tennessee", "Avenida New York",
+      "Avenida Kentucky", "Avenida Indiana", "Avenida Illinois", "Ferrocarril B. & O.", "Avenida Atlántico", "Avenida Ventnor", "Compañía de Agua", "Jardines Marvin",
+      "Avenida Pacífico", "Avenida Carolina del Norte", "Avenida Pennsylvania", "Ferrocarril Vía Rápida", "Plaza Park", "El Muelle"
+    };
     private String property;
     private Player owner;
     private int costProperty;
@@ -16,6 +22,8 @@ public class Properties extends Square {
     private int amountFamily;
     private String name;
     private int id;
+    private boolean mortgaged;
+    private int mortgagePay;
 
     public Properties(String property, int costProperty, int rentalProperty, int[] rentalHousesAndHotel, int costHousesAndHotel, int mortgage, int numSquare, int family, int amountFamily, String name) {
         super(numSquare);
@@ -153,6 +161,18 @@ public class Properties extends Square {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isMortgaged() {
+        return mortgaged;
+    }
+
+    public void setMortgaged(boolean mortgaged) {
+        this.mortgaged = mortgaged;
+    }
+
+    public int getMortgagePay() {
+        return mortgagePay;
     }
 
     public int getId() {

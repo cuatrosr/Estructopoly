@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="498.0" prefWidth="793.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BarChart fx:id="chartPatrimony" prefHeight="495.0" prefWidth="793.0" title="Patrimonio">
+        <xAxis>
+          <CategoryAxis fx:id="axisNameToken" animated="false" label="Jugador" prefHeight="63.0" prefWidth="716.0" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="axisMoney" label="Dinero" side="LEFT" />
+        </yAxis>
+      </BarChart>
+   </children>
+</Pane>
