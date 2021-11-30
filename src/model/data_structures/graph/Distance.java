@@ -1,8 +1,9 @@
 package model.data_structures.graph;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
-public class Distance<T> implements Comparator<Distance<T>> {
+public class Distance<T> implements Comparator<Distance<T>>, Serializable {
 
     private T i;
     private T dist;

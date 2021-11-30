@@ -3,6 +3,82 @@
 
 .jfx-button {
     -fx-font-size: 16px;
-    -fx-pref-width: 190px;
+    -fx-pref-width: 160px;
     -fx-pref-height: 50px;
+}
+
+.background {
+    -fx-background-image: url("../images/backgrounds/green-mat.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 100% 100%;
+}
+
+.label {
+    -fx-text-fill: -TEXT-1;
+    -fx-font-family: "Kabel Bd";
+    -fx-pref-width: 220px;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.houses-lbl {
+    -fx-text-fill: #BAE349;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px 10px;
+    -fx-background-color: #FFFFFF42;
+}
+
+.hotel-lbl {
+    -fx-text-fill: #642020;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px 10px;
+    -fx-background-color: #FFFFFF42;
+}
+
+.jfx-list-view {
+    -fx-border-radius: 25;
+    -fx-background-radius: 25;
+    -fx-background-color: transparent;
+    -fx-border-color: -DARK-SECONDARY;
+    -fx-effect: dropshadow(gaussian, -TEXT-2, 12, 0.2, 0, 0);
+    -jfx-cell-horizontal-margin: 10;
+    -fx-padding: 10;
+    -fx-font-size: 18px
+}
+
+.list-cell .jfx-rippler {
+    -jfx-rippler-fill: -DARK-PRIMARY;
+    -jfx-rippler-radius: 100;
+}
+
+.list-cell > .label, .list-cell {
+    -fx-background-color: -PRIMARY-COLOR;
+    -fx-text-fill: -TEXT-2;
+    -fx-background-radius: 5;
+    -fx-border-color: -DARK-PRIMARY;
+    -fx-border-size: 5;
+    -fx-border-radius: 5;
+}
+
+.jfx-list-view .list-cell:hover > .label, .jfx-list-view .list-cell:hover,
+.jfx-list-view .list-cell:filled:selected > .label, .jfx-list-view .list-cell:filled:selected {
+    -fx-background-color: -LIGHT-COLOR;
+    -fx-text-fill: -DARK-SECONDARY;
+    -fx-background-radius: 5;
+}
+
+.jfx-list-view .virtual-flow .scroll-bar:vertical .track-background,  .jfx-list-view .virtual-flow .scroll-bar:vertical .track,
+.jfx-list-view .virtual-flow .scroll-bar:horizontal .track-background,  .jfx-list-view .virtual-flow .scroll-bar:horizontal .track {
+    -fx-background-color: -LIGHT-COLOR;
+    -fx-background-radius: 5;
+    -fx-border-radius: 5;
+    -fx-border-color: -DARK-PRIMARY;
+}
+
+.jfx-list-view .virtual-flow .scroll-bar:vertical .thumb,  .jfx-list-view .virtual-flow .scroll-bar:vertical .increment-button,
+.jfx-list-view .virtual-flow .scroll-bar:vertical .decrement-button, .jfx-list-view .virtual-flow .scroll-bar:horizontal .thumb,
+.jfx-list-view .virtual-flow .scroll-bar:horizontal .increment-button, .jfx-list-view .virtual-flow .scroll-bar:horizontal .decrement-button {
+    -fx-background-color: -SECONDARY-COLOR;
+    -fx-background-radius: 10;
 }

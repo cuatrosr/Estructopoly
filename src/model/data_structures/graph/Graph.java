@@ -1,5 +1,6 @@
 package model.data_structures.graph;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -7,7 +8,7 @@ import java.util.LinkedList;
 import java.util.PriorityQueue;
 import model.objects.Square;
 
-public class Graph<T> implements model.interface_class.GraphI<T> {
+public class Graph<T> implements model.interface_class.GraphI<T>, Serializable {
 
     private int v;
     private LinkedList<Edge<T>> adj[];

@@ -1,8 +1,9 @@
 package model.data_structures.graph;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
-public class Key<T> implements Comparator<Key<T>> {
+public class Key<T> implements Comparator<Key<T>>, Serializable {
 
     private T i;
     private T key;

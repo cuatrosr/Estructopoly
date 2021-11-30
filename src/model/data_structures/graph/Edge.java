@@ -1,8 +1,9 @@
 package model.data_structures.graph;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
-public class Edge<T> implements Comparator<Edge<T>> {
+public class Edge<T> implements Comparator<Edge<T>>, Serializable {
 
     private T s;
     private T d;

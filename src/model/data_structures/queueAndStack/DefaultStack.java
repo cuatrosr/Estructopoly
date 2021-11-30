@@ -2,14 +2,15 @@ package model.data_structures.queueAndStack;
 
 import model.interface_class.Stack;
 
+import java.io.Serializable;
 import java.util.NoSuchElementException;
 
 /**
  * A custom implementation of the Stack generic data type. <br>
  */
-public class DefaultStack<T> implements Stack<T> {
+public class DefaultStack<T> implements Stack<T>, Serializable {
 
-    class Node<T> {
+    class Node<T> implements Serializable {
 
         private T data;
         private Node<T> next;

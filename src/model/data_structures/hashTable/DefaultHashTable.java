@@ -1,10 +1,11 @@
 package model.data_structures.hashTable;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import java.util.Objects;
 
-class HashNode<K, V> {
+class HashNode<K, V> implements Serializable {
 
     K key;
     V value;
@@ -28,7 +29,7 @@ class HashNode<K, V> {
     }
 }
 
-public class DefaultHashTable<K, V> implements model.interface_class.HashTable<K, V> {
+public class DefaultHashTable<K, V> implements model.interface_class.HashTable<K, V>, Serializable {
 
     private HashNode<?, ?>[] table;
     private int size;
@@ -46,7 +47,7 @@ public class DefaultHashTable<K, V> implements model.interface_class.HashTable<K
     }
 
     private int hash(K key, int i) {
-        return (Objects.hashCode(key) + i) % arraySize;
+        return (Math.abs(Objects.hashCode(key)) + i) % arraySize;
     }
 
     @Override
