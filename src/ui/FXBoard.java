@@ -178,10 +178,10 @@ public class FXBoard implements Initializable {
         dice1 = (int) (Math.random() * range) + min;
         dice2 = (int) (Math.random() * range) + min;
 
-        //(686, 706) <-- Salida; (36, 706) <-- Carcel; (36, 46) <-- Parada; (686, 46) <-- GoJail
-
         String curr = playersLV.getItems().get(0);
-        moveToken(curr);
+        for (int i = 0; i < dice1 + dice2; i++) {
+            moveToken(curr);
+        }
 
         //RANDOMIZER END
         FadeTransition pop = new FadeTransition();
