@@ -5,8 +5,22 @@ import javafx.scene.input.KeyCode;
 
 public interface Move {
 
-    public static final int PIXEL = 8;
+    int PIXEL = 8;
 
-    public ImageView moveUp(KeyCode event);
+    int AUTO_PIXEL = 81;
+
+    int AUTO_PIXEL_HALVED = 61;
+
+    int NORTH_BOUND = 46;
+
+    int SOUTH_BOUND = 706;
+
+    int WEST_BOUND = 36;
+
+    int EAST_BOUND = 686;
+
+    ImageView move(KeyCode event);
+
+    void move();
 
 }

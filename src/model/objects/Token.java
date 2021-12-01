@@ -9,25 +9,28 @@ public class Token extends Player implements Move {
     private static final long serialVersionUID = -7576993220422954011L;
     private ImageView token;
     private int id;
+    private String direction;
 
     public Token(int money, ImageView token, String nameToken, int id) {
         super(money, nameToken);
         this.token = token;
         this.id = id;
-
+        direction = "L";
     }
 
     public Token(int money, String nameToken, int numProperties, String namePlayer) {
         super(money, nameToken, numProperties, namePlayer);
-
+        direction = "L";
     }
 
     public Token(ImageView token) {
         super();
         this.token = token;
+        direction = "L";
     }
 
     public Token() {
+        direction = "L";
     }
 
     public ImageView getToken() {
@@ -47,7 +50,7 @@ public class Token extends Player implements Move {
     }
 
     @Override
-    public ImageView moveUp(KeyCode event) {
+    public ImageView move(KeyCode event) {
 
         double x = token.getLayoutX();
         double y = token.getLayoutY();
@@ -73,6 +76,59 @@ public class Token extends Player implements Move {
 
         return token;
 
+    }
+
+    @Override
+    public void move() {
+
+        double x = token.getLayoutX();
+        double y = token.getLayoutY();
+
+        boolean off_south = y + AUTO_PIXEL_HALVED > SOUTH_BOUND;
+        boolean off_north = y - AUTO_PIXEL_HALVED < NORTH_BOUND;
+        boolean off_west = x - AUTO_PIXEL_HALVED < WEST_BOUND;
+        boolean off_east = x + AUTO_PIXEL_HALVED > EAST_BOUND;
+
+        int usage = AUTO_PIXEL_HALVED;
+
+        if (off_south) {
+            direction = "L";
+            y = SOUTH_BOUND;
+            usage = AUTO_PIXEL;
+        }
+        else if (off_north) {
+            direction = "R";
+            y = NORTH_BOUND;
+            usage = AUTO_PIXEL;
+        }
+        else if (off_west) {
+            direction = "U";
+            x = WEST_BOUND;
+            usage = AUTO_PIXEL;
+        }
+        else if (off_east) {
+            direction = "D";
+            x = EAST_BOUND;
+            usage = AUTO_PIXEL;
+        }
+
+        switch (direction) {
+            case "L":
+                x -= usage;
+                break;
+            case "U":
+                y -= usage;
+                break;
+            case "R":
+                x += usage;
+                break;
+            case "D":
+                y += usage;
+                break;
+        }
+
+        token.setLayoutX(x);
+        token.setLayoutY(y);
     }
 
 }

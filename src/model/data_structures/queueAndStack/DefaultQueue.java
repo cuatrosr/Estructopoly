@@ -3,6 +3,7 @@ package model.data_structures.queueAndStack;
 import model.interface_class.Queue;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 /**
@@ -150,5 +151,15 @@ public class DefaultQueue<T> implements Queue<T>, Serializable {
 
         }
 
+    }
+
+    public ArrayList<T> toArrayList() {
+        ArrayList<T> arr = new ArrayList<>();
+        Node<T> head = front;
+        while (head != null) {
+            arr.add(head.data);
+            head = head.next();
+        }
+        return arr;
     }
 }

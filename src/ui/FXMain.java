@@ -10,6 +10,7 @@ import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
 import model.objects.Board;
 
+import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -65,6 +66,12 @@ public class FXMain extends Application {
 
 
     public Board initBoard() throws IOException, ClassNotFoundException {
-       return (Board) ois.readObject();
+        Board board = new Board();
+        try {
+            board = (Board) ois.readObject();
+        } catch (EOFException eofe) {
+            eofe.printStackTrace();
+        }
+       return board;
     }
 }

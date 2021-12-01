@@ -24,8 +24,8 @@ public class PlayerTest {
 
         for (int i = 0; i < 5; i++) {
 
-            boatTest = player.moveUp(KeyCode.W);
-            boatTest = player.moveUp(KeyCode.D);
+            boatTest = player.move(KeyCode.W);
+            boatTest = player.move(KeyCode.D);
             y = y - 8;
             x = x + 8;
 
@@ -36,8 +36,8 @@ public class PlayerTest {
 
         for (int i = 0; i < 5; i++) {
 
-            boatTest = player.moveUp(KeyCode.S);
-            boatTest = player.moveUp(KeyCode.A);
+            boatTest = player.move(KeyCode.S);
+            boatTest = player.move(KeyCode.A);
             y = y + 8;
             x = x - 8;
 
@@ -48,8 +48,8 @@ public class PlayerTest {
 
         for (int i = 0; i < 1000; i++) {
 
-            boatTest = player.moveUp(KeyCode.W);
-            boatTest = player.moveUp(KeyCode.D);
+            boatTest = player.move(KeyCode.W);
+            boatTest = player.move(KeyCode.D);
             y = y - 8;
             x = x + 8;
 
@@ -60,8 +60,8 @@ public class PlayerTest {
 
         for (int i = 0; i < 1000; i++) {
 
-            boatTest = player.moveUp(KeyCode.S);
-            boatTest = player.moveUp(KeyCode.A);
+            boatTest = player.move(KeyCode.S);
+            boatTest = player.move(KeyCode.A);
             y = y + 8;
             x = x - 8;
 

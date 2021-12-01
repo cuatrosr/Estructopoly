@@ -18,11 +18,12 @@
     -fx-background-radius: 25;
     -fx-background-color: linear-gradient(#8FBC72 0%, #BFDBAE 100%);
     -fx-spacing: 20;
+    -fx-pref-height: 760px;
 }
 
 .jfx-button {
-    -fx-font-size: 17px;
-    -fx-pref-width: 280px;
+    -fx-font-size: 15px;
+    -fx-pref-width: 240px;
     -fx-pref-height: 50px;
     -fx-background-radius: 8px;
     -fx-border-radius: 8px;
@@ -55,3 +56,15 @@
     -fx-stroke: -DARK-MINT-GREEN;
 }
 
+.separator {
+    -fx-opacity: 0;
+}
+
+
+#all-props {
+    -fx-font-size: 15px;
+    -fx-pref-width: 200px;
+    -fx-pref-height: 60px;
+    -fx-wrap-text: true;
+    -fx-text-alignment: center;
+}

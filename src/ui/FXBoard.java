@@ -26,7 +26,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import model.data_structures.queueAndStack.DefaultQueue;
 import model.objects.Board;
+import model.objects.Token;
 
 import java.io.IOException;
 import java.net.URL;
@@ -52,9 +54,6 @@ public class FXBoard implements Initializable {
     private ImageView boardIMV = new ImageView();
 
     @FXML
-    private ImageView currentIMV = new ImageView();
-
-    @FXML
     private Rectangle frameRCT = new Rectangle();
 
     @FXML
@@ -74,6 +73,32 @@ public class FXBoard implements Initializable {
 
     @FXML
     private Label timerLBL = new Label();
+
+    //Tokens
+
+    @FXML
+    private ImageView boatIMV = new ImageView();
+
+    @FXML
+    private ImageView carIMV = new ImageView();
+
+    @FXML
+    private ImageView catIMV = new ImageView();
+
+    @FXML
+    private ImageView dogIMV = new ImageView();
+
+    @FXML
+    private ImageView hatIMV = new ImageView();
+
+    @FXML
+    private ImageView ironIMV = new ImageView();
+
+    @FXML
+    private ImageView micIMV = new ImageView();
+
+    @FXML
+    private ImageView shoeIMV = new ImageView();
 
     //Class Fields
     FXMainController mainController;
@@ -116,6 +141,14 @@ public class FXBoard implements Initializable {
         Collections.shuffle(players);
         playersLV.setItems(players);
         playersLV.setOnMouseClicked(null);
+        carIMV.setVisible(false);
+        catIMV.setVisible(false);
+        dogIMV.setVisible(false);
+        boatIMV.setVisible(false);
+        hatIMV.setVisible(false);
+        micIMV.setVisible(false);
+        ironIMV.setVisible(false);
+        shoeIMV.setVisible(false);
         startGame();
     }
 
@@ -148,6 +181,11 @@ public class FXBoard implements Initializable {
         dice1 = (int) (Math.random() * range) + min;
         dice2 = (int) (Math.random() * range) + min;
 
+        //(686, 706) <-- Salida; (36, 706) <-- Carcel; (36, 46) <-- Parada; (686, 46) <-- GoJail
+
+        String curr = playersLV.getItems().get(0);
+        moveToken(curr);
+
         //RANDOMIZER END
         FadeTransition pop = new FadeTransition();
         pop.setDuration(Duration.millis(1000));
@@ -157,6 +195,10 @@ public class FXBoard implements Initializable {
         dice1IMV.setImage(new Image(String.valueOf(getClass().getResource("images/dice/de" + dice1 + ".png"))));
         dice2IMV.setImage(new Image(String.valueOf(getClass().getResource("images/dice/de" + dice2 + ".png"))));
         pop.play();
+    }
+
+    void moveToken(String curr) {
+        board.getPlayers().front().move();
     }
 
     @FXML
@@ -195,17 +237,24 @@ public class FXBoard implements Initializable {
         min = 0;
         secs = 0;
         newTimer();
-        turn = 0;
-        turnLBL.setText("Es turno de " + playersLV.getItems().get(turn) + "!");
+        advancePlayer();
+    }
+
+    private void advancePlayer() {
+        turnLBL.setText("Es turno de " + playersLV.getItems().get(0) + "!");
+        Token prev = board.getPlayers().dequeue();
+        board.setInTurn(prev);
+        board.getPlayers().enqueue(prev);
+        players.clear();
+        for (Token pl : ((DefaultQueue<Token>) board.getPlayers()).toArrayList()) {
+            players.add(pl.getNameToken());
+        }
+        playersLV.setItems(players);
     }
 
     @FXML
     void next(ActionEvent event) {
-        turn++;
-        int current = turn - 1;
-        if (turn >= playersLV.getItems().size()) turn = 0;
-        if (current < 0) current = playersLV.getItems().size() - 1;
-        turnLBL.setText("Es turno de " + playersLV.getItems().get(turn) + "!");
+        advancePlayer();
     }
 
     @FXML
@@ -258,6 +307,47 @@ public class FXBoard implements Initializable {
 
     public void setPlayers(ObservableList<String> players) {
         this.players = players;
+        DefaultQueue<Token> playerQ = new DefaultQueue<>();
+        for (String player: players) {
+            Token new_ = new Token(1500, player, 0, player);
+            switch (player) {
+                case "Perro":
+                    dogIMV.setVisible(true);
+                    new_.setToken(dogIMV);
+                    break;
+                case "Gato":
+                    catIMV.setVisible(true);
+                    new_.setToken(catIMV);
+                    break;
+                case "Barco":
+                    boatIMV.setVisible(true);
+                    new_.setToken(boatIMV);
+                    break;
+                case "Carro":
+                    carIMV.setVisible(true);
+                    new_.setToken(carIMV);
+                    break;
+                case "Sombrero":
+                    hatIMV.setVisible(true);
+                    new_.setToken(hatIMV);
+                    break;
+                case "Plancha":
+                    ironIMV.setVisible(true);
+                    new_.setToken(ironIMV);
+                    break;
+                case "Micrófono":
+                    micIMV.setVisible(true);
+                    new_.setToken(micIMV);
+                    break;
+                case "Bota":
+                    shoeIMV.setVisible(true);
+                    new_.setToken(shoeIMV);
+                    break;
+            }
+            playerQ.enqueue(new_);
+        }
+        System.out.println(playerQ.toString());
+        board.setPlayers(playerQ);
     }
 
     public Board getBoard() {
