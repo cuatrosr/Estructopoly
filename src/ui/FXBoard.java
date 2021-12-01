@@ -134,10 +134,7 @@ public class FXBoard implements Initializable {
     /*METHODS*/
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        boardIMV.fitHeightProperty().bind(boardPane.heightProperty());
-        boardIMV.fitWidthProperty().bind(boardPane.widthProperty());
-        boardIMV.maxHeight(1000);
-        boardIMV.maxWidth(1000);
+
         Collections.shuffle(players);
         playersLV.setItems(players);
         playersLV.setOnMouseClicked(null);
@@ -232,6 +229,48 @@ public class FXBoard implements Initializable {
 
     void startGame() {
 
+        DefaultQueue<Token> playerQ = new DefaultQueue<>();
+        for (String player: players) {
+            Token new_ = new Token(1500, player, 0, player);
+            switch (player) {
+                case "Perro":
+                    dogIMV.setVisible(true);
+                    new_.setToken(dogIMV);
+                    break;
+                case "Gato":
+                    catIMV.setVisible(true);
+                    new_.setToken(catIMV);
+                    break;
+                case "Barco":
+                    boatIMV.setVisible(true);
+                    new_.setToken(boatIMV);
+                    break;
+                case "Carro":
+                    carIMV.setVisible(true);
+                    new_.setToken(carIMV);
+                    break;
+                case "Sombrero":
+                    hatIMV.setVisible(true);
+                    new_.setToken(hatIMV);
+                    break;
+                case "Plancha":
+                    ironIMV.setVisible(true);
+                    new_.setToken(ironIMV);
+                    break;
+                case "Micrófono":
+                    micIMV.setVisible(true);
+                    new_.setToken(micIMV);
+                    break;
+                case "Bota":
+                    shoeIMV.setVisible(true);
+                    new_.setToken(shoeIMV);
+                    break;
+            }
+            playerQ.enqueue(new_);
+        }
+        System.out.println(playerQ.toString());
+        board.setPlayers(playerQ);
+
         //Timer
         hour = 0;
         min = 0;
@@ -307,47 +346,6 @@ public class FXBoard implements Initializable {
 
     public void setPlayers(ObservableList<String> players) {
         this.players = players;
-        DefaultQueue<Token> playerQ = new DefaultQueue<>();
-        for (String player: players) {
-            Token new_ = new Token(1500, player, 0, player);
-            switch (player) {
-                case "Perro":
-                    dogIMV.setVisible(true);
-                    new_.setToken(dogIMV);
-                    break;
-                case "Gato":
-                    catIMV.setVisible(true);
-                    new_.setToken(catIMV);
-                    break;
-                case "Barco":
-                    boatIMV.setVisible(true);
-                    new_.setToken(boatIMV);
-                    break;
-                case "Carro":
-                    carIMV.setVisible(true);
-                    new_.setToken(carIMV);
-                    break;
-                case "Sombrero":
-                    hatIMV.setVisible(true);
-                    new_.setToken(hatIMV);
-                    break;
-                case "Plancha":
-                    ironIMV.setVisible(true);
-                    new_.setToken(ironIMV);
-                    break;
-                case "Micrófono":
-                    micIMV.setVisible(true);
-                    new_.setToken(micIMV);
-                    break;
-                case "Bota":
-                    shoeIMV.setVisible(true);
-                    new_.setToken(shoeIMV);
-                    break;
-            }
-            playerQ.enqueue(new_);
-        }
-        System.out.println(playerQ.toString());
-        board.setPlayers(playerQ);
     }
 
     public Board getBoard() {

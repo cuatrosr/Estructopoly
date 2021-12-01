@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
@@ -76,54 +77,61 @@
       </VBox>
    </left>
    <center>
-      <Pane>
-         <children>
-            <ImageView fx:id="boardIMV" fitHeight="760.0" fitWidth="761.0" layoutX="4.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/board/board.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="dogIMV" fitHeight="37.0" fitWidth="50.0" layoutX="686.0" layoutY="706.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/tokens/dog.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="boatIMV" fitHeight="30.0" fitWidth="51.0" layoutX="686.0" layoutY="706.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/tokens/boat.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="catIMV" fitHeight="35.0" fitWidth="44.0" layoutX="686.0" layoutY="706.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/tokens/cat.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="carIMV" fitHeight="21.0" fitWidth="65.0" layoutX="686.0" layoutY="706.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/tokens/car.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="hatIMV" fitHeight="33.0" fitWidth="53.0" layoutX="686.0" layoutY="706.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/tokens/hat.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="ironIMV" fitHeight="33.0" fitWidth="53.0" layoutX="686.0" layoutY="706.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/tokens/iron.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="micIMV" fitHeight="46.0" fitWidth="32.0" layoutX="686.0" layoutY="706.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/tokens/mic.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="shoeIMV" fitHeight="40.0" fitWidth="51.0" layoutX="686.0" layoutY="706.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/tokens/shoe.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
+      <BorderPane>
+         <center>
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="780.0" prefWidth="768.0">
+               <children>
+                  <ImageView fx:id="boardIMV" fitHeight="760.0" fitWidth="761.0" layoutX="4.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/board/board.png" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D minX="761.0" minY="760.0" />
+                     </viewport>
+                  </ImageView>
+                  <ImageView fx:id="dogIMV" fitHeight="37.0" fitWidth="50.0" layoutX="686.0" layoutY="706.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/tokens/dog.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="boatIMV" fitHeight="30.0" fitWidth="51.0" layoutX="686.0" layoutY="706.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/tokens/boat.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="catIMV" fitHeight="35.0" fitWidth="44.0" layoutX="686.0" layoutY="706.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/tokens/cat.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="carIMV" fitHeight="21.0" fitWidth="65.0" layoutX="686.0" layoutY="706.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/tokens/car.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="hatIMV" fitHeight="33.0" fitWidth="53.0" layoutX="686.0" layoutY="706.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/tokens/hat.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="ironIMV" fitHeight="33.0" fitWidth="53.0" layoutX="686.0" layoutY="706.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/tokens/iron.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="micIMV" fitHeight="46.0" fitWidth="32.0" layoutX="686.0" layoutY="706.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/tokens/mic.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="shoeIMV" fitHeight="40.0" fitWidth="51.0" layoutX="686.0" layoutY="706.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/tokens/shoe.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </center>
+      </BorderPane>
    </center>
 </BorderPane>
