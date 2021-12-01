@@ -13,7 +13,7 @@ public class Board implements Serializable {
     private Graph<Square> gameBoard; //YA
     private Queue<Token> players;
     private HashTable<String, Token> playersHash; 
-    private HashTable<String, Properties> propertiesHash; //YA
+    private HashTable<Integer, Square> propertiesHash; //YA
     private Queue<FortuneCards> fortuneCards; //YA
     private Queue<CommunityServiceCards> communityServiceCards; //YA
     private Token inTurn;
@@ -25,7 +25,7 @@ public class Board implements Serializable {
         this.playersHash = new DefaultHashTable<>(8);
         this.fortuneCards = new DefaultQueue<>();
         this.communityServiceCards = new DefaultQueue<>();
-        this.propertiesHash = new DefaultHashTable<>(28);
+        this.propertiesHash = new DefaultHashTable<>(41);
         this.inTurn = new Token();
         this.jail = jail;
     }
@@ -88,11 +88,11 @@ public class Board implements Serializable {
         this.jail = jail;
     }
 
-    public HashTable<String, Properties> getPropertiesHash() {
+    public HashTable<Integer, Square> getPropertiesHash() {
         return propertiesHash;
     }
 
-    public void setPropertiesHash(HashTable<String, Properties> propertiesHash) {
+    public void setPropertiesHash(HashTable<Integer, Square> propertiesHash) {
         this.propertiesHash = propertiesHash;
     }
 }

@@ -84,8 +84,6 @@ public class Token extends Player implements Move {
         double x = token.getLayoutX();
         double y = token.getLayoutY();
 
-        System.out.println(x + " || " + y);
-
         boolean off_south = y + AUTO_PIXEL_HALVED > SOUTH_BOUND;
         boolean off_north = y - AUTO_PIXEL_HALVED < NORTH_BOUND;
         boolean off_west = x - AUTO_PIXEL_HALVED < WEST_BOUND;
@@ -131,6 +129,12 @@ public class Token extends Player implements Move {
 
         token.setLayoutX(x);
         token.setLayoutY(y);
+        setPosition(getPosition() + 1);
+
+        if (getPosition() > 40) {
+            setMoney(getMoney() + 200);
+            setPosition(getPosition() - 40);
+        }
     }
 
 }

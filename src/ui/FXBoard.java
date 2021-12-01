@@ -27,8 +27,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import model.data_structures.queueAndStack.DefaultQueue;
-import model.objects.Board;
-import model.objects.Token;
+import model.objects.*;
+import model.objects.Properties;
 
 import java.io.IOException;
 import java.net.URL;
@@ -119,12 +119,17 @@ public class FXBoard implements Initializable {
 
     private Board board;
 
+    private FXBuyProp fxBuyProp;
+
+    private FXAux fxAux;
+
     public FXBoard(FXMainController mainController) {
         this.mainController = mainController;
         board = new Board();
         fxSettings = new FXSettings(mainController, this);
         fxAll = new FXAllProperties(mainController, this);
         fxSelf = new FXSelfProperties(mainController, this);
+        fxBuyProp = new FXBuyProp(mainController, this);
     }
 
     public void setBoard(Board board) {
@@ -179,11 +184,13 @@ public class FXBoard implements Initializable {
         dice2 = (int) (Math.random() * range) + min;
 
         String curr = playersLV.getItems().get(0);
+        int finPos = 0;
         for (int i = 0; i < dice1 + dice2; i++) {
-            moveToken(curr);
+            finPos = moveToken(curr);
         }
-
         //RANDOMIZER END
+
+        //ANIMATION START
         FadeTransition pop = new FadeTransition();
         pop.setDuration(Duration.millis(1000));
         pop.setFromValue(1.0);
@@ -192,10 +199,55 @@ public class FXBoard implements Initializable {
         dice1IMV.setImage(new Image(String.valueOf(getClass().getResource("images/dice/de" + dice1 + ".png"))));
         dice2IMV.setImage(new Image(String.valueOf(getClass().getResource("images/dice/de" + dice2 + ".png"))));
         pop.play();
+        //ANIMATION END
+
+        //ACTION
+
+        if (board.getPropertiesHash().search(finPos) instanceof PublicServices) {
+            //Buy prompt or
+            //Pay prompt
+        } else if (board.getPropertiesHash().search(finPos) instanceof Train) {
+            //Buy prompt or
+            //Pay prompt
+        } else if (board.getPropertiesHash().search(finPos) instanceof Properties) {
+            Properties currentSquare = (Properties) board.getPropertiesHash().search(finPos);
+            if (currentSquare.getOwner() == null) {
+                try {
+                    mainController.launchFXMLWindowed("buyProp.fxml", fxBuyProp, "Comprar Propiedad", Modality.WINDOW_MODAL, StageStyle.DECORATED, false);
+                    fxBuyProp.setCurrentSquare(currentSquare);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                int val = currentSquare.getRentalProperty();
+                String toWhom = currentSquare.getOwner().getNameToken();
+                String message = "Paga $" + val + " a " +toWhom + ".";
+                String title = "Pagar Arriendo";
+                fxAux = new FXAux(title, message);
+                try {
+                    mainController.launchFXMLWindowed("prompt.fxml", fxAux, "Pagar Arriendo", Modality.APPLICATION_MODAL, StageStyle.UNIFIED, false);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } else if (board.getPropertiesHash().search(finPos) instanceof Taxes) {
+            //Pay Prompt
+        } else if (board.getPropertiesHash().search(finPos) instanceof CommunityServiceCards) {
+
+        } else if (board.getPropertiesHash().search(finPos) instanceof FortuneCards) {
+
+        } else if (board.getPropertiesHash().search(finPos) instanceof GoJail) {
+
+        } else if (board.getPropertiesHash().search(finPos) instanceof CommunSquare) {
+            CommunSquare currentSquare = (CommunSquare) board.getPropertiesHash().search(finPos);
+            currentSquare.action(finPos, board);
+        }
+
     }
 
-    void moveToken(String curr) {
+    int moveToken(String curr) {
         board.getPlayers().front().move();
+        return board.getPlayers().front().getPosition();
     }
 
     @FXML
@@ -268,7 +320,6 @@ public class FXBoard implements Initializable {
             }
             playerQ.enqueue(new_);
         }
-        System.out.println(playerQ.toString());
         board.setPlayers(playerQ);
 
         //Timer

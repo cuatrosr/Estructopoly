@@ -8,7 +8,7 @@ import model.interface_class.HashTable;
 public abstract class Player implements Serializable {
 
     private static final long serialVersionUID = 5780182730822343543L;
-    private HashTable<String, Properties> propertiesHash;
+    private HashTable<Integer, Square> propertiesHash;
     private boolean especialCards;
     private int money;
     private int position;
@@ -42,11 +42,11 @@ public abstract class Player implements Serializable {
     protected Player() {
     }
 
-    public HashTable<String, Properties> getPropertiesHash() {
+    public HashTable<Integer, Square> getPropertiesHash() {
         return propertiesHash;
     }
 
-    public void setPropertiesHash(HashTable<String, Properties> propertiesHash) {
+    public void setPropertiesHash(HashTable<Integer, Square> propertiesHash) {
         this.propertiesHash = propertiesHash;
     }
 

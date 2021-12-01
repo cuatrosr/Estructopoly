@@ -183,12 +183,11 @@ public class Properties extends Square {
         this.id = id;
     }
 
-    public Properties propeties(Board board, String index) {
+    public Properties propeties(Board board, int index) {
         return (Properties) board.getPropertiesHash().search(index);
     }
 
     public void action() {
 
     }
-
 }

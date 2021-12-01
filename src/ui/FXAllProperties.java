@@ -93,7 +93,5 @@ public class FXAllProperties implements Initializable, Listeners {
         String path = "images/properties/" + cards[next] + "Front.png";
         Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path)));
         cardIMV.setImage(image);
-        System.out.println(cardIMV.getImage().toString());
-        //fxBoard.getBoard().getPropertiesHash().search();
     }
 }
