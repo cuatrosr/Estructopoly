@@ -231,13 +231,34 @@ public class FXBoard implements Initializable {
                 }
             }
         } else if (board.getPropertiesHash().search(finPos) instanceof Taxes) {
-            //Pay Prompt
+            Taxes currentSquare = (Taxes) board.getPropertiesHash().search(finPos);
+            currentSquare.action(finPos, board);
+            int val = currentSquare.getAmount();
+            String message = "Paga $" + val + " en impuestos.";
+            String title = "Pagar Impuestos";
+            fxAux = new FXAux(title, message);
+            try {
+                mainController.launchFXMLWindowed("prompt.fxml", fxAux, "Pagar Arriendo", Modality.APPLICATION_MODAL, StageStyle.UNIFIED, false);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else if (board.getPropertiesHash().search(finPos) instanceof CommunityServiceCards) {
 
         } else if (board.getPropertiesHash().search(finPos) instanceof FortuneCards) {
 
         } else if (board.getPropertiesHash().search(finPos) instanceof GoJail) {
-
+            GoJail currentSquare = (GoJail) board.getPropertiesHash().search(finPos);
+            currentSquare.action(finPos, board);
+            String message = "¡A la Cárcel! Sin cobrar mesada.";
+            String title = "¡A la Cárcel!";
+            fxAux = new FXAux(title, message);
+            try {
+                mainController.launchFXMLWindowed("prompt.fxml", fxAux, "Pagar Arriendo", Modality.APPLICATION_MODAL, StageStyle.UNIFIED, false);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            board.getInTurn().getToken().setLayoutY(702);
+            board.getInTurn().getToken().setLayoutX(52);
         } else if (board.getPropertiesHash().search(finPos) instanceof CommunSquare) {
             CommunSquare currentSquare = (CommunSquare) board.getPropertiesHash().search(finPos);
             currentSquare.action(finPos, board);

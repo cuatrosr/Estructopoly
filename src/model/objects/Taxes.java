@@ -21,9 +21,10 @@ public class Taxes extends CommunSquare implements Serializable {
             return false;
 
         }
-
-
     }
 
 
+    public int getAmount() {
+        return amount;
+    }
 }
