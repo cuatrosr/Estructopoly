@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="295.0" prefWidth="443.0" stylesheets="@../css/global.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="titleLBL" styleClass="titles-alt" text="TITLE" />
+            <Label fx:id="messageLBL" alignment="CENTER" contentDisplay="CENTER" prefHeight="199.0" prefWidth="443.0" styleClass="subtitles-alt" text="MESSAGE" textAlignment="CENTER" wrapText="true" />
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
